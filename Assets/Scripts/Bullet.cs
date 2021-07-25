@@ -16,5 +16,15 @@ public class Bullet : MonoBehaviour
     {
         // 옆으로 계속 이동하기
         transform.position += Vector3.right * speed * Time.deltaTime;
+
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Enemy.enemyDeath++;
+        }
     }
 }

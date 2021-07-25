@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -27,16 +28,28 @@ public class PlayerMove : MonoBehaviour
     // 캐릭터 컨트롤러 변수
     CharacterController cc;
 
+    // 체력 변수
+    public static int hp;
+
+    // 최대 체력 변수
+    public int maxHp = 10;
+
+    // 슬라이더 바
+    public Slider hpSlider;
+
     void Start()
     {
+        // 캐릭터 컨트롤러 컴포넌트를 받아온다.
         cc = GetComponent<CharacterController>();
+
+        // 체력 변수 초기화
+        hp = maxHp;
     }
 
     void Update()
     {
         float h = Input.GetAxis("Horizontal");
         
-
         // 이동 방향을 설정한다.
         Vector3 dir = new Vector3(h, 0, 0);
         dir.Normalize();
@@ -64,5 +77,19 @@ public class PlayerMove : MonoBehaviour
         // 이동 방향으로 플레이어를 이동시킨다.
         cc.Move(dir * movespeed * Time.deltaTime);
 
+        // 슬라이더의 value를 체력 비율로 적용한다.
+        hpSlider.value = (float)hp / (float)maxHp;
+
+        // 체력 바 이동
+        hpSlider.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 0.8f, 0));
+    }
+
+    public void OnDamage(int value)
+    {
+        
+        if (hp < 0)
+        {
+            hp = 0;
+        }
     }
 }
