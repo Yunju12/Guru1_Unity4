@@ -23,13 +23,13 @@ public class PlayerMove : MonoBehaviour
     float yVelocity = 0;
 
     // 속력 변수
-    public float movespeed = 7.0f;
+    public float moveSpeed = 7.0f;
 
     // 캐릭터 컨트롤러 변수
     CharacterController cc;
 
     // 체력 변수
-    public static int hp;
+    public int hp;
 
     // 최대 체력 변수
     public int maxHp = 10;
@@ -75,7 +75,7 @@ public class PlayerMove : MonoBehaviour
         dir.y = yVelocity;
 
         // 이동 방향으로 플레이어를 이동시킨다.
-        cc.Move(dir * movespeed * Time.deltaTime);
+        cc.Move(dir * moveSpeed * Time.deltaTime);
 
         // 슬라이더의 value를 체력 비율로 적용한다.
         hpSlider.value = (float)hp / (float)maxHp;
@@ -86,7 +86,8 @@ public class PlayerMove : MonoBehaviour
 
     public void OnDamage(int value)
     {
-        
+        hp -= value;
+
         if (hp < 0)
         {
             hp = 0;

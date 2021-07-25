@@ -23,8 +23,6 @@ public class EnemyManager : MonoBehaviour
     {
         // 생성시간을 최소 시간과 최대 시간 사이에서 랜덤으로 정한다.
         createTime = Random.Range(minTime, maxTime);
-
-       
     }
 
     void Update()
