@@ -1,33 +1,87 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossMonster : MonoBehaviour
 {
     // 보스몬스터가 위치할 자리
     Vector3 bossPosition = new Vector3(5.63f, -0.57f, -1);
 
+    // HP 바 변수
+    public GameObject HPBar;
+
+    // 파이어볼 매니져 변수1
+    public GameObject FireBallManager1;
+
+    // 파이어볼 매니져 변수2
+    public GameObject FireBallManager2;
+
+    // 파이어볼 매니져 변수3
+    public GameObject FireBallManager3;
+
+    // 체력 변수
+    public int bossHp;
+
+    // 최대 체력 변수
+    public int maxHp = 30;
+
+    // 슬라이더 바
+    public Slider hpSlider;
+
     void Start()
     {
-        // 비활성화 상태로 시작한다.
-        //gameObject.SetActive(false);
+        // 체력 변수 초기화
+        bossHp = maxHp;
     }
 
     void Update()
     {
+        
+
         // 만약 enemyDeath가 5 이상이 된다면, 
         if (Enemy.enemyDeath >= 5)
         {
-            // 오브젝트가 활성화되고,
-            //gameObject.SetActive(true);
+            // 보스 몬스터를 활성화 시킨 뒤,
+            gameObject.SetActive(true);
 
-            // 게임 화면 안으로 포물선 모양으로 날아와서, 
-            // 정해진 위치로 오면 멈춰 선다.
-            transform.position = Vector3.Slerp(transform.position, bossPosition, 0.03f);
+            // 보스몬스터와 보스몬스터의 HP 바가 등장한다.
+            StartCoroutine("AppearDelay");
 
+            // 슬라이더의 value를 체력 비율로 적용한다.
+            hpSlider.value = (float)bossHp / (float)maxHp;
         }
+    }
 
-        // 게임 화면으로 걸어들어와서
-        // 플레이어의 공격을 받으면 체력이 줄어든다. 
+    // 보스몬스터와 보스몬스터의 HP 바가 등장하는 코루틴 함수
+    IEnumerator AppearDelay()
+    {
+        // 3초 대기 후
+        yield return new WaitForSeconds(3f);
+
+        // 보스몬스터의 HP 바를 활성화한다.
+        HPBar.SetActive(true);
+
+        // 다시 2초 대기 후
+        yield return new WaitForSeconds(2f);
+
+        // 보스 몬스터가 날라와서 정해진 자리에 멈춰 선다.
+        transform.position = Vector3.Slerp(transform.position, bossPosition, 0.008f);
+
+        // 파이어볼 매니져를 활성화한다.
+        FireBallManager1.SetActive(true);
+        FireBallManager2.SetActive(true);
+        FireBallManager3.SetActive(true);
+    }
+
+    // 보스몬스터 피격 함수
+    public void BossOnDamage(int value)
+    {
+        bossHp -= value;
+
+        if (bossHp < 0)
+        {
+            bossHp = 0;
+        }
     }
 }

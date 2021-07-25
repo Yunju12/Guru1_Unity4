@@ -24,6 +24,12 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단
+        if (GameManager.gm.gState != GameManager.GameState.Run)
+        {
+            return;
+        }
+
         // *왼쪽으로 계속 이동하기
         // 1. 왼쪽으로 방향을 만들고
         Vector3 dir = Vector3.left;

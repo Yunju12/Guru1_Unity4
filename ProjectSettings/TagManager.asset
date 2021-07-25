@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Enemy
+  - BossMonster
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Enemy
   - BossMonster
   - Floor
-  - 
-  - 
+  - FireBall
+  - Bullet
   - 
   - 
   - 

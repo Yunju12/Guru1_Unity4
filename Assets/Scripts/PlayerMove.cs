@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour
     CharacterController cc;
 
     // 체력 변수
-    public int hp;
+    public int playerHp;
 
     // 최대 체력 변수
     public int maxHp = 10;
@@ -43,11 +43,17 @@ public class PlayerMove : MonoBehaviour
         cc = GetComponent<CharacterController>();
 
         // 체력 변수 초기화
-        hp = maxHp;
+        playerHp = maxHp;
     }
 
     void Update()
     {
+        // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단
+        if (GameManager.gm.gState != GameManager.GameState.Run)
+        {
+            return;
+        }
+
         float h = Input.GetAxis("Horizontal");
         
         // 이동 방향을 설정한다.
@@ -78,19 +84,20 @@ public class PlayerMove : MonoBehaviour
         cc.Move(dir * moveSpeed * Time.deltaTime);
 
         // 슬라이더의 value를 체력 비율로 적용한다.
-        hpSlider.value = (float)hp / (float)maxHp;
+        hpSlider.value = (float)playerHp / (float)maxHp;
 
         // 체력 바 이동
         hpSlider.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 0.8f, 0));
     }
 
+    // 플레이어 피격 함수
     public void OnDamage(int value)
     {
-        hp -= value;
+        playerHp -= value;
 
-        if (hp < 0)
+        if (playerHp < 0)
         {
-            hp = 0;
+            playerHp = 0;
         }
     }
 }
