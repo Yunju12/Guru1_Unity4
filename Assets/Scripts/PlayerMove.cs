@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
-    // 캐릭터를 좌우로 움직이게 하고 점프를 하게 하고싶다.
-
     // 이동을 위한 변수
     Rigidbody2D rigid;
 
@@ -57,6 +55,16 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        // HP 바가 캐릭터의 머리 위에 계속 위치한다.
+        hpSlider.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 0.8f, 0));
+
+        // 게임 상태가 게임 오버 상태가 되면 Die 애니메이션을 실행한다.
+        if (playerHp <= 0)
+        {
+            ani.SetTrigger("ToDie");
+            ani.SetTrigger("Exit");
+        }
+
         // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단한다.
         if (GameManager.gm.gState != GameManager.GameState.Run)
         {
@@ -103,12 +111,9 @@ public class PlayerMove : MonoBehaviour
             ani.SetTrigger("JumpToIdle");
         }
 
-        // * 체력
+        // * HP 바
         // 슬라이더의 value를 체력 비율로 적용한다.
         hpSlider.value = (float)playerHp / (float)maxHp;
-
-        // 체력 바 이동
-        hpSlider.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 0.8f, 0));
     }
 
     // 만일 플레이어가 땅에 착지하였다면,
@@ -122,34 +127,18 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    // *플레이어 피격 함수
+    // * 플레이어 피격 함수
     // 플레이어가 적의 공격을 받았을 때 체력이 줄어들도록 한다.
     // 플레이어의 체력이 0이하가 되면 체력 변수의 값을 0으로 고정한다.
     public void OnDamage(int value)
     {
         playerHp -= value;
+        ani.SetTrigger("ToHurt");
+        ani.SetTrigger("HurtToIdle");
 
         if (playerHp < 0)
         {
             playerHp = 0;
         }
-    }
-
-    // 기본 상태
-    private void Idle()
-    {
-        
-    }
-
-    // 움직이는 상태
-    public void Move()
-    {
-
-    }
-
-    // 점프하는 상태
-    public void Jump()
-    {
-        
     }
 }

@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     // 싱글턴
     public static GameManager gm;
 
+    // 애니메이션 변수
+    Animator ani;
+
     private void Awake()
     {
         if (gm == null)
@@ -41,6 +44,9 @@ public class GameManager : MonoBehaviour
     {
         // 초기 게임 상태는 준비 상태로 설정한다.
         gState = GameState.Ready;
+
+        // 플레이어 애니메이션 컴포넌트를 받아온다.
+        ani = GetComponent<Animator>();
 
         // 게임 시작 코루틴 함수를 실행한다.
         StartCoroutine(GameStart());
@@ -91,6 +97,7 @@ public class GameManager : MonoBehaviour
             gState = GameState.GameOver;
         }
 
+        // 만약 보스의 hp가 0 이하로 떨어지면
         else if (bm.bossHp <= 0)
         {
             // 성공 문구를 풀력한다.

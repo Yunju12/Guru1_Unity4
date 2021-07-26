@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BossMonster : MonoBehaviour
 {
     // 보스몬스터가 위치할 자리
-    Vector3 bossPosition = new Vector3(5.63f, -0.57f, -1);
+    Vector3 bossPosition = new Vector3(5.85f, -1.48f, 0);
 
     // HP 바 변수
     public GameObject HPBar;
@@ -20,6 +20,9 @@ public class BossMonster : MonoBehaviour
     // 파이어볼 매니져 변수3
     public GameObject FireBallManager3;
 
+    // 파이어볼 매니져 변수4
+    public GameObject FireBallManager4;
+
     // 체력 변수
     public int bossHp;
 
@@ -29,16 +32,20 @@ public class BossMonster : MonoBehaviour
     // 슬라이더 바
     public Slider hpSlider;
 
+    // 애니메이션 변수
+    Animator ani;
+
     void Start()
     {
         // 체력 변수 초기화
         bossHp = maxHp;
+
+        // 애니메이션 컴포넌트를 받아온다.
+        ani = GetComponent<Animator>();
     }
 
     void Update()
     {
-        
-
         // 만약 enemyDeath가 5 이상이 된다면, 
         if (Enemy.enemyDeath >= 5)
         {
@@ -46,15 +53,20 @@ public class BossMonster : MonoBehaviour
             gameObject.SetActive(true);
 
             // 보스몬스터와 보스몬스터의 HP 바가 등장한다.
-            StartCoroutine("AppearDelay");
+            StartCoroutine("BossAppear");
 
             // 슬라이더의 value를 체력 비율로 적용한다.
             hpSlider.value = (float)bossHp / (float)maxHp;
         }
+
+        if (bossHp <= 0)
+        {
+            ani.SetTrigger("");
+        }
     }
 
     // 보스몬스터와 보스몬스터의 HP 바가 등장하는 코루틴 함수
-    IEnumerator AppearDelay()
+    IEnumerator BossAppear()
     {
         // 3초 대기 후
         yield return new WaitForSeconds(3f);
@@ -72,6 +84,7 @@ public class BossMonster : MonoBehaviour
         FireBallManager1.SetActive(true);
         FireBallManager2.SetActive(true);
         FireBallManager3.SetActive(true);
+        FireBallManager4.SetActive(true);
     }
 
     // 보스몬스터 피격 함수

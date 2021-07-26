@@ -17,24 +17,24 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        // 옆으로 계속 이동하기
+        // 오른쪽으로 계속 이동하기
         transform.position += Vector3.right * speed * Time.deltaTime;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collider.gameObject.tag == "Enemy")
         {
             Enemy.enemyDeath++;
         }
 
-        else if (collision.gameObject.tag == "BossMonster")
+        else if (collider.gameObject.tag == "BossMonster")
         {
             BossMonster bm = GameObject.Find("BossMonster").GetComponent<BossMonster>();
             bm.BossOnDamage(attackPower);
         }
 
-        // (벽이 아닌)다른 물체와 부딪혔다면 Bullet은 사라진다.
-        Destroy(gameObject);
+        // 다른 물체와 부딪혔다면 Bullet은 사라진다.
+        Destroy(this.gameObject);
     }
 }
