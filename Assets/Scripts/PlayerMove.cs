@@ -62,7 +62,6 @@ public class PlayerMove : MonoBehaviour
         if (playerHp <= 0)
         {
             ani.SetTrigger("ToDie");
-            ani.SetTrigger("Exit");
         }
 
         // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단한다.

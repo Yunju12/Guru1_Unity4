@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BossMonster : MonoBehaviour
 {
     // 보스몬스터가 위치할 자리
-    Vector3 bossPosition = new Vector3(5.85f, -1.48f, 0);
+    Vector3 bossPosition = new Vector3(7.45f, -1.38f, 0);
 
     // HP 바 변수
     public GameObject HPBar;
