@@ -16,13 +16,7 @@ public class GameManager_UI : MonoBehaviour
     public GameObject reOptionUI;
 
     //목숨(계란)
-    public static int hp = 5;
-
-    public GameObject egg1;
-    public GameObject egg2;
-    public GameObject egg3;
-    public GameObject egg4;
-    public GameObject egg5;
+    public static int eggHp = 5;
 
     /*private void Awake()
     {
@@ -44,17 +38,6 @@ public class GameManager_UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hp == 4)
-            egg5.SetActive(false);
-        else if (hp == 3)
-            egg4.SetActive(false);
-        else if (hp == 2)
-            egg3.SetActive(false);
-        else if (hp == 1)
-            egg2.SetActive(false);
-        else
-            return;
-
         //만일 플레이어의 hp가 0 이하로 떨어진다면
         /*if(PlayerM.hp <= 0)
         {
@@ -92,6 +75,9 @@ public class GameManager_UI : MonoBehaviour
     //스테이지 게임 나가기
     public void Lose()
     {
+        //알 하나 차감
+        eggHp--;
+
         //씬 전환
         SceneManager.LoadScene("UI_BoardGame");
     }
@@ -99,6 +85,9 @@ public class GameManager_UI : MonoBehaviour
     //현재 게임 재시작(옵션)
     public void Restart()
     {
+        //알 하나 차감
+        eggHp--;
+
         //현재 씬 재시작
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -120,6 +109,9 @@ public class GameManager_UI : MonoBehaviour
     //현재 게임 재시작(실패)
     public void RestartGame()
     {
+        //알 하나 차감
+        eggHp--;
+
         //현재 씬 재시작
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
