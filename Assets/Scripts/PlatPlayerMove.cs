@@ -38,7 +38,7 @@ public class PlatPlayerMove : MonoBehaviour
         }
 
         // Direction Sprite
-        if (Input.GetButtonDown("Horizontal"))
+        if (Input.GetButton("Horizontal"))
         {
             spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
             
@@ -85,5 +85,40 @@ public class PlatPlayerMove : MonoBehaviour
         }
         
     }
-    
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            OnDamaged(collision.transform.position); 
+        }
+    }
+
+    // 충돌시 무적상태 만듦
+    void OnDamaged(Vector2 targetPos)
+    {
+        // Change Layer (Immortal Active)
+        gameObject.layer = 12;
+
+        // View Alpha
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+
+        // Reaction Force
+        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
+        rigid.AddForce(new Vector2(dirc, 1)*5, ForceMode2D.Impulse);
+
+        // Animation
+        anim.SetTrigger("doDamaged");
+
+
+        Invoke("OffDamaged", 3);
+    }
+
+    void OffDamaged()
+    {
+        gameObject.layer = 6;
+
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+
+    }
 }
