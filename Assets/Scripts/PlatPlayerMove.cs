@@ -32,8 +32,8 @@ public class PlatPlayerMove : MonoBehaviour
         // Stop Speed
         if (Input.GetButtonUp("Horizontal"))
         {
-            rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
-          
+           // rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
+            rigid.velocity = new Vector2(0, rigid.velocity.y);
             //키를 떼면,x축 속도 기본 0.5배, y축 속도는 그대로
         }
 
@@ -61,7 +61,7 @@ public class PlatPlayerMove : MonoBehaviour
     {
         // Move Speed
         float h = Input.GetAxisRaw("Horizontal");       //h에 키를 누르면 입력 오른쪽=1,왼쪽=-1
-        rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse); //h * 오른쪽곱해서 힘을 줌
+        rigid.AddForce(Vector2.right * h*2, ForceMode2D.Impulse); //h * 오른쪽곱해서 힘을 줌
 
         // Max Speed
         if (rigid.velocity.x > maxSpeed)         //x속도가 maxSpeed 보다 크면, 속도 maxSpeed로 고정
