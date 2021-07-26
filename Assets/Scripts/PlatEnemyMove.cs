@@ -6,14 +6,18 @@ public class PlatEnemyMove : MonoBehaviour
 {
 
     Rigidbody2D rigid;
+    Animator anim;
+    SpriteRenderer spriteRenderer;
+
     public int nextMove;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        Think();
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
-        Invoke("Think", 3);
+        Invoke("Think", 2);
     }
 
     
@@ -29,18 +33,37 @@ public class PlatEnemyMove : MonoBehaviour
         RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Floor"));
         if (rayHit.collider == null)
         {
-            nextMove *= -1;
-            CancelInvoke();
-            Invoke("Think", 3);
+            Turn();
         }
     }
 
     // 營敝л熱
     void Think()
     {
+        // Set Next Active
         nextMove = Random.Range(-1, 2);
-        Invoke("Think", 3);
+
+        // Sprite Animation
+        anim.SetInteger("WalkSpeed", nextMove);
+
+        // Flip Sprite
+        if (nextMove != 0)
+        {
+            spriteRenderer.flipX = nextMove == 1;
+        }
+
+        // Recursive 營敝л熱
+        float nextThinkTime = Random.Range(2f, 5f);
+        Invoke("Think", nextThinkTime);
     }
 
+    void Turn()
+    {
 
+        nextMove *= -1;
+        spriteRenderer.flipX = nextMove == 1;
+
+        CancelInvoke();
+        Invoke("Think", 2);
+    }
 }
