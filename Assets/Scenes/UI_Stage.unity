@@ -601,7 +601,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 120
     m_FontStyle: 1
     m_BestFit: 0
@@ -1036,11 +1036,6 @@ MonoBehaviour:
   optionUI: {fileID: 822882499}
   startUI: {fileID: 0}
   reOptionUI: {fileID: 1338469958}
-  egg1: {fileID: 0}
-  egg2: {fileID: 0}
-  egg3: {fileID: 0}
-  egg4: {fileID: 0}
-  egg5: {fileID: 0}
 --- !u!4 &1269900736
 Transform:
   m_ObjectHideFlags: 0
