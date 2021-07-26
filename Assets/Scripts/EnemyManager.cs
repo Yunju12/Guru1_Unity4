@@ -27,6 +27,12 @@ public class EnemyManager : MonoBehaviour
 
     void Update()
     {
+        // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단한다.
+        if (GameManager.gm.gState != GameManager.GameState.Run)
+        {
+            return;
+        }
+
         // *일정한 생성시간에 한번씩 적을 생성한다.
         // 1. 경과시간을 잰다.
         currentTime += Time.deltaTime;

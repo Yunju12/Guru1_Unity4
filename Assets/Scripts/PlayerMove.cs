@@ -7,8 +7,8 @@ public class PlayerMove : MonoBehaviour
 {
     // 캐릭터를 좌우로 움직이게 하고 점프를 하게 하고싶다.
 
-    // 중력 변수
-    public float gravity = -20.0f;
+    // 이동을 위한 변수
+    Rigidbody2D rigid;
 
     // 점프력 변수
     public float jumpPower = 10.0f;
@@ -19,14 +19,8 @@ public class PlayerMove : MonoBehaviour
     // 현재 점프 횟수
     int jumpCount = 0;
 
-    // 수직 속도 변수
-    float yVelocity = 0;
-
     // 속력 변수
     public float moveSpeed = 7.0f;
-
-    // 캐릭터 컨트롤러 변수
-    CharacterController cc;
 
     // 체력 변수
     public int playerHp;
@@ -37,52 +31,79 @@ public class PlayerMove : MonoBehaviour
     // 슬라이더 바
     public Slider hpSlider;
 
+    // 애니메이션 변수
+    Animator ani;
+
+    // 플레이어 애니메이션 상수
+    public enum PlayerState
+    {
+        Idle,
+        Move,
+        Jump,
+        Die
+    }
+
     void Start()
     {
-        // 캐릭터 컨트롤러 컴포넌트를 받아온다.
-        cc = GetComponent<CharacterController>();
-
         // 체력 변수 초기화
         playerHp = maxHp;
+
+        // 플레이어 애니메이션 컴포넌트를 받아온다.
+        rigid = GetComponent<Rigidbody2D>();
+
+        // 플레이어 애니메이션 컴포넌트를 받아온다.
+        ani = GetComponent<Animator>();
     }
 
     void Update()
     {
-        // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단
+        // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단한다.
         if (GameManager.gm.gState != GameManager.GameState.Run)
         {
             return;
         }
 
+        // * 이동
+        // 1. 이동 방향(좌우)을 설정한다.
         float h = Input.GetAxis("Horizontal");
-        
-        // 이동 방향을 설정한다.
         Vector3 dir = new Vector3(h, 0, 0);
         dir.Normalize();
 
-        // 만일 플레이어가 땅에 착지하였다면 현재 점프 횟수를 0으로 초기화한다.
-        // 수직 속도 값(중력)을 다시 0으로 초기화한다.
-        if (cc.collisionFlags == CollisionFlags.Below)
+        // 2. 이동 방향(좌우)으로 플레이어를 이동시킨다.
+        transform.position += (dir * moveSpeed * Time.deltaTime);
+
+        // 3. 움직이면 IdleToMove, 움직임을 멈추면 MoveToIdle 을 실행한다.
+        if (Input.GetButtonDown("Horizontal"))
         {
-            jumpCount = 0;
-            yVelocity = 0;
+            ani.SetTrigger("IdleToMove");
+        }
+        else
+        {
+            ani.SetTrigger("MoveToIdle");
         }
 
-        // 만일 점프 키를 누른다면, 점프력을 수직 속도로 적용한다.
-        // 단, 현재 점프 횟수가 최대 점프 횟수를 넘어가지 않았어야 한다.
+        // * 점프
+        // 만일 점프 키를 누른다면,
+        // (단, 점프 횟수가 최대 점프 횟수를 넘어가지 않았어야 한다.)
+        // 수직 속도로 점프력을 적용하고 jumpCount가 1만큼 올라간다.
         if (Input.GetButtonDown("Jump") && jumpCount < maxJump)
         {
-            yVelocity = jumpPower;
+            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             jumpCount++;
+
+            // 애니메이션
+            ani.SetTrigger("ToJump");
+        }
+        else if (Input.GetButtonDown("Horizontal"))
+        {
+            ani.SetTrigger("JumpToMove");
+        }
+        else
+        {
+            ani.SetTrigger("JumpToIdle");
         }
 
-        // 캐릭터의 수직속도(중력)을 적용한다.
-        yVelocity += gravity * Time.deltaTime;
-        dir.y = yVelocity;
-
-        // 이동 방향으로 플레이어를 이동시킨다.
-        cc.Move(dir * moveSpeed * Time.deltaTime);
-
+        // * 체력
         // 슬라이더의 value를 체력 비율로 적용한다.
         hpSlider.value = (float)playerHp / (float)maxHp;
 
@@ -90,7 +111,20 @@ public class PlayerMove : MonoBehaviour
         hpSlider.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 0.8f, 0));
     }
 
-    // 플레이어 피격 함수
+    // 만일 플레이어가 땅에 착지하였다면,
+    // 현재 점프 횟수를 0으로 초기화한다.
+    // 점프 애니메이션을 종료한다.
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            jumpCount = 0;
+        }
+    }
+
+    // *플레이어 피격 함수
+    // 플레이어가 적의 공격을 받았을 때 체력이 줄어들도록 한다.
+    // 플레이어의 체력이 0이하가 되면 체력 변수의 값을 0으로 고정한다.
     public void OnDamage(int value)
     {
         playerHp -= value;
@@ -99,5 +133,23 @@ public class PlayerMove : MonoBehaviour
         {
             playerHp = 0;
         }
+    }
+
+    // 기본 상태
+    private void Idle()
+    {
+        
+    }
+
+    // 움직이는 상태
+    public void Move()
+    {
+
+    }
+
+    // 점프하는 상태
+    public void Jump()
+    {
+        
     }
 }

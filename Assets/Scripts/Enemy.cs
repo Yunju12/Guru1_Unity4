@@ -16,7 +16,6 @@ public class Enemy : MonoBehaviour
     // 공격력 변수
     public int attackPower = 2;
 
-
     void Start()
     {
         
@@ -37,22 +36,20 @@ public class Enemy : MonoBehaviour
         transform.position += dir * speed * Time.deltaTime;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         // *다른 오브젝트와 부딪혔을 때
-        // 1. 만약 닿은 물체가 바닥이라면 무시하고
-        if (collision.gameObject.CompareTag("Floor"))
-            return;
+        
 
         // 2. 만약 플레이어와 부딪하면, 
         // 플레이어는 체력이 2만큼 깎이고, 적 데스 수가 하나 올라간다.
-        else if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             PlayerMove pm = GameObject.Find("Player").GetComponent<PlayerMove>();
             pm.OnDamage(attackPower);
         }
 
-        // (벽이 아닌)다른 물체와 부딪혔다면 Enemy는 죽는다.
+        // 다른 물체와 부딪혔다면 Enemy는 죽는다.
         Destroy(gameObject);
     }
 }
