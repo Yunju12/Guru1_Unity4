@@ -29,9 +29,6 @@ public class GameManager_UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //print(eggHp);
-        print(DontDestroy.eggHp);
-
         //플레이어 오브젝트를 검색
         //player = GameObject.Find("Player");
 
