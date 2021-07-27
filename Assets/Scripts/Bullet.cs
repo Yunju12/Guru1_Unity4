@@ -10,13 +10,21 @@ public class Bullet : MonoBehaviour
     // 공격력
     public int attackPower = 2;
 
+   
+
     void Start()
     {
-        
+   
     }
 
     void Update()
     {
+        // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단한다.
+        if (GameManager.gm.gState == GameManager.GameState.GameOver)
+        {
+            this.gameObject.SetActive(false);
+        }
+
         // 오른쪽으로 계속 이동하기
         transform.position += Vector3.right * speed * Time.deltaTime;
     }
