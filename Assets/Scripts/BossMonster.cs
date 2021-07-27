@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BossMonster : MonoBehaviour
 {
     // 보스몬스터가 위치할 자리
-    Vector3 bossPosition = new Vector3(7.45f, -1.38f, 0);
+    Vector3 bossPosition = new Vector3(7.6f, -1.3f, 0);
 
     // HP 바 변수
     public GameObject HPBar;
@@ -47,7 +47,7 @@ public class BossMonster : MonoBehaviour
     void Update()
     {
         // 만약 enemyDeath가 5 이상이 된다면, 
-        if (Enemy.enemyDeath >= 5)
+        if (Enemy.enemyDeath >= Enemy.maxEnemyDeath)
         {
             // 보스 몬스터를 활성화 시킨 뒤,
             gameObject.SetActive(true);
@@ -61,7 +61,7 @@ public class BossMonster : MonoBehaviour
 
         if (bossHp <= 0)
         {
-            ani.SetTrigger("");
+            ani.SetTrigger("ToDie");
         }
     }
 
@@ -77,6 +77,7 @@ public class BossMonster : MonoBehaviour
         // 다시 2초 대기 후
         yield return new WaitForSeconds(2f);
 
+        
         // 보스 몬스터가 날라와서 정해진 자리에 멈춰 선다.
         transform.position = Vector3.Slerp(transform.position, bossPosition, 0.008f);
 

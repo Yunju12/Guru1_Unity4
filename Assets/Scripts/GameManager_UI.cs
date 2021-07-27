@@ -16,7 +16,7 @@ public class GameManager_UI : MonoBehaviour
     public GameObject reOptionUI;
 
     //목숨(계란)
-    public static int eggHp = 5;
+    //public static int eggHp = 5;
 
     /*private void Awake()
     {
@@ -29,6 +29,9 @@ public class GameManager_UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //print(eggHp);
+        print(DontDestroy.eggHp);
+
         //플레이어 오브젝트를 검색
         //player = GameObject.Find("Player");
 
@@ -76,7 +79,7 @@ public class GameManager_UI : MonoBehaviour
     public void Lose()
     {
         //알 하나 차감
-        eggHp--;
+        DontDestroy.eggHp--;
 
         //씬 전환
         SceneManager.LoadScene("UI_BoardGame");
@@ -86,7 +89,7 @@ public class GameManager_UI : MonoBehaviour
     public void Restart()
     {
         //알 하나 차감
-        eggHp--;
+        DontDestroy.eggHp--;
 
         //현재 씬 재시작
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -110,7 +113,7 @@ public class GameManager_UI : MonoBehaviour
     public void RestartGame()
     {
         //알 하나 차감
-        eggHp--;
+        DontDestroy.eggHp--;
 
         //현재 씬 재시작
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

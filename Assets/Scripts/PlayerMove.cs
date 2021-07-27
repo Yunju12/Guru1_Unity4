@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour
     public float moveSpeed = 7.0f;
 
     // 체력 변수
-    public int playerHp;
+    public static int playerHp;
 
     // 최대 체력 변수
     public int maxHp = 10;
@@ -31,6 +31,14 @@ public class PlayerMove : MonoBehaviour
 
     // 애니메이션 변수
     Animator ani;
+
+    GameManager gm;
+
+    // 오디오 소스 컴포넌트
+    private AudioSource audio;
+
+    // 오디오 클립 변수
+    public AudioClip clip;
 
     // 플레이어 애니메이션 상수
     public enum PlayerState
@@ -51,6 +59,10 @@ public class PlayerMove : MonoBehaviour
 
         // 플레이어 애니메이션 컴포넌트를 받아온다.
         ani = GetComponent<Animator>();
+
+        gm = GetComponent<GameManager>();
+
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -95,6 +107,7 @@ public class PlayerMove : MonoBehaviour
         // 수직 속도로 점프력을 적용하고 jumpCount가 1만큼 올라간다.
         if (Input.GetButtonDown("Jump") && jumpCount < maxJump)
         {
+            audio.PlayOneShot(clip);
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             jumpCount++;
 
@@ -113,6 +126,8 @@ public class PlayerMove : MonoBehaviour
         // * HP 바
         // 슬라이더의 value를 체력 비율로 적용한다.
         hpSlider.value = (float)playerHp / (float)maxHp;
+
+        
     }
 
     // 만일 플레이어가 땅에 착지하였다면,
@@ -133,11 +148,15 @@ public class PlayerMove : MonoBehaviour
     {
         playerHp -= value;
         ani.SetTrigger("ToHurt");
-        ani.SetTrigger("HurtToIdle");
+        ani.SetTrigger("Exit");
 
         if (playerHp < 0)
         {
             playerHp = 0;
+            ani.SetTrigger("ToDie");
+
+            // 게임 상태를 게임 오버 상태로 전환한다.
+            gm.gState = GameManager.GameState.GameOver;
         }
     }
 }
