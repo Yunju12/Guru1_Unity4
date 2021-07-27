@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - BossMonster
   - Item
+  - FireBall
   layers:
   - Default
   - TransparentFX

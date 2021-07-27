@@ -34,13 +34,13 @@ public class FireBall : MonoBehaviour
     // 플레이어의 체력이 2만큼 깎인다.
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        // 다른 물체와 부딪혔다면 FireBall은 사라진다.
+        Destroy(this.gameObject);
+
         if (collider.gameObject.CompareTag("Player"))
         {
             PlayerMove pm = GameObject.Find("Player").GetComponent<PlayerMove>();
             pm.OnDamage(attackPower);
         }
-
-        // 다른 물체와 부딪혔다면 FireBall은 사라진다.
-        Destroy(this.gameObject);
     }
 }
