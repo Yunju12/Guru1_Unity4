@@ -1,15 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlatPlayerMove : MonoBehaviour
 {
-    public float maxSpeed;          //최대속도변수 선언
+    // 게임 매니저 변수
+    public GameManager GameManager;
+
+    // 최대속도 변수
+    public float maxSpeed;
+
+    //점프력 변수
     public float jumpPower;
-    Rigidbody2D rigid;  //Rigidbody2D -변수명 rigid 선언 
+
+    // 최대 점프 횟수
+    public int maxJump = 2;
+
+    // 현재 점프 횟수
+    int jumpCount = 0;
+
+    Rigidbody2D rigid; 
     SpriteRenderer spriteRenderer;
-    Animator anim;
-    int jumpCount;
+
+    
+    // 애니메이터
+    Animator anim; 
+
 
     void Awake() // 초기화
     {
@@ -17,16 +34,28 @@ public class PlatPlayerMove : MonoBehaviour
         maxSpeed = 5f;              //최대속도
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+
     }
 
     void Update()
     {
         // Jump
-        if (Input.GetButton("Jump") && anim.GetBool("isPlatJumping"))
+        if (Input.GetButton("Jump"))
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            anim.SetBool("isPlatJumping", true);
-            
+            jumpCount++;
+
+            anim.GetBool("isJumping");
+            anim.SetBool("isJumping", true);
+
+        }
+
+        void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Floor"))
+            {
+                jumpCount = 0;
+            }
         }
 
         // Stop Speed
@@ -48,24 +77,27 @@ public class PlatPlayerMove : MonoBehaviour
         // Animation
         if (Mathf.Abs(rigid.velocity.x) < 0.3)
         {
-            anim.SetBool("isPlatWalking", false);
+            anim.SetBool("isWalking", false);
         }
 
         else
         {
-            anim.SetBool("isPlatWalking", true);
+            anim.SetBool("isWalking", true);
         }
     }
 
     void FixedUpdate()
     {
-        // Move Speed
+        // * 이동속도 조절
         float h = Input.GetAxisRaw("Horizontal");       //h에 키를 누르면 입력 오른쪽=1,왼쪽=-1
         rigid.AddForce(Vector2.right * h*2, ForceMode2D.Impulse); //h * 오른쪽곱해서 힘을 줌
 
-        // Max Speed
+        // * 이동속도 제한
+        // 오른쪽 속도 제한
         if (rigid.velocity.x > maxSpeed)         //x속도가 maxSpeed 보다 크면, 속도 maxSpeed로 고정
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
+
+        // 왼쪽 속도 제한
         else if (rigid.velocity.x < maxSpeed * (-1))       //x속도가 -maxSpeed 보다 작으면(왼쪽으로 갈때) 속도는 -maxSpeed로 고정
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
 
@@ -79,19 +111,59 @@ public class PlatPlayerMove : MonoBehaviour
             {
                 if (rayHit.distance < 0.5f)
                 {
-                    anim.SetBool("isPlatJumping", false);
+                    anim.SetBool("isJumping", false);
                 }
             }
         }
         
     }
 
+    // 적과 충돌
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
-            OnDamaged(collision.transform.position); 
+            // 공격 : 몬스터 위 + 낙하중 = 밟음
+            if (rigid.velocity.y < 0 && transform.position.y > collision.transform.position.y)
+            {
+                OnAttack(collision.transform);
+            }
+
+            // 데미지 함수 호출
+            else
+            {
+                OnDamaged(collision.transform.position);
+            }
+
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Item")
+        {
+            // 포인트
+
+            // 아이템 사라짐
+            collision.gameObject.SetActive(false);
+        }
+
+        else if(collision.gameObject.tag == "Finish")
+        {
+            // 다음 스테이지로!
+
+        }
+    }
+
+    void OnAttack(Transform PlatEnemy)
+    {
+        //
+
+        rigid.AddForce(Vector2.up * 2, ForceMode2D.Impulse);
+
+        //
+        PlatEnemyMove platEnemyMove = PlatEnemy.GetComponent<PlatEnemyMove>();
+        platEnemyMove.OnDamaged();
     }
 
     // 충돌시 무적상태 만듦
@@ -109,8 +181,6 @@ public class PlatPlayerMove : MonoBehaviour
 
         // Animation
         anim.SetTrigger("doDamaged");
-
-
         Invoke("OffDamaged", 3);
     }
 
@@ -122,3 +192,4 @@ public class PlatPlayerMove : MonoBehaviour
 
     }
 }
+
