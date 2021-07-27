@@ -2025,6 +2025,7 @@ MonoBehaviour:
   maxHp: 10
   hpSlider: {fileID: 919638920}
   clip: {fileID: 8300000, guid: cc1915ad8df03c548a87744baf25a3b6, type: 3}
+  hurt: {fileID: 8300000, guid: 881e3f52c86c94f26a60718d35627cd8, type: 3}
 --- !u!50 &1023151731
 Rigidbody2D:
   serializedVersion: 4
@@ -2059,7 +2060,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.09974837, y: 0.30721033}
+  m_Offset: {x: 0.012975216, y: 0.30721033}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2070,7 +2071,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.23374891, y: 0.099520445}
+  m_Size: {x: 0.34358215, y: 0.099520445}
   m_EdgeRadius: 0
 --- !u!58 &1023151733
 CircleCollider2D:
@@ -2085,9 +2086,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0033077896, y: -0.01653707}
+  m_Offset: {x: 0.009088457, y: 0.008281648}
   serializedVersion: 2
-  m_Radius: 0.45051444
+  m_Radius: 0.5157979
 --- !u!82 &1023151734
 AudioSource:
   m_ObjectHideFlags: 0

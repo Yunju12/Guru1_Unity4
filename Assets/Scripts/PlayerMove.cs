@@ -40,6 +40,8 @@ public class PlayerMove : MonoBehaviour
     // 오디오 클립 변수
     public AudioClip clip;
 
+    public AudioClip hurt;
+
     // 플레이어 애니메이션 상수
     public enum PlayerState
     {
@@ -159,6 +161,8 @@ public class PlayerMove : MonoBehaviour
     // 플레이어의 체력이 0이하가 되면 체력 변수의 값을 0으로 고정한다.
     public void OnDamage(int value)
     {
+        audio.PlayOneShot(hurt);
+
         playerHp -= value;
         ani.SetTrigger("ToHurt");
         ani.SetTrigger("Exit");
