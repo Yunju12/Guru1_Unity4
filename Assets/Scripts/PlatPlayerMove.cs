@@ -148,10 +148,10 @@ public class PlatPlayerMove : MonoBehaviour
         if(collision.gameObject.tag == "Item")
         {
             // Æ÷ÀÎÆ®
-            bool isStar = collision.gameObject.name.Contains("ItemStar");
+            bool isGem = collision.gameObject.name.Contains("ItemGem");
             bool isCarrot = collision.gameObject.name.Contains("ItemCarrot");
 
-            if (isStar)
+            if (isGem)
                 PlatGameManager.stagePoint += 100;
             else if (isCarrot)
                 PlatGameManager.stagePoint += 30;
