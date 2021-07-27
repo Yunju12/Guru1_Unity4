@@ -8,6 +8,7 @@ public class PlatEnemyMove : MonoBehaviour
     Rigidbody2D rigid;
     Animator anim;
     SpriteRenderer spriteRenderer;
+    BoxCollider2D boxCollider;
 
     public int nextMove;
 
@@ -16,7 +17,7 @@ public class PlatEnemyMove : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        boxCollider = GetComponent<BoxCollider2D>();
         Invoke("Think", 2);
     }
 
@@ -65,5 +66,23 @@ public class PlatEnemyMove : MonoBehaviour
 
         CancelInvoke();
         Invoke("Think", 2);
+    }
+
+    public void OnDamaged()
+    {
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+
+        spriteRenderer.flipY = true;
+
+        boxCollider.enabled = false;
+
+        rigid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+
+        Invoke("DeActive", 5);
+    }
+
+    void DeActive()
+    {
+        gameObject.SetActive(false);
     }
 }
