@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlatPlayerMove : MonoBehaviour
 {
     // 게임 매니저 변수
-    public GameManager GameManager;
+    public PlatGameManager PlatGameManager;
 
     // 최대속도 변수
     public float maxSpeed;
@@ -143,25 +143,34 @@ public class PlatPlayerMove : MonoBehaviour
         if(collision.gameObject.tag == "Item")
         {
             // 포인트
+            bool isStar = collision.gameObject.name.Contains("ItemStar");
+            bool isCarrot = collision.gameObject.name.Contains("ItemCarrot");
 
+            if (isStar)
+                PlatGameManager.stagePoint += 100;
+            else if (isCarrot)
+                PlatGameManager.stagePoint += 30;
             // 아이템 사라짐
             collision.gameObject.SetActive(false);
         }
 
-        else if(collision.gameObject.tag == "Finish")
+        else if (collision.gameObject.tag == "Finish")
         {
             // 다음 스테이지로!
-
+            //PlatGameManager NextStage();
         }
     }
 
+    // 공격시
     void OnAttack(Transform PlatEnemy)
     {
-        //
+        // 포인트
+        PlatGameManager.stagePoint += 100;
 
+        // Enemy 밟을 경우 위로 반동
         rigid.AddForce(Vector2.up * 2, ForceMode2D.Impulse);
 
-        //
+        // Enemy 죽음
         PlatEnemyMove platEnemyMove = PlatEnemy.GetComponent<PlatEnemyMove>();
         platEnemyMove.OnDamaged();
     }
