@@ -125,6 +125,15 @@ public class PlayerMove : MonoBehaviour
             ani.SetTrigger("JumpToIdle");
         }
 
+        if (Input.GetButton("Jump"))
+        {
+            GetComponent<CircleCollider2D>().isTrigger = true;
+        }
+        else
+        {
+            GetComponent<CircleCollider2D>().isTrigger = false;
+        }
+
         // * HP 바
         // 슬라이더의 value를 체력 비율로 적용한다.
         hpSlider.value = (float)playerHp / (float)maxHp;
@@ -141,20 +150,9 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        { 
-            return; 
-        }
+    
 
-        GetComponent<CircleCollider2D>().isTrigger = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        GetComponent<CircleCollider2D>().isTrigger = false;
-    }
+    
 
     // * 플레이어 피격 함수
     // 플레이어가 적의 공격을 받았을 때 체력이 줄어들도록 한다.
