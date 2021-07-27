@@ -126,8 +126,6 @@ public class PlayerMove : MonoBehaviour
         // * HP 바
         // 슬라이더의 value를 체력 비율로 적용한다.
         hpSlider.value = (float)playerHp / (float)maxHp;
-
-        
     }
 
     // 만일 플레이어가 땅에 착지하였다면,
@@ -141,6 +139,21 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        { 
+            return; 
+        }
+
+        GetComponent<CircleCollider2D>().isTrigger = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        GetComponent<CircleCollider2D>().isTrigger = false;
+    }
+
     // * 플레이어 피격 함수
     // 플레이어가 적의 공격을 받았을 때 체력이 줄어들도록 한다.
     // 플레이어의 체력이 0이하가 되면 체력 변수의 값을 0으로 고정한다.
@@ -150,13 +163,15 @@ public class PlayerMove : MonoBehaviour
         ani.SetTrigger("ToHurt");
         ani.SetTrigger("Exit");
 
-        if (playerHp < 0)
+        if (playerHp <= 0)
         {
             playerHp = 0;
-            ani.SetTrigger("ToDie");
-
-            // 게임 상태를 게임 오버 상태로 전환한다.
-            gm.gState = GameManager.GameState.GameOver;
         }
+    }
+
+    public void Die()
+    {
+        playerHp = 0;
+        ani.SetTrigger("ToDie");
     }
 }

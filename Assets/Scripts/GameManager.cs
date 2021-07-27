@@ -110,8 +110,10 @@ public class GameManager : MonoBehaviour
         // 만약 플레이어의 hp가 0 이하로 떨어지면
         if (PlayerMove.playerHp <= 0)
         {
-            audio.Stop();
-            audio.PlayOneShot(gameOver);
+            //audio.Stop();
+            //audio.PlayOneShot(gameOver);
+
+            pm.Die();
 
             // 게임 오버 문구를 출력한다.
             stateLabel.text = "Game Over...";
@@ -120,14 +122,14 @@ public class GameManager : MonoBehaviour
             stateLabel.color = new Color32(255, 0, 0, 255);
 
             // 게임 상태를 게임 오버 상태로 전환한다.
-            //gState = GameState.GameOver;
+            gState = GameState.GameOver;
         }
 
         // 만약 보스의 hp가 0 이하로 떨어지면
         else if (bm.bossHp <= 0)
         {
-            audio.Stop();
-            audio.PlayOneShot(gameClear);
+            //audio.Stop();
+            //audio.PlayOneShot(gameClear);
 
             // 성공 문구를 풀력한다.
             stateLabel.text = "Clear!";

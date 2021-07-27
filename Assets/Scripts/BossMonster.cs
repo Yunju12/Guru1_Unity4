@@ -32,6 +32,8 @@ public class BossMonster : MonoBehaviour
     // 슬라이더 바
     public Slider hpSlider;
 
+   
+
     // 애니메이션 변수
     Animator ani;
 
@@ -42,6 +44,7 @@ public class BossMonster : MonoBehaviour
 
         // 애니메이션 컴포넌트를 받아온다.
         ani = GetComponent<Animator>();
+
     }
 
     void Update()
@@ -77,7 +80,6 @@ public class BossMonster : MonoBehaviour
         // 다시 2초 대기 후
         yield return new WaitForSeconds(2f);
 
-        
         // 보스 몬스터가 날라와서 정해진 자리에 멈춰 선다.
         transform.position = Vector3.Slerp(transform.position, bossPosition, 0.008f);
 

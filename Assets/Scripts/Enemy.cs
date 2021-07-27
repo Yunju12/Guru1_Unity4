@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public static int enemyDeath = 0;
 
     // Enemy 최소 데스 수
-    public static int maxEnemyDeath = 3;
+    public static int maxEnemyDeath = 10;
 
     // 플레이어 변수
     GameObject player;
