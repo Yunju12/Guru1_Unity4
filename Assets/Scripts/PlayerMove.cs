@@ -133,7 +133,7 @@ public class PlayerMove : MonoBehaviour
     {
         playerHp -= value;
         ani.SetTrigger("ToHurt");
-        ani.SetTrigger("HurtToIdle");
+        ani.SetTrigger("Exit");
 
         if (playerHp < 0)
         {

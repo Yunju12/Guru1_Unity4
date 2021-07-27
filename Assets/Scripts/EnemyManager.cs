@@ -51,7 +51,7 @@ public class EnemyManager : MonoBehaviour
             createTime = Random.Range(minTime, maxTime);
         }
 
-        if (Enemy.enemyDeath >= 5)
+        if (Enemy.enemyDeath >= Enemy.maxEnemyDeath)
         {
             gameObject.SetActive(false);
         }
