@@ -23,17 +23,20 @@ public class PlatPlayerMove : MonoBehaviour
     Rigidbody2D rigid; 
     SpriteRenderer spriteRenderer;
 
-    
+    CapsuleCollider2D capsuleCollider;
+
     // 애니메이터
     Animator anim; 
 
 
-    void Awake() // 초기화
+    // 시작시 초기화
+    void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();    //rigid 변수 초기화
         maxSpeed = 5f;              //최대속도
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
 
     }
 
@@ -50,13 +53,14 @@ public class PlatPlayerMove : MonoBehaviour
 
         }
 
-        void OnCollisionEnter2D(Collision2D collision)
+       /* void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.CompareTag("Floor"))
             {
                 jumpCount = 0;
             }
         }
+        */
 
         // Stop Speed
         if (Input.GetButtonUp("Horizontal"))
@@ -86,6 +90,7 @@ public class PlatPlayerMove : MonoBehaviour
         }
     }
 
+    // 물리효과 적용위해 일정하게 호출하는 FixedUpdate 사용
     void FixedUpdate()
     {
         // * 이동속도 조절
@@ -102,10 +107,10 @@ public class PlatPlayerMove : MonoBehaviour
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
 
 
-        // Landing Platform
+        // Floor 착지
         if(rigid.velocity.y < 0)
         {
-            Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
+            Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0)); // 녹색, 아래방향 Ray 표시
             RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Floor"));
             if (rayHit.collider != null)
             {
@@ -157,7 +162,7 @@ public class PlatPlayerMove : MonoBehaviour
         else if (collision.gameObject.tag == "Finish")
         {
             // 다음 스테이지로!
-            //PlatGameManager NextStage();
+            PlatGameManager.NextStage();
         }
     }
 
@@ -175,30 +180,46 @@ public class PlatPlayerMove : MonoBehaviour
         platEnemyMove.OnDamaged();
     }
 
-    // 충돌시 무적상태 만듦
+    // 피격시
     void OnDamaged(Vector2 targetPos)
     {
-        // Change Layer (Immortal Active)
+        // Hp감소 호출 : 1씩 감소
+        PlatGameManager.HpDown();
+
+        // player 레이어 바꿈 (Player -> PlaterDamaged 로!)
         gameObject.layer = 12;
 
-        // View Alpha
+        // 충돌시 무적상태 만듦( player 불투명하게 보임)
         spriteRenderer.color = new Color(1, 1, 1, 0.4f);
 
-        // Reaction Force
+        // 데미지 입을 경우 반동 줌
         int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
         rigid.AddForce(new Vector2(dirc, 1)*5, ForceMode2D.Impulse);
 
-        // Animation
-        anim.SetTrigger("doDamaged");
-        Invoke("OffDamaged", 3);
+        // 애니메이션 설정
+        anim.SetTrigger("doDamaged"); // 데미지 애니메이션 출력
+        Invoke("OffDamaged", 3); // 3초간 무적상태 설정
     }
 
+    // 피격시 무적상태 -> 원래 상태로 돌아옴
     void OffDamaged()
     {
+        // player 레이어 원상태 (PlayerDamaged -> Plater 로!)
         gameObject.layer = 6;
-
-        spriteRenderer.color = new Color(1, 1, 1, 1);
+        spriteRenderer.color = new Color(1, 1, 1, 1); // 원래 색으로 변경
 
     }
+
+    public void OnDie()
+    {
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+
+        spriteRenderer.flipY = true;
+
+        capsuleCollider.enabled = false;
+
+        rigid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+
+    }    
 }
 
