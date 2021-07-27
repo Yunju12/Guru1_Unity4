@@ -19,20 +19,18 @@ public class EnemyManager : MonoBehaviour
     // 최대 시간 변수
     public float maxTime = 5;
 
+    
+
     void Start()
     {
         // 생성시간을 최소 시간과 최대 시간 사이에서 랜덤으로 정한다.
         createTime = Random.Range(minTime, maxTime);
+
+       
     }
 
     void Update()
     {
-        // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단한다.
-        if (GameManager.gm.gState != GameManager.GameState.Run)
-        {
-            return;
-        }
-
         // *일정한 생성시간에 한번씩 적을 생성한다.
         // 1. 경과시간을 잰다.
         currentTime += Time.deltaTime;
@@ -54,6 +52,10 @@ public class EnemyManager : MonoBehaviour
         if (Enemy.enemyDeath >= Enemy.maxEnemyDeath)
         {
             gameObject.SetActive(false);
+        }
+        else if (PlayerMove.playerHp == 0)
+        {
+            this.gameObject.SetActive(false);
         }
     }
 }

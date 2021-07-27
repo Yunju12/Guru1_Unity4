@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour
     public float moveSpeed = 7.0f;
 
     // 체력 변수
-    public int playerHp;
+    public static int playerHp;
 
     // 최대 체력 변수
     public int maxHp = 10;
@@ -31,6 +31,8 @@ public class PlayerMove : MonoBehaviour
 
     // 애니메이션 변수
     Animator ani;
+
+    GameManager gm;
 
     // 플레이어 애니메이션 상수
     public enum PlayerState
@@ -51,6 +53,8 @@ public class PlayerMove : MonoBehaviour
 
         // 플레이어 애니메이션 컴포넌트를 받아온다.
         ani = GetComponent<Animator>();
+
+        gm = GetComponent<GameManager>();
     }
 
     void Update()
@@ -113,6 +117,8 @@ public class PlayerMove : MonoBehaviour
         // * HP 바
         // 슬라이더의 value를 체력 비율로 적용한다.
         hpSlider.value = (float)playerHp / (float)maxHp;
+
+        
     }
 
     // 만일 플레이어가 땅에 착지하였다면,
@@ -131,6 +137,8 @@ public class PlayerMove : MonoBehaviour
     // 플레이어의 체력이 0이하가 되면 체력 변수의 값을 0으로 고정한다.
     public void OnDamage(int value)
     {
+        Debug.Log("Damage");
+
         playerHp -= value;
         ani.SetTrigger("ToHurt");
         ani.SetTrigger("Exit");
@@ -138,6 +146,10 @@ public class PlayerMove : MonoBehaviour
         if (playerHp < 0)
         {
             playerHp = 0;
+            ani.SetTrigger("ToDie");
+
+            // 게임 상태를 게임 오버 상태로 전환한다.
+            gm.gState = GameManager.GameState.GameOver;
         }
     }
 }

@@ -35,9 +35,6 @@ public class BossMonster : MonoBehaviour
     // 애니메이션 변수
     Animator ani;
 
-    // 등장 사운드 변수
-    AudioSource audioSource;
-
     void Start()
     {
         // 체력 변수 초기화
@@ -45,9 +42,6 @@ public class BossMonster : MonoBehaviour
 
         // 애니메이션 컴포넌트를 받아온다.
         ani = GetComponent<Animator>();
-
-        // 오디오소스 컴퍼넌트를 받아온다.
-        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -86,7 +80,6 @@ public class BossMonster : MonoBehaviour
 
         // 보스 몬스터가 날라와서 정해진 자리에 멈춰 선다.
         transform.position = Vector3.Slerp(transform.position, bossPosition, 0.008f);
-        audioSource.Play();
 
 
         // 파이어볼 매니져를 활성화한다.

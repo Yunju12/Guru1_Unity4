@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public static int enemyDeath = 0;
 
     // Enemy 최소 데스 수
-    public static int maxEnemyDeath = 10;
+    public static int maxEnemyDeath = 3;
 
     // 플레이어 변수
     GameObject player;
@@ -42,6 +42,8 @@ public class Enemy : MonoBehaviour
         transform.position += dir * speed * Time.deltaTime;
     }
 
+    static int numCol = 0;
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
         // 다른 물체와 부딪혔다면 Enemy는 죽는다.
@@ -51,6 +53,10 @@ public class Enemy : MonoBehaviour
         // 플레이어의 체력이 2만큼 깎인다.
         if (collider.gameObject.CompareTag("Player"))
         {
+            ++numCol;
+
+            //Debug.Log(gameObject.name);
+            Debug.Log(numCol);
             pm.OnDamage(attackPower);
         }
     }
