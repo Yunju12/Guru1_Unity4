@@ -181,8 +181,6 @@ public class PlatPlayerMove : MonoBehaviour
 
         // Animation
         anim.SetTrigger("doDamaged");
-
-
         Invoke("OffDamaged", 3);
     }
 
