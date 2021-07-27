@@ -34,6 +34,12 @@ public class PlayerMove : MonoBehaviour
 
     GameManager gm;
 
+    // 오디오 소스 컴포넌트
+    private AudioSource audio;
+
+    // 오디오 클립 변수
+    public AudioClip clip;
+
     // 플레이어 애니메이션 상수
     public enum PlayerState
     {
@@ -55,6 +61,8 @@ public class PlayerMove : MonoBehaviour
         ani = GetComponent<Animator>();
 
         gm = GetComponent<GameManager>();
+
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -99,6 +107,7 @@ public class PlayerMove : MonoBehaviour
         // 수직 속도로 점프력을 적용하고 jumpCount가 1만큼 올라간다.
         if (Input.GetButtonDown("Jump") && jumpCount < maxJump)
         {
+            audio.PlayOneShot(clip);
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             jumpCount++;
 
@@ -137,8 +146,6 @@ public class PlayerMove : MonoBehaviour
     // 플레이어의 체력이 0이하가 되면 체력 변수의 값을 0으로 고정한다.
     public void OnDamage(int value)
     {
-        Debug.Log("Damage");
-
         playerHp -= value;
         ani.SetTrigger("ToHurt");
         ani.SetTrigger("Exit");

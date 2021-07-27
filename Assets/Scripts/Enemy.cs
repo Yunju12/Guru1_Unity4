@@ -42,8 +42,6 @@ public class Enemy : MonoBehaviour
         transform.position += dir * speed * Time.deltaTime;
     }
 
-    static int numCol = 0;
-
     private void OnTriggerEnter2D(Collider2D collider)
     {
         // 다른 물체와 부딪혔다면 Enemy는 죽는다.
@@ -53,10 +51,6 @@ public class Enemy : MonoBehaviour
         // 플레이어의 체력이 2만큼 깎인다.
         if (collider.gameObject.CompareTag("Player"))
         {
-            ++numCol;
-
-            //Debug.Log(gameObject.name);
-            Debug.Log(numCol);
             pm.OnDamage(attackPower);
         }
     }
