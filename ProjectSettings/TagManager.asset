@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - Enemy
   - BossMonster
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - FireBall
   - Bullet
   - PlayerDamaged
-  - 
+  - Item
   - 
   - 
   - 

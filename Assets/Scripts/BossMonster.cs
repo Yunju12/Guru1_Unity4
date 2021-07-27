@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BossMonster : MonoBehaviour
 {
     // 보스몬스터가 위치할 자리
-    Vector3 bossPosition = new Vector3(7.45f, -1.38f, 0);
+    Vector3 bossPosition = new Vector3(7.6f, -1.3f, 0);
 
     // HP 바 변수
     public GameObject HPBar;
@@ -54,7 +54,6 @@ public class BossMonster : MonoBehaviour
 
             // 보스몬스터와 보스몬스터의 HP 바가 등장한다.
             StartCoroutine("BossAppear");
-            
 
             // 슬라이더의 value를 체력 비율로 적용한다.
             hpSlider.value = (float)bossHp / (float)maxHp;
@@ -78,9 +77,9 @@ public class BossMonster : MonoBehaviour
         // 다시 2초 대기 후
         yield return new WaitForSeconds(2f);
 
+        
         // 보스 몬스터가 날라와서 정해진 자리에 멈춰 선다.
         transform.position = Vector3.Slerp(transform.position, bossPosition, 0.008f);
-
 
         // 파이어볼 매니져를 활성화한다.
         FireBallManager1.SetActive(true);

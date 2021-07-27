@@ -32,12 +32,31 @@ public class GameManager : MonoBehaviour
     // 애니메이션 변수
     Animator ani;
 
+    // 오디오 소스 컴포넌트
+    AudioSource audio;
+
+    // 오디오 클립 변수
+    public AudioClip ready;
+
+    // 오디오 클립 변수
+    public AudioClip start;
+
+    public AudioClip enemyBGM;
+
+    public AudioClip bossBGM;
+
+    public AudioClip gameClear;
+
+    public AudioClip gameOver;
+
     private void Awake()
     {
         if (gm == null)
         {
             gm = this;
         }
+
+        audio = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -56,6 +75,7 @@ public class GameManager : MonoBehaviour
     {
         // Ready...  라는 문구를 표시한다.
         stateLabel.text = "Ready...";
+        audio.PlayOneShot(ready);
 
         // Ready 문구의 색상을 주황색으로 표시한다.
         stateLabel.color = new Color32(233, 182, 12, 255);
@@ -65,6 +85,7 @@ public class GameManager : MonoBehaviour
 
         // Start! 라는 문구로 변경한다.
         stateLabel.text = "Start!";
+        audio.PlayOneShot(start);
 
         // 0.5초간 대기한다.
         yield return new WaitForSeconds(0.5f);
@@ -74,6 +95,8 @@ public class GameManager : MonoBehaviour
 
         // 게임의 상태를 준비 상태에서 실행 상태로 전환한다.
         gState = GameState.Run;
+        audio.clip = enemyBGM;
+        audio.Play();
     }
 
     void Update()
@@ -87,6 +110,9 @@ public class GameManager : MonoBehaviour
         // 만약 플레이어의 hp가 0 이하로 떨어지면
         if (PlayerMove.playerHp <= 0)
         {
+            audio.Stop();
+            audio.PlayOneShot(gameOver);
+
             // 게임 오버 문구를 출력한다.
             stateLabel.text = "Game Over...";
 
@@ -100,6 +126,9 @@ public class GameManager : MonoBehaviour
         // 만약 보스의 hp가 0 이하로 떨어지면
         else if (bm.bossHp <= 0)
         {
+            audio.Stop();
+            audio.PlayOneShot(gameClear);
+
             // 성공 문구를 풀력한다.
             stateLabel.text = "Clear!";
 
