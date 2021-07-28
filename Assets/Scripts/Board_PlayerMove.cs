@@ -17,7 +17,9 @@ public class Board_PlayerMove : MonoBehaviour
     int ran;
 
     //좌표 이동 변수
-    Vector3 toPos1 { get { return new Vector3(2.3f, 1.2f, 0); } }
+    public static double posx = 0;
+    Vector3 toPosX { get { return new Vector3((float)posx, 1.2f, 0); } }
+    Vector3 toPosZ { get { return new Vector3((float)posx, 1.2f, -0.1f); } }
 
     // 이동을 위한 변수
     Rigidbody2D rigid;
@@ -112,27 +114,44 @@ public class Board_PlayerMove : MonoBehaviour
         if (ran == 1)
         {
             dice1.SetActive(true);
-            StartCoroutine(MoveTo(player, toPos1));
+            StartCoroutine(MoveTo(player, toPosZ));
+            posx += 2.23;
+            StartCoroutine(MoveTo(player, toPosX));
         }
         else if (ran == 2)
         {
             dice2.SetActive(true);
+            StartCoroutine(MoveTo(player, toPosZ));
+            posx += 4.46;
+            StartCoroutine(MoveTo(player, toPosX));
         }
         else if (ran == 3)
         {
             dice3.SetActive(true);
+            StartCoroutine(MoveTo(player, toPosZ));
+            posx += 6.69;
+            StartCoroutine(MoveTo(player, toPosX));
         }
         else if (ran == 4)
         {
             dice4.SetActive(true);
+            StartCoroutine(MoveTo(player, toPosZ));
+            posx += 8.92;
+            StartCoroutine(MoveTo(player, toPosX));
         }
         else if (ran == 5)
         {
             dice5.SetActive(true);
+            StartCoroutine(MoveTo(player, toPosZ));
+            posx += 11.15;
+            StartCoroutine(MoveTo(player, toPosX));
         }
         else if (ran == 6)
         {
             dice6.SetActive(true);
+            StartCoroutine(MoveTo(player, toPosZ));
+            posx += 13.38;
+            StartCoroutine(MoveTo(player, toPosX));
         }
     }
 
