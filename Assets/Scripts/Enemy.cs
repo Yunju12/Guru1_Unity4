@@ -40,6 +40,8 @@ public class Enemy : MonoBehaviour
         Vector3 dir = Vector3.left;
         // 2. 이동한다.
         transform.position += dir * speed * Time.deltaTime;
+        transform.Rotate(new Vector3(0, 0, 1) * 135 * Time.deltaTime);
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

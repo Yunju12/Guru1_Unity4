@@ -20,7 +20,7 @@ TagManager:
   - Enemy
   - BossMonster
   - Floor
-  - FireBall
+  - Ball
   - Bullet
   - PlayerDamaged
   - Item

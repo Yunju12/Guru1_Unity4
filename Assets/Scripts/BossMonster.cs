@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BossMonster : MonoBehaviour
 {
     // 보스몬스터가 위치할 자리
-    Vector3 bossPosition = new Vector3(7.6f, -1.1f, 0);
+    Vector3 bossPosition = new Vector3(7.6f, -1.4f, 0);
 
     // 이동 자리
     Vector3 movePosition = new Vector3(7.6f, 3.8f, 0);
@@ -25,6 +25,12 @@ public class BossMonster : MonoBehaviour
 
     // 파이어볼 매니져 변수4
     public GameObject FireBallManager4;
+
+    // 파이어볼 매니져 변수4
+    public GameObject s1;
+
+    // 파이어볼 매니져 변수4
+    public GameObject s2;
 
     // 체력 변수
     public int bossHp;
@@ -49,6 +55,8 @@ public class BossMonster : MonoBehaviour
 
     // 애니메이션 변수
     Animator ani;
+
+    GameObject player;
 
     void Start()
     {
@@ -100,6 +108,8 @@ public class BossMonster : MonoBehaviour
         FireBallManager2.SetActive(true);
         FireBallManager3.SetActive(true);
         FireBallManager4.SetActive(true);
+        s1.SetActive(true);
+        s2.SetActive(true);
     }
 
     // 보스몬스터 피격 함수

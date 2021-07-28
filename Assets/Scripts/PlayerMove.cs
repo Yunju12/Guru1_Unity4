@@ -78,11 +78,17 @@ public class PlayerMove : MonoBehaviour
             ani.SetTrigger("ToDie");
         }
 
+        // * HP 바
+        // 슬라이더의 value를 체력 비율로 적용한다.
+        hpSlider.value = (float)playerHp / (float)maxHp;
+
         // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단한다.
         if (GameManager.gm.gState != GameManager.GameState.Run)
         {
             return;
         }
+
+        
 
         // * 이동
         // 1. 이동 방향(좌우)을 설정한다.
@@ -133,10 +139,6 @@ public class PlayerMove : MonoBehaviour
         {
             GetComponent<CircleCollider2D>().isTrigger = false;
         }
-
-        // * HP 바
-        // 슬라이더의 value를 체력 비율로 적용한다.
-        hpSlider.value = (float)playerHp / (float)maxHp;
     }
 
     // 만일 플레이어가 땅에 착지하였다면,
@@ -149,10 +151,6 @@ public class PlayerMove : MonoBehaviour
             jumpCount = 0;
         }
     }
-
-    
-
-    
 
     // * 플레이어 피격 함수
     // 플레이어가 적의 공격을 받았을 때 체력이 줄어들도록 한다.
