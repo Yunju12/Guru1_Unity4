@@ -1787,6 +1787,9 @@ MonoBehaviour:
   bossHp: 0
   maxHp: 50
   hpSlider: {fileID: 987631027}
+  upMax: 1
+  downMax: 1
+  speed: 3
 --- !u!212 &829832674
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1846,7 +1849,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 829832672}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.13, y: 8.47, z: 0}
+  m_LocalPosition: {x: 21.2, y: 6.05, z: 0}
   m_LocalScale: {x: 13.222292, y: 17.94243, z: 4.65554}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4200,7 +4203,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1540709981}
   - component: {fileID: 1540709980}
-  - component: {fileID: 1540709982}
   m_Layer: 0
   m_Name: WaterBallManager3
   m_TagString: Untagged
@@ -4220,7 +4222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e4c4598d4ea62419f264c1a26b8db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballFactory: {fileID: 0}
+  ballFactory: {fileID: 1514378796576173842, guid: 60dbaab585d0e3649a4a62c413289a96, type: 3}
   createTime: 2
   minTime: 1
   maxTime: 3
@@ -4238,25 +4240,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1540709982
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540709979}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7e91cdd72f597e344b7a202225a4eb77, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1659874869
 GameObject:
   m_ObjectHideFlags: 0
@@ -4286,7 +4269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e4c4598d4ea62419f264c1a26b8db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballFactory: {fileID: 0}
+  ballFactory: {fileID: 1514378796576173842, guid: 60dbaab585d0e3649a4a62c413289a96, type: 3}
   createTime: 2
   minTime: 1
   maxTime: 3

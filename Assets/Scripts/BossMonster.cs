@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class BossMonster : MonoBehaviour
 {
     // 보스몬스터가 위치할 자리
-    Vector3 bossPosition = new Vector3(7.6f, -1.3f, 0);
+    Vector3 bossPosition = new Vector3(7.6f, -1.1f, 0);
+
+    // 이동 자리
+    Vector3 movePosition = new Vector3(7.6f, 3.8f, 0);
 
     // HP 바 변수
     public GameObject HPBar;
@@ -32,7 +35,17 @@ public class BossMonster : MonoBehaviour
     // 슬라이더 바
     public Slider hpSlider;
 
-   
+    // 현재 위치 변수
+    //Vector3 position;
+
+    // 위아래로 이동가능한 y의 최대값 변수
+    public float upMax = 1.0f;
+
+    // 위아래로 이동가능한 y의 최대값 변수
+    public float downMax = 1.0f;
+
+    // 이동 속도 변수
+    public float speed = 3.0f;
 
     // 애니메이션 변수
     Animator ani;
@@ -44,11 +57,13 @@ public class BossMonster : MonoBehaviour
 
         // 애니메이션 컴포넌트를 받아온다.
         ani = GetComponent<Animator>();
-
     }
 
     void Update()
     {
+        // 슬라이더의 value를 체력 비율로 적용한다.
+        hpSlider.value = (float)bossHp / (float)maxHp;
+
         // 만약 enemyDeath가 5 이상이 된다면, 
         if (Enemy.enemyDeath >= Enemy.maxEnemyDeath)
         {
@@ -57,9 +72,6 @@ public class BossMonster : MonoBehaviour
 
             // 보스몬스터와 보스몬스터의 HP 바가 등장한다.
             StartCoroutine("BossAppear");
-
-            // 슬라이더의 value를 체력 비율로 적용한다.
-            hpSlider.value = (float)bossHp / (float)maxHp;
         }
 
         if (bossHp <= 0)
