@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 376554691}
   - component: {fileID: 376554690}
   m_Layer: 0
-  m_Name: FireBallManager (1)
+  m_Name: WaterBallManager1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e4c4598d4ea62419f264c1a26b8db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBallFactory: {fileID: 1514378796576173842, guid: 60dbaab585d0e3649a4a62c413289a96, type: 3}
+  ballFactory: {fileID: 1514378796576173842, guid: 60dbaab585d0e3649a4a62c413289a96, type: 3}
   createTime: 2
   minTime: 1
   maxTime: 3
@@ -567,7 +567,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376554689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: -3.47, z: 0}
+  m_LocalPosition: {x: 6, y: -2.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -698,7 +698,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415164651}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.54, y: 0.6199994, z: 0}
+  m_LocalPosition: {x: -5.54, y: 0.5, z: 0}
   m_LocalScale: {x: 3.9640448, y: 1, z: 1}
   m_Children:
   - {fileID: 416324328}
@@ -1363,7 +1363,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -5, y: -13}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &593492331
 MonoBehaviour:
@@ -1498,7 +1498,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4397616843716228146, guid: 4ab5bc8838beb5c42807df24a89d0b83, type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4397616843716228146, guid: 4ab5bc8838beb5c42807df24a89d0b83, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3211,7 +3211,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1153282110
 Transform:
   m_ObjectHideFlags: 0
@@ -3487,7 +3487,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1220668726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3643,7 +3643,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243012740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.54, y: -1.49, z: 0}
+  m_LocalPosition: {x: -5.54, y: -1.57, z: 0}
   m_LocalScale: {x: 3.9640448, y: 1, z: 1}
   m_Children:
   - {fileID: 1406848249}
@@ -4190,7 +4190,7 @@ GameObject:
   - component: {fileID: 1540709980}
   - component: {fileID: 1540709982}
   m_Layer: 0
-  m_Name: FireBallManager (3)
+  m_Name: WaterBallManager3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4208,7 +4208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e4c4598d4ea62419f264c1a26b8db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBallFactory: {fileID: 1514378796576173842, guid: 60dbaab585d0e3649a4a62c413289a96, type: 3}
+  ballFactory: {fileID: 0}
   createTime: 2
   minTime: 1
   maxTime: 3
@@ -4220,7 +4220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540709979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.03, y: 0.8, z: 0}
+  m_LocalPosition: {x: 6.03, y: 1.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4256,7 +4256,7 @@ GameObject:
   - component: {fileID: 1659874871}
   - component: {fileID: 1659874870}
   m_Layer: 0
-  m_Name: FireBallManager (4)
+  m_Name: WaterBallManager4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4274,7 +4274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e4c4598d4ea62419f264c1a26b8db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBallFactory: {fileID: 1514378796576173842, guid: 60dbaab585d0e3649a4a62c413289a96, type: 3}
+  ballFactory: {fileID: 0}
   createTime: 2
   minTime: 1
   maxTime: 3
@@ -4286,7 +4286,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659874869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.03, y: 2.98, z: 0}
+  m_LocalPosition: {x: 6.03, y: 3.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4812,7 +4812,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689235369}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.54, y: 2.9100006, z: 0}
+  m_LocalPosition: {x: -5.54, y: 2.83, z: 0}
   m_LocalScale: {x: 3.9640448, y: 1, z: 1}
   m_Children:
   - {fileID: 171408917}
@@ -5167,7 +5167,7 @@ RectTransform:
   m_Children:
   - {fileID: 593492330}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5278,7 +5278,7 @@ GameObject:
   - component: {fileID: 1930962823}
   - component: {fileID: 1930962822}
   m_Layer: 0
-  m_Name: FireBallManager (2)
+  m_Name: WaterBallManager2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5296,7 +5296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e4c4598d4ea62419f264c1a26b8db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBallFactory: {fileID: 1514378796576173842, guid: 60dbaab585d0e3649a4a62c413289a96, type: 3}
+  ballFactory: {fileID: 1514378796576173842, guid: 60dbaab585d0e3649a4a62c413289a96, type: 3}
   createTime: 2
   minTime: 1
   maxTime: 3
@@ -5308,7 +5308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930962821}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: -1.38, z: 0}
+  m_LocalPosition: {x: 6, y: -0.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
