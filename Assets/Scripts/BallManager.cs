@@ -47,19 +47,14 @@ public class BallManager : MonoBehaviour
         if (currentTime > createTime)
         {
             // 3. 적을 적공장에서 생성한다.
-            GameObject fireball = Instantiate(ballFactory);
+            GameObject ball = Instantiate(ballFactory);
 
             // 4. 생성된 적을 배치한다.
-            fireball.transform.position = transform.position;
+            ball.transform.position = transform.position;
 
             // 5. 경과시간을 초기화하고 다시 랜덤으로 정한다.
             currentTime = 0;
             createTime = Random.Range(minTime, maxTime);
         }
-
-        //if (bm.bossHp <= 0)
-        //{
-           //gameObject.SetActive(false);
-        //}
     }
 }
