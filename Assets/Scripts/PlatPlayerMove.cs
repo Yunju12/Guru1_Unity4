@@ -8,6 +8,17 @@ public class PlatPlayerMove : MonoBehaviour
     // 게임 매니저 변수
     public PlatGameManager PlatGameManager;
 
+    // 오디오 소스 컴포넌트
+    AudioSource audioSource;
+
+    // 오디오 클립 변수
+    public AudioClip audioJump;
+    public AudioClip audioAttack;
+    public AudioClip audioDamaged;
+    public AudioClip audioItem;
+    public AudioClip audioDie;
+    public AudioClip audioFinish;
+
     // 최대속도 변수
     public float maxSpeed;
 
@@ -20,9 +31,12 @@ public class PlatPlayerMove : MonoBehaviour
     // 현재 점프 횟수
     int jumpCount = 0;
 
+    // 물리이동 변수
     Rigidbody2D rigid;
+
     SpriteRenderer spriteRenderer;
 
+    // 물리 충돌 모양
     CapsuleCollider2D capsuleCollider;
 
     // 애니메이터
@@ -37,12 +51,14 @@ public class PlatPlayerMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
-
+        audioSource = GetComponent<AudioSource>();
     }
+
+   
 
     void Update()
     {
-        // Jump
+        // 점프
         if (Input.GetButton("Jump"))
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
@@ -50,6 +66,10 @@ public class PlatPlayerMove : MonoBehaviour
 
             anim.GetBool("isJumping");
             anim.SetBool("isJumping", true);
+
+            // 효과음
+            PlaySound("JUMP");
+            audioSource.Play();
 
         }
 
@@ -62,7 +82,7 @@ public class PlatPlayerMove : MonoBehaviour
          }
          */
 
-        // Stop Speed
+        // 오른쪽 이동
         if (Input.GetButtonUp("Horizontal"))
         {
             // rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
@@ -70,7 +90,7 @@ public class PlatPlayerMove : MonoBehaviour
             //키를 떼면,x축 속도 기본 0.5배, y축 속도는 그대로
         }
 
-        // Direction Sprite
+        // 왼쪽 이동
         if (Input.GetButton("Horizontal"))
         {
             spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
@@ -78,7 +98,7 @@ public class PlatPlayerMove : MonoBehaviour
             //키를 누르고 있으면, 왼쪽누르면 -1되서 좌우바꾸기
         }
 
-        // Animation
+        // 걷는 애니메이션
         if (Mathf.Abs(rigid.velocity.x) < 0.3)
         {
             anim.SetBool("isWalking", false);
@@ -147,7 +167,7 @@ public class PlatPlayerMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "Item")
         {
-            // 포인트
+            // 아이템 획득시 얻는 포인트
             bool isGem = collision.gameObject.name.Contains("ItemGem");
             bool isCarrot = collision.gameObject.name.Contains("ItemCarrot");
 
@@ -155,14 +175,23 @@ public class PlatPlayerMove : MonoBehaviour
                 PlatGameManager.stagePoint += 100;
             else if (isCarrot)
                 PlatGameManager.stagePoint += 30;
+
             // 아이템 사라짐
             collision.gameObject.SetActive(false);
+
+            // 효과음
+            PlaySound("ITEM");
+            audioSource.Play();
         }
 
         else if (collision.gameObject.tag == "Finish")
         {
             // 다음 스테이지로!
             PlatGameManager.NextStage();
+
+            // 효과음
+            PlaySound("FINISH");
+            audioSource.Play();
         }
     }
 
@@ -178,6 +207,10 @@ public class PlatPlayerMove : MonoBehaviour
         // Enemy 죽음
         PlatEnemyMove platEnemyMove = PlatEnemy.GetComponent<PlatEnemyMove>();
         platEnemyMove.OnDamaged();
+
+        // 효과음
+        PlaySound("ATTACK");
+        audioSource.Play();
     }
 
     // 피격시
@@ -186,11 +219,13 @@ public class PlatPlayerMove : MonoBehaviour
         // Hp감소 호출 : 1씩 감소
         PlatGameManager.HpDown();
 
+        /*
         // player 레이어 바꿈 (Player -> PlaterDamaged 로!)
         gameObject.layer = 12;
 
         // 충돌시 무적상태 만듦( player 불투명하게 보임)
         spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+        */
 
         // 데미지 입을 경우 반동 줌
         int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
@@ -199,6 +234,10 @@ public class PlatPlayerMove : MonoBehaviour
         // 애니메이션 설정
         anim.SetTrigger("doDamaged"); // 데미지 애니메이션 출력
         Invoke("OffDamaged", 3); // 3초간 무적상태 설정
+
+        // 효과음
+        PlaySound("DAMAGED");
+        audioSource.Play();
     }
 
     // 피격시 무적상태 -> 원래 상태로 돌아옴
@@ -220,11 +259,40 @@ public class PlatPlayerMove : MonoBehaviour
 
         rigid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
 
+        // 효과음
+        PlaySound("DIE");
+        audioSource.Play();
     }
 
     public void VelocityZero()
     {
         rigid.velocity = Vector2.zero;
+    }
+    
+    // 사운드 관리
+    void PlaySound(string action)
+    {
+        switch (action)
+        {
+            case "JUMP":
+                audioSource.clip = audioJump;
+                break;
+            case "ATTACK":
+                audioSource.clip = audioAttack;
+                break;
+            case "DAMAGED":
+                audioSource.clip = audioDamaged;
+                break;
+            case "ITEM":
+                audioSource.clip = audioItem;
+                break;
+            case "DIE":
+                audioSource.clip = audioDie;
+                break;
+            case "FINISH":
+                audioSource.clip = audioFinish;
+                break;
+        }
     }
 }
 
