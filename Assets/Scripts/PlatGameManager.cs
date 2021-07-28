@@ -20,13 +20,31 @@ public class PlatGameManager : MonoBehaviour
 
     // player 변수
     public PlatPlayerMove PlatPlayer;
-    
-   // 새 스테이지
-   public void NextStage()
+
+    //스테이지 1,2 배열
+    public GameObject[] Stages;
+
+    public Text UIPoint;
+    public Text UIStage;
+
+    // 새 스테이지
+    public void NextStage()
     {
-        // 스테이지 인덱스 늘림
-        stageIndex++;
-        
+        // 스테이지(Plat안의 맵 구성) 변경 : stageIndex에 따라 스테이지 활성화 여부 결정
+        if (stageIndex < Stages.Length - 1)
+        {
+            Stages[stageIndex].SetActive(false);
+            stageIndex++; // 스테이지 인덱스 늘림
+            Stages[stageIndex].SetActive(true);
+            PlatPlayerReposition(); // player 위치 시작점으로 이동
+        }
+
+        else  // 스테이지 플랫폼 끝날 경우
+        {
+            Time.timeScale = 0;
+            Debug.Log("스테이지 플랫폼 클리어");
+        }
+
         // 전체 점수에 현 스테이지에서 얻음 점수 추가
         totalPoint += stagePoint;
         stagePoint = 0; // 새로운 스테이지에서의 점수 0으로 초기화
@@ -60,12 +78,18 @@ public class PlatGameManager : MonoBehaviour
             if (Hp > 1)
             {
                 // 낙하시 player 위치 변경
-                collision.attachedRigidbody.velocity = Vector2.zero; // 낙하속도 0으로
-                collision.transform.position = new Vector3(0, 0, 0); // (0,0,0) 위치로 이동
+                PlatPlayerReposition();
             }
 
             // 체력 1남았는데 떨어질 경우 Hp 1감소 후 원위치 되돌리기 실행하지 않음
             HpDown();
         }
+    }
+
+    // 낙하시 player 위치 변경
+    void PlatPlayerReposition()
+    {
+        PlatPlayer.transform.position = new Vector3(0, 0, 0); // (0,0,0) 위치로 이동
+        PlatPlayer.VelocityZero(); // 낙하속도 0으로
     }
 }

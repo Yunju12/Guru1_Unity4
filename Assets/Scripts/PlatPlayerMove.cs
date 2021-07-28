@@ -20,13 +20,13 @@ public class PlatPlayerMove : MonoBehaviour
     // 현재 점프 횟수
     int jumpCount = 0;
 
-    Rigidbody2D rigid; 
+    Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
 
     CapsuleCollider2D capsuleCollider;
 
     // 애니메이터
-    Animator anim; 
+    Animator anim;
 
 
     // 시작시 초기화
@@ -53,19 +53,19 @@ public class PlatPlayerMove : MonoBehaviour
 
         }
 
-       /* void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.CompareTag("Floor"))
-            {
-                jumpCount = 0;
-            }
-        }
-        */
+        /* void OnCollisionEnter2D(Collision2D collision)
+         {
+             if (collision.gameObject.CompareTag("Floor"))
+             {
+                 jumpCount = 0;
+             }
+         }
+         */
 
         // Stop Speed
         if (Input.GetButtonUp("Horizontal"))
         {
-           // rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
+            // rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
             rigid.velocity = new Vector2(0, rigid.velocity.y);
             //키를 떼면,x축 속도 기본 0.5배, y축 속도는 그대로
         }
@@ -74,7 +74,7 @@ public class PlatPlayerMove : MonoBehaviour
         if (Input.GetButton("Horizontal"))
         {
             spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
-            
+
             //키를 누르고 있으면, 왼쪽누르면 -1되서 좌우바꾸기
         }
 
@@ -95,7 +95,7 @@ public class PlatPlayerMove : MonoBehaviour
     {
         // * 이동속도 조절
         float h = Input.GetAxisRaw("Horizontal");       //h에 키를 누르면 입력 오른쪽=1,왼쪽=-1
-        rigid.AddForce(Vector2.right * h*2, ForceMode2D.Impulse); //h * 오른쪽곱해서 힘을 줌
+        rigid.AddForce(Vector2.right * h * 2, ForceMode2D.Impulse); //h * 오른쪽곱해서 힘을 줌
 
         // * 이동속도 제한
         // 오른쪽 속도 제한
@@ -108,7 +108,7 @@ public class PlatPlayerMove : MonoBehaviour
 
 
         // Floor 착지
-        if(rigid.velocity.y < 0)
+        if (rigid.velocity.y < 0)
         {
             Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0)); // 녹색, 아래방향 Ray 표시
             RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Floor"));
@@ -120,7 +120,7 @@ public class PlatPlayerMove : MonoBehaviour
                 }
             }
         }
-        
+
     }
 
     // 적과 충돌
@@ -145,7 +145,7 @@ public class PlatPlayerMove : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Item")
+        if (collision.gameObject.tag == "Item")
         {
             // 포인트
             bool isGem = collision.gameObject.name.Contains("ItemGem");
@@ -194,7 +194,7 @@ public class PlatPlayerMove : MonoBehaviour
 
         // 데미지 입을 경우 반동 줌
         int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
-        rigid.AddForce(new Vector2(dirc, 1)*5, ForceMode2D.Impulse);
+        rigid.AddForce(new Vector2(dirc, 1) * 5, ForceMode2D.Impulse);
 
         // 애니메이션 설정
         anim.SetTrigger("doDamaged"); // 데미지 애니메이션 출력
@@ -220,6 +220,11 @@ public class PlatPlayerMove : MonoBehaviour
 
         rigid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
 
-    }    
+    }
+
+    public void VelocityZero()
+    {
+        rigid.velocity = Vector2.zero;
+    }
 }
 
