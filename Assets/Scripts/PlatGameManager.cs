@@ -74,17 +74,17 @@ public class PlatGameManager : MonoBehaviour
     {
         // 체력 변수 초기화
         Hp = maxHp;
-
-        // 초기 게임 상태는 준비 상태로 설정한다.
-        gState = GameState.Ready;
-
+               
         // 게임 시작 코루틴 함수를 실행한다.
         StartCoroutine(GameStart());
     }
     IEnumerator GameStart()
     {
+        // 초기 게임 상태는 준비 상태로 설정한다.
+        gState = GameState.Ready;
+
         // Ready...  라는 문구를 표시한다.
-        stateLabel.text = "Ready...";        
+        stateLabel.text = "Ready...";
         audioSource.clip = ready;
         audioSource.Play();
 
@@ -112,7 +112,7 @@ public class PlatGameManager : MonoBehaviour
 
     void Update()
     {  
-        // 슬라이더의 value를 체력 비율로 적용한다.
+        // 슬라이더 체력 비율 적용
         hpSlider.value = (float)Hp / (float)maxHp;
 
         // 토탈 포인트 화면 표시
@@ -146,6 +146,8 @@ public class PlatGameManager : MonoBehaviour
 
             // 게임 상태를 게임 클리어 상태로 전환한다.
             gState = GameState.GameClear;
+            audioSource.clip = gameClear;
+            audioSource.Play();
         }
 
         // 전체 점수에 현 스테이지에서 얻음 점수 추가
@@ -177,6 +179,8 @@ public class PlatGameManager : MonoBehaviour
 
             // 게임 상태를 게임 오버 상태로 전환한다.
             gState = GameState.GameOver;
+            audioSource.clip = gameOver;
+            audioSource.Play();
         }
 
     }
