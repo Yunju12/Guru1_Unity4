@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2632489476492039935}
   - component: {fileID: 4582968429566874050}
-  - component: {fileID: 6109493979637930759}
+  - component: {fileID: 7845458265953034750}
   - component: {fileID: 8894486827303168458}
   - component: {fileID: 3121114381848236900}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: Enemy 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 88804c9e7e4e7534ea1ed559e95c30fa, type: 3}
+  m_Sprite: {fileID: 4748074554828775505, guid: d66a24f1a595be64bbd51c1a109278b1, type: 3}
   m_Color: {r: 0.3160377, g: 0.7435141, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &6109493979637930759
-CircleCollider2D:
+--- !u!61 &7845458265953034750
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,9 +98,19 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0077916533}
+  m_Offset: {x: 0.00841793, y: -0.009470187}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.043410853
+  m_Size: {x: 0.07792512, y: 0.042148918}
+  m_EdgeRadius: 0
 --- !u!50 &8894486827303168458
 Rigidbody2D:
   serializedVersion: 4
