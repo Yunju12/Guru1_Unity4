@@ -21,6 +21,10 @@ public class Board_PlayerMove : MonoBehaviour
     Vector3 toPosX { get { return new Vector3((float)posx, 1.2f, 0); } }
     Vector3 toPosZ { get { return new Vector3((float)posx, 1.2f, -0.1f); } }
 
+    //이동 좌표 변수
+    Vector3 S1F { get { return new Vector3(6.69f, 1.2f, 0); } }
+    public GameObject buttonS1F;
+
     // 이동을 위한 변수
     Rigidbody2D rigid;
 
@@ -37,6 +41,7 @@ public class Board_PlayerMove : MonoBehaviour
 
     //플레이어 게임 오브젝트
     public GameObject player;
+
     public enum PlayerState
     {
         Idle,
@@ -131,6 +136,7 @@ public class Board_PlayerMove : MonoBehaviour
             StartCoroutine(MoveTo(player, toPosZ));
             posx += 6.69;
             StartCoroutine(MoveTo(player, toPosX));
+            print(player.gameObject.transform.position);
         }
         else if (ran == 4)
         {
@@ -152,6 +158,11 @@ public class Board_PlayerMove : MonoBehaviour
             StartCoroutine(MoveTo(player, toPosZ));
             posx += 13.38;
             StartCoroutine(MoveTo(player, toPosX));
+        }
+
+        if (player.gameObject.transform.position == S1F)
+        {
+            buttonS1F.SetActive(true);
         }
     }
 
