@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class PlatEnemyMove : MonoBehaviour
 {
-
+    // 물리이동 변수
     Rigidbody2D rigid;
+
+    // 애니메이션 변수
     Animator anim;
+
+ 
     SpriteRenderer spriteRenderer;
+
+    // 물리 충돌 모양
     BoxCollider2D boxCollider;
 
     public int nextMove;
@@ -24,15 +30,15 @@ public class PlatEnemyMove : MonoBehaviour
     
     void FixedUpdate()
     {
-        // Move 기본 움직임 (왼쪽으로)
+        // 기본 움직임
         rigid.velocity = new Vector2(nextMove, rigid.velocity.y);
 
 
-        // Platform Check
+        // Floor 확인
         Vector2 frontVec = new Vector2(rigid.position.x + nextMove*0.3f, rigid.position.y);
-        Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0));
-        RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Floor"));
-        if (rayHit.collider == null)
+        Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0));  // 녹색, 아래방향 Ray 표시
+        RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Floor"));        
+        if (rayHit.collider == null) // 바닥이 비었을 경우 방향 전환
         {
             Turn();
         }
