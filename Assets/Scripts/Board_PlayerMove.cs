@@ -122,6 +122,7 @@ public class Board_PlayerMove : MonoBehaviour
             StartCoroutine(MoveTo(player, toPosZ));
             posx += 2.23;
             StartCoroutine(MoveTo(player, toPosX));
+            print(player.gameObject.transform.position);
         }
         else if (ran == 2)
         {
@@ -129,6 +130,7 @@ public class Board_PlayerMove : MonoBehaviour
             StartCoroutine(MoveTo(player, toPosZ));
             posx += 4.46;
             StartCoroutine(MoveTo(player, toPosX));
+            print(player.gameObject.transform.position);
         }
         else if (ran == 3)
         {
@@ -144,6 +146,7 @@ public class Board_PlayerMove : MonoBehaviour
             StartCoroutine(MoveTo(player, toPosZ));
             posx += 8.92;
             StartCoroutine(MoveTo(player, toPosX));
+            print(player.gameObject.transform.position);
         }
         else if (ran == 5)
         {
@@ -151,6 +154,7 @@ public class Board_PlayerMove : MonoBehaviour
             StartCoroutine(MoveTo(player, toPosZ));
             posx += 11.15;
             StartCoroutine(MoveTo(player, toPosX));
+            print(player.gameObject.transform.position);
         }
         else if (ran == 6)
         {
@@ -158,6 +162,7 @@ public class Board_PlayerMove : MonoBehaviour
             StartCoroutine(MoveTo(player, toPosZ));
             posx += 13.38;
             StartCoroutine(MoveTo(player, toPosX));
+            print(player.gameObject.transform.position);
         }
 
         if (player.gameObject.transform.position == S1F)
