@@ -29,6 +29,9 @@ public class PlayerMove : MonoBehaviour
     // 슬라이더 바
     public Slider hpSlider;
 
+    // 아이템 효과 유지 시간 변수
+    public float itemTime = 5;
+
     // 애니메이션 변수
     Animator ani;
 
@@ -41,6 +44,10 @@ public class PlayerMove : MonoBehaviour
     public AudioClip clip;
 
     public AudioClip hurt;
+
+    Item item;
+
+    Bullet b;
 
     // 플레이어 애니메이션 상수
     public enum PlayerState
@@ -65,6 +72,10 @@ public class PlayerMove : MonoBehaviour
         gm = GetComponent<GameManager>();
 
         audio = GetComponent<AudioSource>();
+
+        item = GetComponent<Item>();
+
+        b = GetComponent<Bullet>();
     }
 
     void Update()
@@ -150,6 +161,43 @@ public class PlayerMove : MonoBehaviour
         {
             jumpCount = 0;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Item"))
+        {
+            // 체력 회복
+            if (item.item == item.i1)
+            {
+                playerHp += 5;
+            }
+
+            // 무적 상태
+            else if (item.item == item.i2)
+            {
+                gameObject.layer = 12;
+
+                Invoke("Off", itemTime);
+            }
+
+            // 공격력 두배
+            else if (item.item == item.i3)
+            {
+                Invoke("PowerUp", itemTime);
+            }
+        }
+    }
+
+    void Off()
+    {
+        gameObject.layer = 6;
+    }
+
+
+    void PowerUp()
+    {
+        b.attackPower = 4;
     }
 
     // * 플레이어 피격 함수

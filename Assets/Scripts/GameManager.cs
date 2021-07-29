@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        
+
         if (gm == null)
         {
             gm = this;
@@ -61,6 +63,8 @@ public class GameManager : MonoBehaviour
 
         audio = GetComponent<AudioSource>();
     }
+
+    
 
     void Start()
     {
