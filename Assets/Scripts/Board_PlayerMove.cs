@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Board_PlayerMove : MonoBehaviour
 {
@@ -19,11 +21,12 @@ public class Board_PlayerMove : MonoBehaviour
     //좌표 이동 변수
     public static double posx = 0;
     Vector3 toPosX { get { return new Vector3((float)posx, 1.2f, 0); } }
-    Vector3 toPosZ { get { return new Vector3((float)posx, 1.2f, -0.1f); } }
+
+    //집 좌표
+    Vector3 toPosH { get { return new Vector3(55.75f, 1.2f, 0); } }
 
     //이동 좌표 변수
-    Vector3 S1F { get { return new Vector3(6.69f, 1.2f, 0); } }
-    public GameObject buttonS1F;
+    public GameObject buttonS1P;
 
     // 이동을 위한 변수
     Rigidbody2D rigid;
@@ -42,12 +45,6 @@ public class Board_PlayerMove : MonoBehaviour
     //플레이어 게임 오브젝트
     public GameObject player;
 
-    public enum PlayerState
-    {
-        Idle,
-        Move
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -60,51 +57,27 @@ public class Board_PlayerMove : MonoBehaviour
         gm = GetComponent<GameManager>();
 
         audio = GetComponent<AudioSource>();
+
+        //씬 이동 버튼 끄기
+        buttonS1P.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // * 이동
-        // 1. 이동 방향(좌우)을 설정한다.
-        float h = Input.GetAxis("Horizontal");
-        Vector3 dir = new Vector3(h, 0, 0);
-        dir.Normalize();
 
-        // 2. 이동 방향(좌우)으로 플레이어를 이동시킨다.
-        transform.position += (dir * moveSpeed * Time.deltaTime);
-
-        // 3. 움직이면 IdleToMove, 움직임을 멈추면 MoveToIdle 을 실행한다.
-        if (Input.GetButtonDown("Horizontal"))
-        {
-            ani.SetTrigger("IdleToMove");
-        }
-        else
-        {
-            ani.SetTrigger("MoveToIdle");
-        }
     }
 
     public class ExampleClass : MonoBehaviour
     {
-        public Collider coll;
-        void Start()
-        {
-            coll = GetComponent<Collider>();
-            coll.isTrigger = true;
-        }
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.attachedRigidbody)
-                other.attachedRigidbody.useGravity = false;
 
-        }
     }
 
     //주사위 굴리기
     public void DiceRandom()
     {
-        dice.SetActive(false);
+        //씬 이동 버튼 끄기
+        buttonS1P.SetActive(false);
 
         dice1.SetActive(false);
         dice2.SetActive(false);
@@ -113,79 +86,174 @@ public class Board_PlayerMove : MonoBehaviour
         dice5.SetActive(false);
         dice6.SetActive(false);
 
-        ran = Random.Range(1, 7);
-        print(ran);
+        //ran = Random.Range(1, 7);
+        //print(ran);
+        ran = 1;
 
         if (ran == 1)
         {
             dice1.SetActive(true);
-            StartCoroutine(MoveTo(player, toPosZ));
             posx += 2.23;
-            StartCoroutine(MoveTo(player, toPosX));
-            print(player.gameObject.transform.position);
+            if(posx >= 55.75)
+            {
+                StartCoroutine(MoveTo(player, toPosH));
+            }
+            else
+            {
+                StartCoroutine(MoveTo(player, toPosX));
+            }
         }
         else if (ran == 2)
         {
             dice2.SetActive(true);
-            StartCoroutine(MoveTo(player, toPosZ));
             posx += 4.46;
-            StartCoroutine(MoveTo(player, toPosX));
-            print(player.gameObject.transform.position);
+            if (posx >= 55.75)
+            {
+                StartCoroutine(MoveTo(player, toPosH));
+            }
+            else
+            {
+                StartCoroutine(MoveTo(player, toPosX));
+            }
         }
         else if (ran == 3)
         {
             dice3.SetActive(true);
-            StartCoroutine(MoveTo(player, toPosZ));
             posx += 6.69;
-            StartCoroutine(MoveTo(player, toPosX));
-            print(player.gameObject.transform.position);
+            if (posx >= 55.75)
+            {
+                StartCoroutine(MoveTo(player, toPosH));
+            }
+            else
+            {
+                StartCoroutine(MoveTo(player, toPosX));
+            }
         }
         else if (ran == 4)
         {
             dice4.SetActive(true);
-            StartCoroutine(MoveTo(player, toPosZ));
             posx += 8.92;
-            StartCoroutine(MoveTo(player, toPosX));
-            print(player.gameObject.transform.position);
+            if (posx >= 55.75)
+            {
+                StartCoroutine(MoveTo(player, toPosH));
+            }
+            else
+            {
+                StartCoroutine(MoveTo(player, toPosX));
+            }
         }
         else if (ran == 5)
         {
             dice5.SetActive(true);
-            StartCoroutine(MoveTo(player, toPosZ));
             posx += 11.15;
-            StartCoroutine(MoveTo(player, toPosX));
-            print(player.gameObject.transform.position);
+            if (posx >= 55.75)
+            {
+                StartCoroutine(MoveTo(player, toPosH));
+            }
+            else
+            {
+                StartCoroutine(MoveTo(player, toPosX));
+            }
         }
         else if (ran == 6)
         {
             dice6.SetActive(true);
-            StartCoroutine(MoveTo(player, toPosZ));
             posx += 13.38;
-            StartCoroutine(MoveTo(player, toPosX));
-            print(player.gameObject.transform.position);
+            if (posx >= 55.75)
+            {
+                StartCoroutine(MoveTo(player, toPosH));
+            }
+            else
+            {
+                StartCoroutine(MoveTo(player, toPosX));
+            }
         }
 
-        if (player.gameObject.transform.position == S1F)
-        {
-            buttonS1F.SetActive(true);
-        }
+        dice.SetActive(true);
     }
 
     IEnumerator MoveTo(GameObject player, Vector3 toPos)
     {
         float count = 0;
         Vector3 wasPos = player.transform.position;
-        while(true)
+        while (true)
         {
             count += Time.deltaTime;
             player.transform.position = Vector3.Lerp(wasPos, toPos, count);
 
-            if(count >= 1)
+            if (count >= 1)
             {
-                player.transform.position = toPos; ;
+                player.transform.position = toPos;
+
+                if (posx - 4.46 <= 0.001f && posx - 4.46 >= -0.001f)
+                {
+                    buttonS1P.SetActive(true);
+                }
+                else if (posx - 8.92 <= 0.001f && posx - 8.92 >= -0.001f)
+                {
+                    buttonS1P.SetActive(true);
+                }
+                else if (posx - 13.38 <= 0.001f && posx - 13.38 >= -0.001f)
+                {
+                    buttonS1P.SetActive(true);
+                }
+                else if (posx - 15.61 <= 0.001f && posx - 15.61 >= -0.001f)
+                {
+                    EggHp.eggHp++;
+                }
+                else if (posx - 17.84 <= 0.001f && posx - 17.84 >= -0.001f)
+                {
+                    buttonS1P.SetActive(true);
+                }
+                else if (posx - 20.07 <= 0.001f && posx - 20.07 >= -0.001f)
+                {
+                    EggHp.eggHp++;
+                }
+                else if (posx - 24.53 <= 0.001f && posx - 24.53 >= -0.001f)
+                {
+                    buttonS1P.SetActive(true);
+                }
+                else if (posx - 28.99 <= 0.001f && posx - 28.99 >= -0.001f)
+                {
+                    buttonS1P.SetActive(true);
+                }
+                else if (posx - 31.22 <= 0.001f && posx - 31.22 >= -0.001f)
+                {
+                    EggHp.eggHp += 2;
+                }
+                else if (posx - 37.91 <= 0.001f && posx - 37.91 >= -0.001f)
+                {
+                    buttonS1P.SetActive(true);
+                }
+                else if (posx - 42.37 <= 0.001f && posx - 42.37 >= -0.001f)
+                {
+                    buttonS1P.SetActive(true);
+                }
+                else if (posx - 49.06 <= 0.001f && posx - 49.06 >= -0.001f)
+                {
+                    EggHp.eggHp++;
+                }
+                else if (posx - 51.29 <= 0.001f && posx - 51.29 >= -0.001f)
+                {
+                    buttonS1P.SetActive(true);
+                }
+                else if (posx - 53.52 <= 0.001f && posx - 53.52 >= -0.001f)
+                {
+                    buttonS1P.SetActive(true);
+                }
+                else if (posx >= 55)
+                {
+                    buttonS1P.SetActive(true);
+                }
                 break;
             }
             yield return null;
         }
+    }
+
+    public void SlP()
+    {
+        //씬 전환
+        SceneManager.LoadScene("S1-Plat");
     }
 }

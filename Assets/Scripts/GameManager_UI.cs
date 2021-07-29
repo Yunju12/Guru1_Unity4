@@ -76,7 +76,7 @@ public class GameManager_UI : MonoBehaviour
     public void Lose()
     {
         //알 하나 차감
-        DontDestroy.eggHp--;
+        EggHp.eggHp--;
 
         //씬 전환
         SceneManager.LoadScene("UI_BoardGame");
@@ -86,7 +86,7 @@ public class GameManager_UI : MonoBehaviour
     public void Restart()
     {
         //알 하나 차감
-        DontDestroy.eggHp--;
+        EggHp.eggHp--;
 
         //현재 씬 재시작
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -110,7 +110,7 @@ public class GameManager_UI : MonoBehaviour
     public void RestartGame()
     {
         //알 하나 차감
-        DontDestroy.eggHp--;
+        EggHp.eggHp--;
 
         //현재 씬 재시작
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
