@@ -7,10 +7,10 @@ public class Enemy : MonoBehaviour
     // 속력 변수
     public float speed = 5;
 
-    // Enemy 죽은 수
+    // 적 처치 수
     public static int enemyDeath = 0;
 
-    // Enemy 최소 데스 수
+    // 적 최대 처치 수
     public static int maxEnemyDeath = 10;
 
     // 플레이어 변수

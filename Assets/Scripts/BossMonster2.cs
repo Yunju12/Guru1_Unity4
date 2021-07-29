@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BossMonster : MonoBehaviour
+public class BossMonster2 : MonoBehaviour
 {
     // 보스 체력 변수
     public static int bossHp;
@@ -31,6 +31,12 @@ public class BossMonster : MonoBehaviour
 
     // 볼 매니져 변수4
     public GameObject BallManager4;
+
+    // (SmallThunder 전용) 작은 볼 매니져 변수1
+    public GameObject SmallBallManager1;
+
+    // (SmallThunder 전용) 작은 볼 매니져 변수2
+    public GameObject SmallBallManager2;
 
     // 애니메이터 컴포넌트 변수
     Animator ani;
@@ -84,6 +90,8 @@ public class BossMonster : MonoBehaviour
         BallManager2.SetActive(true);
         BallManager3.SetActive(true);
         BallManager4.SetActive(true);
+        SmallBallManager1.SetActive(true);
+        SmallBallManager2.SetActive(true);
     }
 
     // * 보스몬스터 피격 함수
