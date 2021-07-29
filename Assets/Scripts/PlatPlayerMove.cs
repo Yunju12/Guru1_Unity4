@@ -171,10 +171,13 @@ public class PlatPlayerMove : MonoBehaviour
             // 아이템 획득시 얻는 포인트
             bool isGem = collision.gameObject.name.Contains("ItemGem");
             bool isCarrot = collision.gameObject.name.Contains("ItemCarrot");
+            bool isSnowflake = collision.gameObject.name.Contains("ItemSnowflake");
 
             if (isGem)
                 PlatGameManager.stagePoint += 100;
             else if (isCarrot)
+                PlatGameManager.stagePoint += 30;
+            else if (isSnowflake)
                 PlatGameManager.stagePoint += 30;
 
             // 아이템 사라짐
