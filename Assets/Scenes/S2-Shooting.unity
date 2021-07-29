@@ -1579,10 +1579,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16adba774e3c314abe92da67adcfc4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyFactory: {fileID: 9223130566057526621, guid: 01e006b13513ae44eb5bb76fb03e0f9c, type: 3}
   createTime: 2
   minTime: 1
   maxTime: 3
+  enemyFactory: {fileID: 9223130566057526621, guid: 01e006b13513ae44eb5bb76fb03e0f9c, type: 3}
 --- !u!4 &685774530
 Transform:
   m_ObjectHideFlags: 0
@@ -1779,17 +1779,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8cd2f0fc38a284ab482a11c8ff3d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HPBar: {fileID: 1747621572}
-  FireBallManager1: {fileID: 376554689}
-  FireBallManager2: {fileID: 1930962821}
-  FireBallManager3: {fileID: 1540709979}
-  FireBallManager4: {fileID: 1659874869}
-  bossHp: 0
-  maxHp: 50
+  maxHp: 40
   hpSlider: {fileID: 987631027}
-  upMax: 1
-  downMax: 1
-  speed: 3
+  HPBar: {fileID: 1747621572}
+  BallManager1: {fileID: 376554689}
+  BallManager2: {fileID: 1930962821}
+  BallManager3: {fileID: 1540709979}
+  BallManager4: {fileID: 1659874869}
 --- !u!212 &829832674
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3253,10 +3249,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16adba774e3c314abe92da67adcfc4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyFactory: {fileID: 9223130566057526621, guid: 01e006b13513ae44eb5bb76fb03e0f9c, type: 3}
   createTime: 2
   minTime: 1
   maxTime: 3
+  enemyFactory: {fileID: 9223130566057526621, guid: 01e006b13513ae44eb5bb76fb03e0f9c, type: 3}
 --- !u!1 &1165654808
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,10 +3511,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16adba774e3c314abe92da67adcfc4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyFactory: {fileID: 9223130566057526621, guid: 01e006b13513ae44eb5bb76fb03e0f9c, type: 3}
   createTime: 2
   minTime: 1
   maxTime: 3
+  enemyFactory: {fileID: 9223130566057526621, guid: 01e006b13513ae44eb5bb76fb03e0f9c, type: 3}
 --- !u!4 &1220668727
 Transform:
   m_ObjectHideFlags: 0
@@ -5338,10 +5334,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16adba774e3c314abe92da67adcfc4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyFactory: {fileID: 9223130566057526621, guid: 01e006b13513ae44eb5bb76fb03e0f9c, type: 3}
   createTime: 2
   minTime: 1
   maxTime: 3
+  enemyFactory: {fileID: 9223130566057526621, guid: 01e006b13513ae44eb5bb76fb03e0f9c, type: 3}
 --- !u!4 &1936880214
 Transform:
   m_ObjectHideFlags: 0

@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     // 보스 몬스터 컴포넌트 변수
     BossMonster bm;
 
+    // 에너미 컴포넌트 변수
+    Enemy enemy;
+
     // 싱글턴
     public static GameManager gm;
 
@@ -51,6 +54,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        
+
         if (gm == null)
         {
             gm = this;
@@ -59,6 +64,8 @@ public class GameManager : MonoBehaviour
         audio = GetComponent<AudioSource>();
     }
 
+    
+
     void Start()
     {
         // 초기 게임 상태는 준비 상태로 설정한다.
@@ -66,6 +73,11 @@ public class GameManager : MonoBehaviour
 
         // 플레이어 애니메이션 컴포넌트를 받아온다.
         ani = GetComponent<Animator>();
+
+        pm = GetComponent<PlayerMove>();
+
+        //보스몬스터 오브젝트를 검색
+        bm = GetComponent<BossMonster>();
 
         // 게임 시작 코루틴 함수를 실행한다.
         StartCoroutine(GameStart());
@@ -101,12 +113,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // 플레이어 오브젝트를 검색
-        PlayerMove pm = GameObject.Find("Player").GetComponent<PlayerMove>();
-
-        // 보스몬스터 오브젝트를 검색
-        BossMonster bm = GameObject.Find("BossMonster").GetComponent<BossMonster>();
-
         // 만약 플레이어의 hp가 0 이하로 떨어지면
         if (PlayerMove.playerHp <= 0)
         {
@@ -126,7 +132,7 @@ public class GameManager : MonoBehaviour
         }
 
         // 만약 보스의 hp가 0 이하로 떨어지면
-        else if (bm.bossHp <= 0)
+        else if (BossMonster.bossHp <= 0)
         {
             //audio.Stop();
             //audio.PlayOneShot(gameClear);
