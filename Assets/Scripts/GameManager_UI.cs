@@ -79,7 +79,7 @@ public class GameManager_UI : MonoBehaviour
         EggHp.eggHp--;
 
         //씬 전환
-        SceneManager.LoadScene("UI_BoardGame");
+        SceneManager.LoadScene("BoardGame");
     }
 
     //현재 게임 재시작(옵션)
@@ -96,7 +96,7 @@ public class GameManager_UI : MonoBehaviour
     public void StartGame()
     {
         //씬 전환
-        SceneManager.LoadScene("UI_BoardGame");
+        SceneManager.LoadScene("BoardGame");
     }
 
     //전체 게임 종료

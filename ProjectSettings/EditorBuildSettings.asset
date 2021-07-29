@@ -16,5 +16,20 @@ EditorBuildSettings:
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/S1-Plat.unity
-    guid: 6befb4c4e1b40304cac000408097340e
+    guid: db352888cbff5af4881fd44471a62e47
+  - enabled: 1
+    path: Assets/Scenes/S1-Shooting.unity
+    guid: 6808b091093d2ca4f830871fbe47de70
+  - enabled: 1
+    path: Assets/Scenes/S2-Plat.unity
+    guid: e6793ccf34c29d04cb0ac4b450f1cac2
+  - enabled: 1
+    path: Assets/Scenes/S2-Shooting.unity
+    guid: e92a5067ab9e5b54f9d731798dbb78af
+  - enabled: 1
+    path: Assets/Scenes/S3-Shooting.unity
+    guid: 2fc2246dd657928439b488f50114241e
+  - enabled: 1
+    path: Assets/Scenes/UI_Ending.unity
+    guid: 744d6eced672bc44ba56dd30b01f98bd
   m_configObjects: {}

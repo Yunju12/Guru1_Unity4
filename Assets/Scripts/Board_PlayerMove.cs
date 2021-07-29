@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class Board_PlayerMove : MonoBehaviour
 {
+    //전체 점수 변수
+    public static int totalScore = 0;
+    public Text score;
+
     //주사위 변수
     public GameObject dice;
 
@@ -16,7 +20,15 @@ public class Board_PlayerMove : MonoBehaviour
     public GameObject dice5;
     public GameObject dice6;
 
+    //랜덤 주사위
     int ran;
+
+    //랜덤 박스
+    int rBox;
+
+    public GameObject randomEgg;
+    public GameObject randomPotion;
+    public GameObject randomBomb;
 
     //좌표 이동 변수
     public static double posx = 0;
@@ -27,6 +39,12 @@ public class Board_PlayerMove : MonoBehaviour
 
     //이동 좌표 변수
     public GameObject buttonS1P;
+    public GameObject buttonS1S;
+    public GameObject buttonS2P;
+    public GameObject buttonS2S;
+    public GameObject buttonS3P;
+    public GameObject buttonS3S;
+    public GameObject buttonH;
 
     // 이동을 위한 변수
     Rigidbody2D rigid;
@@ -58,8 +76,8 @@ public class Board_PlayerMove : MonoBehaviour
 
         audio = GetComponent<AudioSource>();
 
-        //씬 이동 버튼 끄기
-        buttonS1P.SetActive(false);
+        //전체 점수 표시
+        score.text = totalScore.ToString();
     }
 
     // Update is called once per frame
@@ -78,6 +96,12 @@ public class Board_PlayerMove : MonoBehaviour
     {
         //씬 이동 버튼 끄기
         buttonS1P.SetActive(false);
+        buttonS1S.SetActive(false);
+        buttonS2P.SetActive(false);
+        buttonS2S.SetActive(false);
+        buttonS3P.SetActive(false);
+        buttonS3S.SetActive(false);
+        buttonH.SetActive(false);
 
         dice1.SetActive(false);
         dice2.SetActive(false);
@@ -86,8 +110,13 @@ public class Board_PlayerMove : MonoBehaviour
         dice5.SetActive(false);
         dice6.SetActive(false);
 
+        randomEgg.SetActive(false);
+        randomPotion.SetActive(false);
+        randomBomb.SetActive(false);
+
         //ran = Random.Range(1, 7);
         //print(ran);
+
         ran = 1;
 
         if (ran == 1)
@@ -191,11 +220,11 @@ public class Board_PlayerMove : MonoBehaviour
                 }
                 else if (posx - 8.92 <= 0.001f && posx - 8.92 >= -0.001f)
                 {
-                    buttonS1P.SetActive(true);
+                    EggHp.potionCount++;
                 }
                 else if (posx - 13.38 <= 0.001f && posx - 13.38 >= -0.001f)
                 {
-                    buttonS1P.SetActive(true);
+                    buttonS1S.SetActive(true);
                 }
                 else if (posx - 15.61 <= 0.001f && posx - 15.61 >= -0.001f)
                 {
@@ -203,7 +232,7 @@ public class Board_PlayerMove : MonoBehaviour
                 }
                 else if (posx - 17.84 <= 0.001f && posx - 17.84 >= -0.001f)
                 {
-                    buttonS1P.SetActive(true);
+                    buttonS2P.SetActive(true);
                 }
                 else if (posx - 20.07 <= 0.001f && posx - 20.07 >= -0.001f)
                 {
@@ -211,11 +240,11 @@ public class Board_PlayerMove : MonoBehaviour
                 }
                 else if (posx - 24.53 <= 0.001f && posx - 24.53 >= -0.001f)
                 {
-                    buttonS1P.SetActive(true);
+                    RandomBox();
                 }
                 else if (posx - 28.99 <= 0.001f && posx - 28.99 >= -0.001f)
                 {
-                    buttonS1P.SetActive(true);
+                    buttonS2S.SetActive(true);
                 }
                 else if (posx - 31.22 <= 0.001f && posx - 31.22 >= -0.001f)
                 {
@@ -223,11 +252,12 @@ public class Board_PlayerMove : MonoBehaviour
                 }
                 else if (posx - 37.91 <= 0.001f && posx - 37.91 >= -0.001f)
                 {
-                    buttonS1P.SetActive(true);
+                    buttonS3P.SetActive(true);
                 }
                 else if (posx - 42.37 <= 0.001f && posx - 42.37 >= -0.001f)
                 {
-                    buttonS1P.SetActive(true);
+                    EggHp.potionCount++;
+
                 }
                 else if (posx - 49.06 <= 0.001f && posx - 49.06 >= -0.001f)
                 {
@@ -235,15 +265,15 @@ public class Board_PlayerMove : MonoBehaviour
                 }
                 else if (posx - 51.29 <= 0.001f && posx - 51.29 >= -0.001f)
                 {
-                    buttonS1P.SetActive(true);
+                    RandomBox();
                 }
                 else if (posx - 53.52 <= 0.001f && posx - 53.52 >= -0.001f)
                 {
-                    buttonS1P.SetActive(true);
+                    buttonS3S.SetActive(true);
                 }
                 else if (posx >= 55)
                 {
-                    buttonS1P.SetActive(true);
+                    buttonH.SetActive(true);
                 }
                 break;
             }
@@ -255,5 +285,61 @@ public class Board_PlayerMove : MonoBehaviour
     {
         //씬 전환
         SceneManager.LoadScene("S1-Plat");
+    }
+
+    public void SlS()
+    {
+        //씬 전환
+        SceneManager.LoadScene("S1-Shooting");
+    }
+
+    public void S2P()
+    {
+        //씬 전환
+        SceneManager.LoadScene("S2-Plat");
+    }
+
+    public void S2S()
+    {
+        //씬 전환
+        SceneManager.LoadScene("S2-Shooting");
+    }
+
+    public void S3P()
+    {
+        //씬 전환
+        SceneManager.LoadScene("S3-Plat");
+    }
+
+    public void S3S()
+    {
+        //씬 전환
+        SceneManager.LoadScene("S3-Shooting");
+    }
+    public void H()
+    {
+        //씬 전환
+        SceneManager.LoadScene("UI_Ending");
+    }
+
+    public void RandomBox()
+    {
+        rBox = Random.Range(1, 4);
+        
+        if(rBox == 1)
+        {
+            EggHp.eggHp++;
+            randomEgg.SetActive(true);
+        }
+        else if(rBox == 2)
+        {
+            EggHp.potionCount++;
+            randomPotion.SetActive(true);
+        }
+        else if(rBox == 3)
+        {
+            EggHp.bombCount++;
+            randomBomb.SetActive(true);
+        }
     }
 }
