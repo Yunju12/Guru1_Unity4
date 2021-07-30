@@ -26,10 +26,10 @@ public class PlatPlayerMove : MonoBehaviour
     public float jumpPower;
 
     // 최대 점프 횟수
-    public int maxJump = 2;
+    // public int maxJump = 3;
 
     // 현재 점프 횟수
-    int jumpCount = 0;
+    public int jumpCount = 3;
 
     // 물리이동 변수
     Rigidbody2D rigid;
@@ -54,15 +54,16 @@ public class PlatPlayerMove : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-   
 
+ 
     void Update()
     {
         // 점프
-        if (Input.GetButton("Jump"))
+        if (Input.GetButton("Jump") && (jumpCount > 0))
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            jumpCount++;
+            Debug.Log(jumpCount);
+            jumpCount--;
 
             anim.GetBool("isJumping");
             anim.SetBool("isJumping", true);
@@ -72,16 +73,7 @@ public class PlatPlayerMove : MonoBehaviour
             audioSource.Play();
 
         }
-
-        /* void OnCollisionEnter2D(Collision2D collision)
-         {
-             if (collision.gameObject.CompareTag("Floor"))
-             {
-                 jumpCount = 0;
-             }
-         }
-         */
-
+      
         // 속도 멈춤
         if (Input.GetButtonUp("Horizontal"))
         {
@@ -138,6 +130,7 @@ public class PlatPlayerMove : MonoBehaviour
                 if (rayHit.distance < 0.5f)
                 {
                     anim.SetBool("isJumping", false);
+                    jumpCount = 3;
                 }
             }
         }
