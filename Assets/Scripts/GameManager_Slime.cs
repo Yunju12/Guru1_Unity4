@@ -152,7 +152,7 @@ public class GameManager_Slime : MonoBehaviour
 
             //클리어 옵션 메뉴 창을 활성화한다
             ClearUI.SetActive(true);
-            print(totalPoint);
+
             // 게임 상태를 게임 클리어 상태로 전환한다.
             gState = GameState.GameClear;
         }
