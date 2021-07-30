@@ -26,10 +26,10 @@ public class PlatPlayerMove : MonoBehaviour
     public float jumpPower;
 
     // 최대 점프 횟수
-    // public int maxJump = 3;
+    public int maxJump = 3;
 
     // 현재 점프 횟수
-    public int jumpCount = 3;
+    public int jumpCount;
 
     // 물리이동 변수
     Rigidbody2D rigid;
@@ -52,6 +52,8 @@ public class PlatPlayerMove : MonoBehaviour
         anim = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         audioSource = GetComponent<AudioSource>();
+
+        jumpCount = maxJump;
     }
 
 
@@ -59,19 +61,19 @@ public class PlatPlayerMove : MonoBehaviour
     void Update()
     {
         // 점프
-        if (Input.GetButton("Jump") && (jumpCount > 0))
+        if (Input.GetButtonDown("Jump") && (jumpCount > 0))
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             Debug.Log(jumpCount);
             jumpCount--;
 
-            anim.GetBool("isJumping");
-            anim.SetBool("isJumping", true);
+                anim.GetBool("isJumping");
+                anim.SetBool("isJumping", true);
 
-            // 효과음
-            PlaySound("JUMP");
-            audioSource.Play();
-
+                // 효과음
+                PlaySound("JUMP");
+                audioSource.Play();
+            
         }
       
         // 속도 멈춤
@@ -106,20 +108,6 @@ public class PlatPlayerMove : MonoBehaviour
     // 물리효과 적용위해 일정하게 호출하는 FixedUpdate 사용
     void FixedUpdate()
     {
-        // 이동속도 조절
-        float h = Input.GetAxisRaw("Horizontal");       //h에 키를 누르면 입력 오른쪽=1,왼쪽=-1
-        rigid.AddForce(Vector2.right * h * 2, ForceMode2D.Impulse); //h * 오른쪽곱해서 힘을 줌
-
-        // 이동속도 제한
-        // 오른쪽 속도 제한
-        if (rigid.velocity.x > maxSpeed)         //x속도가 maxSpeed 보다 크면, 속도 maxSpeed로 고정
-            rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
-
-        // 왼쪽 속도 제한
-        else if (rigid.velocity.x < maxSpeed * (-1))       //x속도가 -maxSpeed 보다 작으면(왼쪽으로 갈때) 속도는 -maxSpeed로 고정
-            rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
-
-
         // Floor 착지
         if (rigid.velocity.y < 0)
         {
@@ -134,6 +122,19 @@ public class PlatPlayerMove : MonoBehaviour
                 }
             }
         }
+
+        // 이동속도 조절
+        float h = Input.GetAxisRaw("Horizontal");       //h에 키를 누르면 입력 오른쪽=1,왼쪽=-1
+        rigid.AddForce(Vector2.right * h * 2, ForceMode2D.Impulse); //h * 오른쪽곱해서 힘을 줌
+
+        // 이동속도 제한
+        // 오른쪽 속도 제한
+        if (rigid.velocity.x > maxSpeed)         //x속도가 maxSpeed 보다 크면, 속도 maxSpeed로 고정
+            rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
+
+        // 왼쪽 속도 제한
+        else if (rigid.velocity.x < maxSpeed * (-1))       //x속도가 -maxSpeed 보다 작으면(왼쪽으로 갈때) 속도는 -maxSpeed로 고정
+            rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);      
 
     }
 

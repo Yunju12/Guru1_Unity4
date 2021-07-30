@@ -5558,7 +5558,8 @@ MonoBehaviour:
   audioDie: {fileID: 8300000, guid: fa34c3896076857468c5ee3d2d8bcec8, type: 3}
   audioFinish: {fileID: 8300000, guid: 7478151cf36724a7dada558f746c3633, type: 3}
   maxSpeed: 5
-  jumpPower: 8
+  jumpPower: 15
+  maxJump: 3
   jumpCount: 3
 --- !u!82 &579710713
 AudioSource:
