@@ -50,20 +50,20 @@ public class ItemManager : MonoBehaviour
         // 2. 만약 경과시간이 생성시간을 초과하면
         if (currentTime > createTime)
         {
-            int randomValue = Random.Range(0, 3);
+            //int randomValue = Random.Range(0, 3);
 
-            if (randomValue == 0)
-            {
-                item = i1;
-            }
-            else if (randomValue == 1)
-            {
-                item = i2;
-            }
-            else
-            {
-                item = i3;
-            }
+            //if (randomValue == 0)
+            //{
+                //item = i1;
+            //}
+            //else if (randomValue == 1)
+            //{
+                //item = i2;
+            //}
+            //else
+            //{
+                //item = i3;
+            //}
 
             // 3. 적을 적공장에서 생성한다.
             item = Instantiate(itemFactory);

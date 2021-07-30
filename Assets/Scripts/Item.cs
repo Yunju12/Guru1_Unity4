@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public GameObject i1;
-
-    public GameObject i2;
-
-    public GameObject i3;
-
-    public GameObject item;
-
     // 속력 변수
     public float speed = 5;
 

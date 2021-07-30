@@ -157,7 +157,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.CompareTag("Item"))
         {
-            // 체력 회복
+            /* 체력 회복
             if (item.item == item.i1)
             {
                 playerHp += 5;
@@ -169,13 +169,10 @@ public class PlayerMove : MonoBehaviour
                 gameObject.layer = 12;
 
                 Invoke("Off", itemTime);
-            }
+            }*/
 
             // 공격력 두배
-            else if (item.item == item.i3)
-            {
-                Invoke("PowerUp", itemTime);
-            }
+            Invoke("PowerUp", itemTime);
         }
     }
 
