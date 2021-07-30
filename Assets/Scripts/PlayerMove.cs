@@ -43,8 +43,6 @@ public class PlayerMove : MonoBehaviour
 
     public AudioClip hurt;
 
-    Item item;
-
     Bullet bul;
 
     // 플레이어 애니메이션 상수
@@ -153,39 +151,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Item"))
-        {
-            /* 체력 회복
-            if (item.item == item.i1)
-            {
-                playerHp += 5;
-            }
-
-            // 무적 상태
-            else if (item.item == item.i2)
-            {
-                gameObject.layer = 12;
-
-                Invoke("Off", itemTime);
-            }*/
-
-            // 공격력 두배
-            Invoke("PowerUp", itemTime);
-        }
-    }
-
-    void Off()
-    {
-        gameObject.layer = 6;
-    }
-
-
-    void PowerUp()
-    {
-        bul.attackPower = 4;
-    }
+    
 
     // * 플레이어 피격 함수
     // 플레이어가 적의 공격을 받았을 때 체력이 줄어들도록 한다.
