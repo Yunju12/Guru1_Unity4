@@ -58,6 +58,10 @@ public class GameManager_Slime : MonoBehaviour
 
     public GameObject player;
 
+    //게임 결과 UI
+    public GameObject GameOverUI;
+    public GameObject ClearUI;
+
     private void Awake()
     {
         if (gm == null)
@@ -131,11 +135,8 @@ public class GameManager_Slime : MonoBehaviour
 
             player.GetComponent<PlayerMove_Slime>().Die();
 
-            // 게임 오버 문구를 출력한다.
-            stateLabel.text = "Game Over...";
-
-            // 게임 오버 문구의 색상은 붉은색으로 설정한다.
-            stateLabel.color = new Color32(255, 0, 0, 255);
+            //게임 오버 옵션 메뉴 창을 활성화한다
+            GameOverUI.SetActive(true);
 
             // 게임 상태를 게임 오버 상태로 전환한다.
             gState = GameState.GameOver;
@@ -149,12 +150,9 @@ public class GameManager_Slime : MonoBehaviour
             //audio.Stop();
             //audio.PlayOneShot(gameClear);
 
-            // 성공 문구를 풀력한다.
-            stateLabel.text = "Clear!";
-
-            // 클리어 문구의 색상은 노란색으로 설정한다.
-            stateLabel.color = new Color32(255, 255, 0, 255);
-
+            //클리어 옵션 메뉴 창을 활성화한다
+            ClearUI.SetActive(true);
+            print(totalPoint);
             // 게임 상태를 게임 클리어 상태로 전환한다.
             gState = GameState.GameClear;
         }

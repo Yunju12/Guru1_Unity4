@@ -144,7 +144,7 @@ public class PlatGameManager : MonoBehaviour
 
             Debug.Log("스테이지 플랫폼 클리어");
 
-            //게임 오버 옵션 메뉴 창을 활성화한다
+            //클리어 옵션 메뉴 창을 활성화한다
             ClearUI.SetActive(true);
 
             // 게임 상태를 게임 클리어 상태로 전환한다.
