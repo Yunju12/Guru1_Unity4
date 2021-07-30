@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerMove_Slime : MonoBehaviour
 {
     // 이동을 위한 변수
     Rigidbody2D rigid;
@@ -42,10 +42,6 @@ public class PlayerMove : MonoBehaviour
     public AudioClip clip;
 
     public AudioClip hurt;
-
-    Item item;
-
-    Bullet bul;
 
     // 플레이어 애니메이션 상수
     public enum PlayerState
@@ -86,7 +82,7 @@ public class PlayerMove : MonoBehaviour
         hpSlider.value = (float)playerHp / (float)maxHp;
 
         // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단한다.
-        if (GameManager.gm.gState != GameManager.GameState.Run)
+        if (GameManager_Slime.gm.gState != GameManager_Slime.GameState.Run)
         {
             return;
         }
@@ -153,50 +149,14 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Item"))
-        {
-            /* 체력 회복
-            if (item.item == item.i1)
-            {
-                playerHp += 5;
-            }
-
-            // 무적 상태
-            else if (item.item == item.i2)
-            {
-                gameObject.layer = 12;
-
-                Invoke("Off", itemTime);
-            }*/
-
-            // 공격력 두배
-            Invoke("PowerUp", itemTime);
-        }
-    }
-
-    void Off()
-    {
-        gameObject.layer = 6;
-    }
-
-
-    void PowerUp()
-    {
-        bul.attackPower = 4;
-    }
-
     // * 플레이어 피격 함수
     // 플레이어가 적의 공격을 받았을 때 체력이 줄어들도록 한다.
     // 플레이어의 체력이 0이하가 되면 체력 변수의 값을 0으로 고정한다.
     public void OnDamage(int value)
     {
-
         audio_pm.PlayOneShot(hurt);
 
         playerHp -= value;
-        
         ani.SetTrigger("ToHurt");
         ani.SetTrigger("Exit");
 

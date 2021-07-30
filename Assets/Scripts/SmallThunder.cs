@@ -13,8 +13,12 @@ public class SmallThunder : MonoBehaviour
     // 공격력 변수
     public int attackPower = 2;
 
+    PlayerMove_Slime pms;
+
     void Start()
     {
+        pms = GetComponent<PlayerMove_Slime>();
+
         // 플레이어의 위치를 찾고,
         GameObject target = GameObject.Find("Player");
 
@@ -26,7 +30,7 @@ public class SmallThunder : MonoBehaviour
     void Update()
     {
         // 게임 상태가 Run 이 아니면 업데이트 함수를 중단한다.
-        if (GameManager.gm.gState != GameManager.GameState.Run)
+        if (GameManager_Slime.gm.gState != GameManager_Slime.GameState.Run)
         {
             return;
         }
@@ -38,15 +42,14 @@ public class SmallThunder : MonoBehaviour
     // * 공격
     // 만약 플레이어와 부딪히면
     // 플레이어의 체력이 2만큼 깎인다.
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // 다른 물체와 부딪혔다면 FireBall은 사라진다.
         Destroy(this.gameObject);
 
-        if (collider.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            PlayerMove pm = GameObject.Find("Player").GetComponent<PlayerMove>();
-            pm.OnDamage(attackPower);
+            collision.gameObject.GetComponent<PlayerMove_Slime>().OnDamage(attackPower);
         }
     }
 }

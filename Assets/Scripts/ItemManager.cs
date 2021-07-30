@@ -19,10 +19,18 @@ public class ItemManager : MonoBehaviour
     // 최대 시간 변수
     public float maxTime = 10;
 
+    public GameObject i1;
+
+    public GameObject i2;
+
+    public GameObject i3;
+
+    GameObject item;
+
     void Start()
     {
-        
-            
+
+
         // 생성시간을 최소 시간과 최대 시간 사이에서 랜덤으로 정한다.
         //createTime = Random.Range(minTime, maxTime);
     }
@@ -42,15 +50,30 @@ public class ItemManager : MonoBehaviour
         // 2. 만약 경과시간이 생성시간을 초과하면
         if (currentTime > createTime)
         {
+            //int randomValue = Random.Range(0, 3);
+
+            //if (randomValue == 0)
+            //{
+                //item = i1;
+            //}
+            //else if (randomValue == 1)
+            //{
+                //item = i2;
+            //}
+            //else
+            //{
+                //item = i3;
+            //}
+
             // 3. 적을 적공장에서 생성한다.
-            GameObject item = Instantiate(itemFactory);
+            item = Instantiate(itemFactory);
 
             // 4. 생성된 적을 배치한다.
             item.transform.position = transform.position;
 
             // 5. 경과시간을 초기화하고 다시 랜덤으로 정한다.
             currentTime = 0;
-            createTime = Random.Range(minTime, maxTime);
+            //createTime = Random.Range(minTime, maxTime);
         }
     }
 }

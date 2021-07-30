@@ -21,7 +21,7 @@ public class WaterBall : MonoBehaviour
         int randomValue = Random.Range(0, 10);
 
         // 2. 만약 랜덤값이 0이면
-        if (randomValue == 0)
+        if (randomValue <= 2)
         {
             // 플레이어의 위치를 찾고,
             GameObject target = GameObject.Find("Player");
@@ -53,15 +53,14 @@ public class WaterBall : MonoBehaviour
     // * 공격
     // 만약 플레이어와 부딪히면
     // 플레이어의 체력이 2만큼 깎인다.
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // 다른 물체와 부딪혔다면 FireBall은 사라진다.
         Destroy(this.gameObject);
 
-        if (collider.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            PlayerMove pm = GameObject.Find("Player").GetComponent<PlayerMove>();
-            pm.OnDamage(attackPower);
+            collision.gameObject.GetComponent<PlayerMove>().OnDamage(attackPower);
         }
     }
 }

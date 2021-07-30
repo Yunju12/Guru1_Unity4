@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBall : MonoBehaviour
+public class Thunder : MonoBehaviour
 {
     // 속도 변수
     public float speed = 10;
@@ -13,15 +13,18 @@ public class FireBall : MonoBehaviour
     // 공격력 변수
     public int attackPower = 2;
 
+    // 
+    PlayerMove_Slime pms;
+
     void Start()
     {
-  
+        pms = GetComponent<PlayerMove_Slime>();
     }
 
     void Update()
     {
         // 게임 상태가 Run 이 아니면 업데이트 함수를 중단한다.
-        if (GameManager.gm.gState != GameManager.GameState.Run)
+        if (GameManager_Slime.gm.gState != GameManager_Slime.GameState.Run)
         {
             return;
         }
@@ -41,7 +44,8 @@ public class FireBall : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerMove>().OnDamage(attackPower);
+
+            collision.gameObject.GetComponent<PlayerMove_Slime>().OnDamage(attackPower);
         }
     }
 }

@@ -19,8 +19,6 @@ public class BallManager : MonoBehaviour
     // 최대 시간 변수
     public float maxTime = 1;
 
-
-
     void Start()
     {
         // 생성시간을 최소 시간과 최대 시간 사이에서 랜덤으로 정한다.

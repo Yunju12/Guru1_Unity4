@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1514378796576173841}
   m_Layer: 10
   m_Name: SmallThunder
-  m_TagString: FireBall
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -8,7 +8,9 @@ TagManager:
   - Enemy
   - BossMonster
   - Item
-  - FireBall
+  - BossMonster2
+  - Ball
+  - Ground
   layers:
   - Default
   - TransparentFX
