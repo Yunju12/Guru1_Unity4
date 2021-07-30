@@ -92,6 +92,12 @@ public class GameManager_UI : MonoBehaviour
     //현재 게임 재시작(옵션)
     public void Restart()
     {
+        //시간을 원래대로 돌린다
+        Time.timeScale = 1.0f;
+
+        //옵션 메뉴 창을 끈다
+        optionUI.SetActive(false);
+
         //알 하나 차감
         EggHp.eggHp--;
 
