@@ -66,6 +66,7 @@ public class Board_PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         // 플레이어 애니메이션 컴포넌트를 받아온다.
         rigid = GetComponent<Rigidbody2D>();
 
