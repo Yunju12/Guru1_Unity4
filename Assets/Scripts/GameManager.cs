@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     // 게임 전체 점수
-    public int totalPoint;
+    public int totalPoint = 0;
 
     public int bossPoint = 500;
 
@@ -58,10 +58,6 @@ public class GameManager : MonoBehaviour
     public AudioClip gameOver;
 
     public GameObject player;
-
-    //게임 결과 UI
-    public GameObject GameOverUI;
-    public GameObject ClearUI;
 
     private void Awake()
     {
@@ -126,6 +122,12 @@ public class GameManager : MonoBehaviour
     {
         UIPoint.text = (totalPoint).ToString();
 
+        // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단
+        if (gm.gState != GameState.Run)
+        {
+            return;
+        }
+
         // 만약 플레이어의 hp가 0 이하로 떨어지면
         if (PlayerMove.playerHp <= 0)
         {
@@ -134,8 +136,11 @@ public class GameManager : MonoBehaviour
 
             player.GetComponent<PlayerMove>().Die();
 
-            //게임 오버 옵션 메뉴 창을 활성화한다
-            GameOverUI.SetActive(true);
+            // 게임 오버 문구를 출력한다.
+            stateLabel.text = "Game Over...";
+
+            // 게임 오버 문구의 색상은 붉은색으로 설정한다.
+            stateLabel.color = new Color32(255, 0, 0, 255);
 
             // 게임 상태를 게임 오버 상태로 전환한다.
             gState = GameState.GameOver;
@@ -144,17 +149,21 @@ public class GameManager : MonoBehaviour
         // 만약 보스의 hp가 0 이하로 떨어지면
         else if (BossMonster.bossHp <= 0)
         {
-            totalPoint += bossPoint;
-            bossPoint = 0;
-
             //audio.Stop();
             //audio.PlayOneShot(gameClear);
 
-            //클리어 옵션 메뉴 창을 활성화한다
-            ClearUI.SetActive(true);
+            totalPoint += bossPoint;
+
+            // 성공 문구를 풀력한다.
+            stateLabel.text = "Clear!";
+
+            // 클리어 문구의 색상은 노란색으로 설정한다.
+            stateLabel.color = new Color32(255, 255, 0, 255);
 
             // 게임 상태를 게임 클리어 상태로 전환한다.
             gState = GameState.GameClear;
         }
     }
+
+    
 }
