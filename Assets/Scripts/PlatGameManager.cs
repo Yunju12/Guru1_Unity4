@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class PlatGameManager : MonoBehaviour
 {
     // 게임 전체 점수
