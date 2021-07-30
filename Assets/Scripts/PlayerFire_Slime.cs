@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFire : MonoBehaviour
+public class PlayerFire_Slime : MonoBehaviour
 {
     // 총알공장
     public GameObject bulletFactory;
@@ -11,24 +11,24 @@ public class PlayerFire : MonoBehaviour
     public GameObject firePosition;
 
     // 오디오 소스 컴포넌트
-    private AudioSource audio_pf;
+    private AudioSource audio_pfs;
 
     // 오디오 클립 변수
     public AudioClip clip;
 
-    GameManager gm2;
+    GameManager_Slime gm2;
 
     void Start()
     {
-        audio_pf = GetComponent<AudioSource>();
+        audio_pfs = GetComponent<AudioSource>();
 
-        gm2 = GetComponent<GameManager>();
+        gm2 = GetComponent<GameManager_Slime>();
     }
 
     void Update()
     {
         // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단한다.
-        if (GameManager.gm.gState != GameManager.GameState.Run)
+        if (GameManager_Slime.gm.gState != GameManager_Slime.GameState.Run)
         {
             return;
         }
@@ -38,7 +38,7 @@ public class PlayerFire : MonoBehaviour
         // 총알 공장에서 총알을 만들고, 총알을 발사(총구에 배치)한다.
         if (Input.GetButtonDown("Fire1"))
         {
-            audio_pf.PlayOneShot(clip);
+            audio_pfs.PlayOneShot(clip);
             GameObject bullet = Instantiate(bulletFactory);
             bullet.transform.position = firePosition.transform.position;
         }

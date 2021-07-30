@@ -1424,6 +1424,7 @@ MonoBehaviour:
   bossBGM: {fileID: 0}
   gameClear: {fileID: 8300000, guid: b1b9c1f0ea1fcae439ed1a4d44ff05fd, type: 3}
   gameOver: {fileID: 8300000, guid: fa34c3896076857468c5ee3d2d8bcec8, type: 3}
+  player: {fileID: 1023151725}
 --- !u!4 &997852358
 Transform:
   m_ObjectHideFlags: 0
@@ -1637,7 +1638,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1023151725}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.74, y: -3.56, z: 0}
+  m_LocalPosition: {x: -7.74, y: -3.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 813271641}
@@ -1677,6 +1678,7 @@ MonoBehaviour:
   moveSpeed: 7
   maxHp: 10
   hpSlider: {fileID: 919638920}
+  itemTime: 5
   clip: {fileID: 8300000, guid: cc1915ad8df03c548a87744baf25a3b6, type: 3}
   hurt: {fileID: 8300000, guid: 881e3f52c86c94f26a60718d35627cd8, type: 3}
 --- !u!50 &1023151731
@@ -3580,7 +3582,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123481738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0099997, y: -4.45, z: 0}
+  m_LocalPosition: {x: 0.0099997, y: -4.63, z: 0}
   m_LocalScale: {x: 37.756226, y: 1.11, z: 1.11}
   m_Children: []
   m_Father: {fileID: 0}

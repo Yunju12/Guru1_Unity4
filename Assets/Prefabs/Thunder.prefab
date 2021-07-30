@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 1514378796576173853}
   - component: {fileID: 6890783006836665340}
   - component: {fileID: 1514378796576173855}
-  - component: {fileID: -7027542538687466380}
+  - component: {fileID: -8903923403568518149}
   - component: {fileID: 1514378796576173841}
   m_Layer: 10
   m_Name: Thunder
-  m_TagString: FireBall
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-7027542538687466380
+--- !u!114 &-8903923403568518149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1514378796576173842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c43403d5542a74c489e425652c17d8a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 93b6635f169796e4381db64723b9cc7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10

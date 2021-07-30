@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet_Slime : MonoBehaviour
 {
     // 속도 변수
     public float speed = 10;
@@ -10,18 +10,17 @@ public class Bullet : MonoBehaviour
     // 공격력
     public int attackPower = 2;
 
-    // 보스 몬스터 컴포넌트 변수
-    BossMonster bm;
+    BossMonster_Slime bms;
 
     void Start()
     {
-        bm = GetComponent<BossMonster>();
+        bms = GetComponent<BossMonster_Slime>();
     }
 
     void Update()
     {
         // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단한다.
-        if (GameManager.gm.gState == GameManager.GameState.GameOver)
+        if (GameManager_Slime.gm.gState == GameManager_Slime.GameState.GameOver)
         {
             this.gameObject.SetActive(false);
         }
@@ -37,13 +36,12 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            Enemy.enemyDeath++;
+            Enemy_Slime.enemyDeath++;
         }
 
         else if (collision.gameObject.tag == "BossMonster")
         {
-            
-            collision.gameObject.GetComponent<BossMonster>().BossOnDamage(attackPower);
+            collision.gameObject.GetComponent<BossMonster_Slime>().BossOnDamage(attackPower);
         }
     }
 }

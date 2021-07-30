@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BossMonster2 : MonoBehaviour
+public class BossMonster_Slime : MonoBehaviour
 {
     // 보스 체력 변수
     public static int bossHp;
@@ -21,16 +21,16 @@ public class BossMonster2 : MonoBehaviour
     Vector3 bossPosition = new Vector3(7.6f, -1.4f, 0);
 
     // 볼 매니져 변수1
-    public GameObject BallManager1;
+    public GameObject ThunderManager1;
 
     // 볼 매니져 변수2
-    public GameObject BallManager2;
+    public GameObject ThunderManager2;
 
     // 볼 매니져 변수3
-    public GameObject BallManager3;
+    public GameObject ThunderManager3;
 
     // 볼 매니져 변수4
-    public GameObject BallManager4;
+    public GameObject ThunderManager4;
 
     // (SmallThunder 전용) 작은 볼 매니져 변수1
     public GameObject SmallBallManager1;
@@ -39,7 +39,7 @@ public class BossMonster2 : MonoBehaviour
     public GameObject SmallBallManager2;
 
     // 애니메이터 컴포넌트 변수
-    Animator ani;
+    Animator anim;
 
     void Start()
     {
@@ -47,7 +47,7 @@ public class BossMonster2 : MonoBehaviour
         bossHp = maxHp;
 
         // 애니메이션 컴포넌트를 받아온다.
-        ani = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -56,7 +56,7 @@ public class BossMonster2 : MonoBehaviour
         hpSlider.value = (float)bossHp / (float)maxHp;
 
         // 만약 적 처치 수가 적 최대 처치 수 이상이 되면,
-        if (Enemy.enemyDeath >= Enemy.maxEnemyDeath)
+        if (Enemy_Slime.enemyDeath >= Enemy_Slime.maxEnemyDeath)
         {
             // 보스 등장 코루틴 함수를 실행한다.
             StartCoroutine("BossAppear");
@@ -66,7 +66,7 @@ public class BossMonster2 : MonoBehaviour
         if (bossHp <= 0)
         {
             // 에니메이터의 파라미터 ToDie 를 실행한다.
-            ani.SetTrigger("ToDie");
+            anim.SetTrigger("ToDie");
         }
     }
 
@@ -86,12 +86,13 @@ public class BossMonster2 : MonoBehaviour
         transform.position = Vector3.Slerp(transform.position, bossPosition, 0.008f);
 
         // 5. 볼 매니저를 활성화한다.
-        BallManager1.SetActive(true);
-        BallManager2.SetActive(true);
-        BallManager3.SetActive(true);
-        BallManager4.SetActive(true);
+        ThunderManager1.SetActive(true);
+        ThunderManager2.SetActive(true);
+        ThunderManager3.SetActive(true);
+        ThunderManager4.SetActive(true);
         SmallBallManager1.SetActive(true);
         SmallBallManager2.SetActive(true);
+   
     }
 
     // * 보스몬스터 피격 함수
