@@ -172,12 +172,16 @@ public class PlatPlayerMove : MonoBehaviour
             bool isGem = collision.gameObject.name.Contains("ItemGem");
             bool isCarrot = collision.gameObject.name.Contains("ItemCarrot");
             bool isSnowflake = collision.gameObject.name.Contains("ItemSnowflake");
+            bool isSilverCoin = collision.gameObject.name.Contains("ItemSilverCoin");
+            
 
             if (isGem)
                 PlatGameManager.stagePoint += 100;
             else if (isCarrot)
                 PlatGameManager.stagePoint += 30;
             else if (isSnowflake)
+                PlatGameManager.stagePoint += 30;
+            else if (isSilverCoin)
                 PlatGameManager.stagePoint += 30;
 
             // 아이템 사라짐
