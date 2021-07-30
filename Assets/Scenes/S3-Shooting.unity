@@ -2356,6 +2356,8 @@ MonoBehaviour:
   gameClear: {fileID: 8300000, guid: b1b9c1f0ea1fcae439ed1a4d44ff05fd, type: 3}
   gameOver: {fileID: 8300000, guid: fa34c3896076857468c5ee3d2d8bcec8, type: 3}
   player: {fileID: 0}
+  GameOverUI: {fileID: 0}
+  ClearUI: {fileID: 0}
 --- !u!4 &997852358
 Transform:
   m_ObjectHideFlags: 0
@@ -4970,7 +4972,7 @@ GameObject:
   - component: {fileID: 2123481741}
   m_Layer: 0
   m_Name: Floor0
-  m_TagString: Ground
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
