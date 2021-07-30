@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   attackPower: 2
+  gm: {fileID: 0}
 --- !u!61 &930651279477154684
 BoxCollider2D:
   m_ObjectHideFlags: 0

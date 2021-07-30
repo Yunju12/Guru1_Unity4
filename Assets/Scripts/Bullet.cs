@@ -13,6 +13,8 @@ public class Bullet : MonoBehaviour
     // 보스 몬스터 컴포넌트 변수
     BossMonster bm;
 
+    public GameManager gm;
+
     void Start()
     {
         bm = GetComponent<BossMonster>();
@@ -38,6 +40,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Enemy.enemyDeath++;
+            GameObject.FindWithTag("GameManager").GetComponent<GameManager>().totalPoint += 50;
         }
 
         else if (collision.gameObject.tag == "BossMonster")

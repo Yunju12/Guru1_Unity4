@@ -37,6 +37,7 @@ public class Bullet_Slime : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Enemy_Slime.enemyDeath++;
+            GameObject.FindWithTag("GameManager").GetComponent<GameManager_Slime>().totalPoint += 50;
         }
 
         else if (collision.gameObject.tag == "BossMonster")
