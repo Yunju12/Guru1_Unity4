@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UI_Ending.unity
     guid: 744d6eced672bc44ba56dd30b01f98bd
+  - enabled: 1
+    path: Assets/Scenes/UI_Start.unity
+    guid: 009c0ec5e235ddb4abaa25082fc7dd48
   m_configObjects: {}
