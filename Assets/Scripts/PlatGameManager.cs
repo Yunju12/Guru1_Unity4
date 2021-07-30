@@ -76,8 +76,6 @@ public class PlatGameManager : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 1.0f;
-
         // 체력 변수 초기화
         Hp = maxHp;
                
@@ -88,7 +86,7 @@ public class PlatGameManager : MonoBehaviour
     {
         // 초기 게임 상태는 준비 상태로 설정한다.
         gState = GameState.Ready;
-
+        
         // Ready...  라는 문구를 표시한다.
         stateLabel.text = "Ready...";
         audioSource.clip = ready;
@@ -173,9 +171,6 @@ public class PlatGameManager : MonoBehaviour
         {            
             // Player Die 호출
             PlatPlayer.OnDie();
-
-            //시간을 멈춘다
-            Time.timeScale = 0;
 
             // 결과 로그 출력
             Debug.Log("죽었습니다!");
