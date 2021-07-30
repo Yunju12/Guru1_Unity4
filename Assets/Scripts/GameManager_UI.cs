@@ -82,6 +82,13 @@ public class GameManager_UI : MonoBehaviour
         SceneManager.LoadScene("BoardGame");
     }
 
+    //스테이지 게임 나가기(성공)
+    public void Clear()
+    {
+        //씬 전환
+        SceneManager.LoadScene("BoardGame");
+    }
+
     //현재 게임 재시작(옵션)
     public void Restart()
     {

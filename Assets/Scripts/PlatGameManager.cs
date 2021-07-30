@@ -63,6 +63,10 @@ public class PlatGameManager : MonoBehaviour
     // UI 텍스트 변수
     public Text stateLabel;
 
+    //게임 결과 UI
+    public GameObject GameOverUI;
+    public GameObject ClearUI;
+
     void Awake()
     {      
         audioSource = GetComponent<AudioSource>();
@@ -72,6 +76,8 @@ public class PlatGameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1.0f;
+
         // 체력 변수 초기화
         Hp = maxHp;
                
@@ -135,14 +141,14 @@ public class PlatGameManager : MonoBehaviour
 
         else  // 스테이지 플랫폼 끝날 경우 (클리어)
         {
+            Board_PlayerMove.totalScore += (totalPoint + stagePoint);
+
             Time.timeScale = 0; // 완주시 시간 멈춤
+
             Debug.Log("스테이지 플랫폼 클리어");
 
-            // 성공 문구를 풀력한다.
-            stateLabel.text = "Clear!";
-
-            // 클리어 문구의 색상은 노란색으로 설정한다.
-            stateLabel.color = new Color32(255, 255, 0, 255);
+            //게임 오버 옵션 메뉴 창을 활성화한다
+            ClearUI.SetActive(true);
 
             // 게임 상태를 게임 클리어 상태로 전환한다.
             gState = GameState.GameClear;
@@ -168,14 +174,14 @@ public class PlatGameManager : MonoBehaviour
             // Player Die 호출
             PlatPlayer.OnDie();
 
+            //시간을 멈춘다
+            Time.timeScale = 0;
+
             // 결과 로그 출력
             Debug.Log("죽었습니다!");
 
-            // 게임 오버 문구를 출력한다.
-            stateLabel.text = "Game Over...";
-
-            // 게임 오버 문구의 색상은 붉은색으로 설정한다.
-            stateLabel.color = new Color32(255, 0, 0, 255);
+            //게임 오버 옵션 메뉴 창을 활성화한다
+            GameOverUI.SetActive(true);
 
             // 게임 상태를 게임 오버 상태로 전환한다.
             gState = GameState.GameOver;
