@@ -117,13 +117,19 @@ public class GameManager_Slime : MonoBehaviour
     {
         UIPoint.text = (totalPoint).ToString();
 
+        // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단
+        if (gm.gState != GameState.Run)
+        {
+            return;
+        }
+
         // 만약 플레이어의 hp가 0 이하로 떨어지면
         if (PlayerMove_Slime.playerHp <= 0)
         {
             //audio.Stop();
             //audio.PlayOneShot(gameOver);
 
-            player.GetComponent<PlayerMove>().Die();
+            player.GetComponent<PlayerMove_Slime>().Die();
 
             // 게임 오버 문구를 출력한다.
             stateLabel.text = "Game Over...";
@@ -139,7 +145,6 @@ public class GameManager_Slime : MonoBehaviour
         else if (BossMonster_Slime.bossHp <= 0)
         {
             totalPoint += bossPoint;
-            bossPoint = 0;
 
             //audio.Stop();
             //audio.PlayOneShot(gameClear);

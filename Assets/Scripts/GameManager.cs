@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     // 게임 전체 점수
-    public int totalPoint;
+    public int totalPoint = 0;
 
     public int bossPoint = 500;
 
@@ -122,6 +122,12 @@ public class GameManager : MonoBehaviour
     {
         UIPoint.text = (totalPoint).ToString();
 
+        // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단
+        if (gm.gState != GameState.Run)
+        {
+            return;
+        }
+
         // 만약 플레이어의 hp가 0 이하로 떨어지면
         if (PlayerMove.playerHp <= 0)
         {
@@ -143,11 +149,10 @@ public class GameManager : MonoBehaviour
         // 만약 보스의 hp가 0 이하로 떨어지면
         else if (BossMonster.bossHp <= 0)
         {
-            totalPoint += bossPoint;
-            bossPoint = 0;
-
             //audio.Stop();
             //audio.PlayOneShot(gameClear);
+
+            totalPoint += bossPoint;
 
             // 성공 문구를 풀력한다.
             stateLabel.text = "Clear!";
@@ -159,4 +164,6 @@ public class GameManager : MonoBehaviour
             gState = GameState.GameClear;
         }
     }
+
+    
 }
