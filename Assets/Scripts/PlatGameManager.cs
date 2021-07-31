@@ -118,8 +118,8 @@ public class PlatGameManager : MonoBehaviour
         hpSlider.value = (float)Hp / (float)maxHp;
 
         // 토탈 포인트 화면 표시
-        UIPoint.text = (totalPoint + stagePoint).ToString();
-    }
+        UIPoint.text = (totalPoint + stagePoint).ToString();     
+    }   
 
     // 새 스테이지
     public void NextStage()
