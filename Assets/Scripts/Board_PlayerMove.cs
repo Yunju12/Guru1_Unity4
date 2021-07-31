@@ -30,6 +30,13 @@ public class Board_PlayerMove : MonoBehaviour
     public GameObject randomPotion;
     public GameObject randomBomb;
 
+    //NPC
+    public GameObject NPC_P;
+    public GameObject NPC_E;
+    public GameObject NPC_B;
+    public GameObject NPC_E2;
+
+
     //좌표 이동 변수
     public static double posx = 0;
     Vector3 toPosX { get { return new Vector3((float)posx, 1.2f, 0); } }
@@ -58,7 +65,7 @@ public class Board_PlayerMove : MonoBehaviour
     GameManager gm;
 
     // 오디오 소스 컴포넌트
-    private AudioSource audio;
+    //private AudioSource audio;
 
     //플레이어 게임 오브젝트
     public GameObject player;
@@ -76,9 +83,9 @@ public class Board_PlayerMove : MonoBehaviour
         // 플레이어 애니메이션 컴포넌트를 받아온다.
         ani = GetComponent<Animator>();
 
-        gm = GetComponent<GameManager>();
+        //audio = GetComponent<AudioSource>();
 
-        audio = GetComponent<AudioSource>();
+        gm = GetComponent<GameManager>();
 
         //전체 점수 표시
         score.text = totalScore.ToString();
@@ -117,6 +124,11 @@ public class Board_PlayerMove : MonoBehaviour
         randomEgg.SetActive(false);
         randomPotion.SetActive(false);
         randomBomb.SetActive(false);
+        NPC_P.SetActive(false);
+        NPC_E.SetActive(false);
+        NPC_B.SetActive(false);
+        NPC_E2.SetActive(false);
+
 
         //ran = Random.Range(1, 7);
         //print(ran);
@@ -130,12 +142,16 @@ public class Board_PlayerMove : MonoBehaviour
             if(posx >= 55.75)
             {
                 StartCoroutine(MoveTo(player, toPosH));
+              
             }
             else
             {
                 StartCoroutine(MoveTo(player, toPosX));
+     
             }
+
         }
+
         else if (ran == 2)
         {
             dice2.SetActive(true);
@@ -143,11 +159,15 @@ public class Board_PlayerMove : MonoBehaviour
             if (posx >= 55.75)
             {
                 StartCoroutine(MoveTo(player, toPosH));
+      
             }
             else
             {
                 StartCoroutine(MoveTo(player, toPosX));
+    
             }
+
+           
         }
         else if (ran == 3)
         {
@@ -156,11 +176,14 @@ public class Board_PlayerMove : MonoBehaviour
             if (posx >= 55.75)
             {
                 StartCoroutine(MoveTo(player, toPosH));
+  
             }
             else
             {
                 StartCoroutine(MoveTo(player, toPosX));
+              
             }
+
         }
         else if (ran == 4)
         {
@@ -169,11 +192,14 @@ public class Board_PlayerMove : MonoBehaviour
             if (posx >= 55.75)
             {
                 StartCoroutine(MoveTo(player, toPosH));
+   
             }
             else
             {
                 StartCoroutine(MoveTo(player, toPosX));
+
             }
+
         }
         else if (ran == 5)
         {
@@ -182,11 +208,14 @@ public class Board_PlayerMove : MonoBehaviour
             if (posx >= 55.75)
             {
                 StartCoroutine(MoveTo(player, toPosH));
+
             }
             else
             {
                 StartCoroutine(MoveTo(player, toPosX));
+
             }
+
         }
         else if (ran == 6)
         {
@@ -195,11 +224,14 @@ public class Board_PlayerMove : MonoBehaviour
             if (posx >= 55.75)
             {
                 StartCoroutine(MoveTo(player, toPosH));
+
             }
             else
             {
                 StartCoroutine(MoveTo(player, toPosX));
+
             }
+
         }
 
         dice.SetActive(true);
@@ -225,6 +257,7 @@ public class Board_PlayerMove : MonoBehaviour
                 else if (posx - 8.92 <= 0.001f && posx - 8.92 >= -0.001f)
                 {
                     EggHp.potionCount++;
+                    NPC_P.SetActive(true);
                 }
                 else if (posx - 13.38 <= 0.001f && posx - 13.38 >= -0.001f)
                 {
@@ -233,6 +266,7 @@ public class Board_PlayerMove : MonoBehaviour
                 else if (posx - 15.61 <= 0.001f && posx - 15.61 >= -0.001f)
                 {
                     EggHp.eggHp++;
+                    NPC_E.SetActive(true);
                 }
                 else if (posx - 17.84 <= 0.001f && posx - 17.84 >= -0.001f)
                 {
@@ -241,6 +275,7 @@ public class Board_PlayerMove : MonoBehaviour
                 else if (posx - 20.07 <= 0.001f && posx - 20.07 >= -0.001f)
                 {
                     EggHp.eggHp++;
+                    NPC_E.SetActive(true);
                 }
                 else if (posx - 24.53 <= 0.001f && posx - 24.53 >= -0.001f)
                 {
@@ -253,6 +288,7 @@ public class Board_PlayerMove : MonoBehaviour
                 else if (posx - 31.22 <= 0.001f && posx - 31.22 >= -0.001f)
                 {
                     EggHp.eggHp += 2;
+                    NPC_E2.SetActive(true);
                 }
                 else if (posx - 37.91 <= 0.001f && posx - 37.91 >= -0.001f)
                 {
@@ -261,11 +297,12 @@ public class Board_PlayerMove : MonoBehaviour
                 else if (posx - 42.37 <= 0.001f && posx - 42.37 >= -0.001f)
                 {
                     EggHp.potionCount++;
-
+                    NPC_P.SetActive(true);
                 }
                 else if (posx - 49.06 <= 0.001f && posx - 49.06 >= -0.001f)
                 {
                     EggHp.eggHp++;
+                    NPC_E.SetActive(true);
                 }
                 else if (posx - 51.29 <= 0.001f && posx - 51.29 >= -0.001f)
                 {
@@ -346,4 +383,8 @@ public class Board_PlayerMove : MonoBehaviour
             randomBomb.SetActive(true);
         }
     }
+
+  
+
+
 }
