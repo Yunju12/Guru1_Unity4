@@ -1372,7 +1372,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &685774529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2409,6 +2409,9 @@ MonoBehaviour:
   gameClear: {fileID: 8300000, guid: b1b9c1f0ea1fcae439ed1a4d44ff05fd, type: 3}
   gameOver: {fileID: 8300000, guid: fa34c3896076857468c5ee3d2d8bcec8, type: 3}
   player: {fileID: 1023151725}
+  isDelay: 0
+  delayTime: 3
+  currentTime: 0
   GameOverUI: {fileID: 1159654533}
   ClearUI: {fileID: 1413177437}
 --- !u!4 &997852358
@@ -2704,6 +2707,9 @@ MonoBehaviour:
   maxHp: 10
   hpSlider: {fileID: 919638920}
   itemTime: 5
+  isDelay: 0
+  delayTime: 3
+  currentTime: 0
   clip: {fileID: 8300000, guid: cc1915ad8df03c548a87744baf25a3b6, type: 3}
   hurt: {fileID: 8300000, guid: 881e3f52c86c94f26a60718d35627cd8, type: 3}
 --- !u!50 &1023151731
@@ -3547,7 +3553,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1220668726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5066,7 +5072,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1936880213
 MonoBehaviour:
   m_ObjectHideFlags: 0
