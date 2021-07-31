@@ -12,6 +12,7 @@ TagManager:
   - Ball
   - Ground
   - GameManager
+  - Potion
   layers:
   - Default
   - TransparentFX

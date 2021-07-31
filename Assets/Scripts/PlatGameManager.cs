@@ -33,7 +33,6 @@ public class PlatGameManager : MonoBehaviour
     public Text UIPoint;
     public Text UIMAP;
 
-
     // 게임 상태 상수
     public enum GameState
     {

@@ -9,12 +9,6 @@ public class GameManager_UI : MonoBehaviour
     //옵션 메뉴 UI 오브젝트
     public GameObject optionUI;
 
-    //게임 시작 UI 오브젝트
-    public GameObject startUI;
-
-    //클리어 실패 옵션 UI 오브젝트
-    public GameObject reOptionUI;
-
     //목숨(계란)
     //public static int eggHp = 5;
 
