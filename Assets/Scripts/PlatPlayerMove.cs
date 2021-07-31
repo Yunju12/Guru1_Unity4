@@ -56,8 +56,16 @@ public class PlatPlayerMove : MonoBehaviour
         jumpCount = maxJump;
     }
 
+    /*
+    private void Start()
+    {
+        if()
+        {
 
- 
+        }
+    }
+    */
+
     void Update()
     {
         // 점프
@@ -88,9 +96,7 @@ public class PlatPlayerMove : MonoBehaviour
         // 키를 누르고 있으면, 왼쪽누르면 -1되서 좌우바꾸기
         if (Input.GetButton("Horizontal"))
         {
-            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
-
-           
+            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;           
         }
 
         // 걷는 애니메이션
@@ -103,6 +109,14 @@ public class PlatPlayerMove : MonoBehaviour
         {
             anim.SetBool("isWalking", true);
         }
+
+        // 포션 사용
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("포션 사용");
+            PotionUse();
+        }
+
     }
 
     // 물리효과 적용위해 일정하게 호출하는 FixedUpdate 사용
@@ -220,15 +234,7 @@ public class PlatPlayerMove : MonoBehaviour
     {
         // Hp감소 호출 : 1씩 감소
         PlatGameManager.HpDown();
-
-        /*
-        // player 레이어 바꿈 (Player -> PlaterDamaged 로!)
-        gameObject.layer = 12;
-
-        // 충돌시 무적상태 만듦( player 불투명하게 보임)
-        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
-        */
-
+               
         // 데미지 입을 경우 반동 줌
         int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
         rigid.AddForce(new Vector2(dirc, 1) * 5, ForceMode2D.Impulse);
@@ -240,15 +246,6 @@ public class PlatPlayerMove : MonoBehaviour
         // 효과음
         PlaySound("DAMAGED");
         audioSource.Play();
-    }
-
-    // 피격시 무적상태 -> 원래 상태로 돌아옴
-    void OffDamaged()
-    {
-        // player 레이어 원상태 (PlayerDamaged -> Plater 로!)
-        gameObject.layer = 6;
-        spriteRenderer.color = new Color(1, 1, 1, 1); // 원래 색으로 변경
-
     }
 
     public void OnDie()
@@ -266,6 +263,7 @@ public class PlatPlayerMove : MonoBehaviour
         audioSource.Play();
     }
 
+    // 낙하속도 0 (낙하시 player 위치 변경에서 사용)
     public void VelocityZero()
     {
         rigid.velocity = Vector2.zero;
@@ -296,5 +294,27 @@ public class PlatPlayerMove : MonoBehaviour
                 break;
         }
     }
+
+    // 물약 사용시 무적상태
+    public void PotionUse()
+    {
+        // player 레이어 바꿈 (Player -> PlaterDamaged 로!)
+        gameObject.layer = 12;
+
+        // 사용시 무적상태 만듦( player 불투명하게 보임)
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+
+        Invoke("PotionAfter", 5); // 5초간 무적상태 설정
+    }
+
+    // 물약 사용 후 무적상태 -> 원래 상태로 돌아옴
+    void PotionAfter()
+    {
+        // player 레이어 원상태 (PlayerDamaged -> Plater 로!)
+        gameObject.layer = 6;
+        spriteRenderer.color = new Color(1, 1, 1, 1); // 원래 색으로 변경
+
+    }
+
 }
 
