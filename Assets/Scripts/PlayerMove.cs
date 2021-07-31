@@ -32,6 +32,10 @@ public class PlayerMove : MonoBehaviour
     // 아이템 효과 유지 시간 변수
     public float itemTime = 5;
 
+    public bool isDelay;
+    public float delayTime = 3.0f;
+    public float currentTime;
+
     // 애니메이션 변수
     Animator ani;
 
@@ -44,6 +48,8 @@ public class PlayerMove : MonoBehaviour
     public AudioClip hurt;
 
     Bullet bul;
+
+    
 
     // 플레이어 애니메이션 상수
     public enum PlayerState
@@ -149,6 +155,8 @@ public class PlayerMove : MonoBehaviour
         {
             GetComponent<CircleCollider2D>().isTrigger = false;
         }
+
+        
     }
 
     // 만일 플레이어가 땅에 착지하였다면,
@@ -161,8 +169,6 @@ public class PlayerMove : MonoBehaviour
             jumpCount = 0;
         }
     }
-
-    
 
     // * 플레이어 피격 함수
     // 플레이어가 적의 공격을 받았을 때 체력이 줄어들도록 한다.

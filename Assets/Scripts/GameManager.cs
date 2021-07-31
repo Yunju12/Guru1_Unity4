@@ -191,8 +191,6 @@ public class GameManager : MonoBehaviour
                 //egg.("potion" + potionCount).SetActive(false);   
             }
         }
-
-        
     }
 
     void Heal()
@@ -203,7 +201,5 @@ public class GameManager : MonoBehaviour
         {
             PlayerMove.playerHp = player.GetComponent<PlayerMove>().maxHp;
         }
-
-        Debug.Log("hp È¸º¹");
     }
 }
