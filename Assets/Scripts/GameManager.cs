@@ -59,6 +59,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
 
+    public bool isDelay;
+    public float delayTime = 3.0f;
+    public float currentTime;
+
     //게임 결과 UI
     public GameObject GameOverUI;
     public GameObject ClearUI;
@@ -161,7 +165,45 @@ public class GameManager : MonoBehaviour
             // 게임 상태를 게임 클리어 상태로 전환한다.
             gState = GameState.GameClear;
         }
+
+        if (isDelay)
+        {
+            currentTime += Time.deltaTime;
+            if (currentTime >= delayTime)
+            {
+                currentTime = 0;
+                isDelay = false;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (isDelay == true || PlayerMove.playerHp == 10)
+            {
+                Debug.Log("아직 포션을 사용할 수 없습니다.");
+                return;
+            }
+            else
+            {
+                // isDelay를 true로 전환 및 체력 회복
+                isDelay = true;
+                Heal();
+                //egg.("potion" + potionCount).SetActive(false);   
+            }
+        }
+
+        
     }
 
-    
+    void Heal()
+    {
+        PlayerMove.playerHp += 5;
+
+        if (PlayerMove.playerHp > player.GetComponent<PlayerMove>().maxHp)
+        {
+            PlayerMove.playerHp = player.GetComponent<PlayerMove>().maxHp;
+        }
+
+        Debug.Log("hp 회복");
+    }
 }

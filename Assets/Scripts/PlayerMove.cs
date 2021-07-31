@@ -108,6 +108,17 @@ public class PlayerMove : MonoBehaviour
             ani.SetTrigger("MoveToIdle");
         }
 
+        // 4. 플레이어 화면 밖으로 못나가게 한다.
+        // 현재 플레이어의 월드 좌표(transform.position)을 뷰포트 기준 좌표로 변환한다.
+        Vector3 viewPosition = Camera.main.WorldToViewportPoint(transform.position);
+
+        // 입력된 값이 0~1 사이를 벗어나지 못하게 강제로 조정한다.
+        viewPosition.x = Mathf.Clamp01(viewPosition.x);
+        viewPosition.y = Mathf.Clamp01(viewPosition.y);
+
+        Vector3 worldPosition = Camera.main.ViewportToWorldPoint(viewPosition);
+        transform.position = worldPosition;
+
         // * 점프
         // 만일 점프 키를 누른다면,
         // (단, 점프 횟수가 최대 점프 횟수를 넘어가지 않았어야 한다.)
