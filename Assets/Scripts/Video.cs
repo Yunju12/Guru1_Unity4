@@ -47,6 +47,8 @@ public class Video : MonoBehaviour
     {
         if (mVideoPlayer != null && mVideoPlayer.isPrepared)
         {
+            EggHp.eggHp = 5;
+            Board_PlayerMove.posx = 0;
             SceneManager.LoadScene("Start");
         }
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager_Slime : MonoBehaviour
 {
@@ -134,16 +135,24 @@ public class GameManager_Slime : MonoBehaviour
         // 만약 플레이어의 hp가 0 이하로 떨어지면
         if (PlayerMove_Slime.playerHp <= 0)
         {
-            //audio.Stop();
-            //audio.PlayOneShot(gameOver);
+            if (EggHp.eggHp <= 0)
+            {
+                //씬 전환
+                SceneManager.LoadScene("BadEnding_2");
+            }
+            else
+            {
+                //audio.Stop();
+                //audio.PlayOneShot(gameOver);
 
-            player.GetComponent<PlayerMove_Slime>().Die();
+                player.GetComponent<PlayerMove_Slime>().Die();
 
-            //게임 오버 옵션 메뉴 창을 활성화한다
-            GameOverUI.SetActive(true);
+                //게임 오버 옵션 메뉴 창을 활성화한다
+                GameOverUI.SetActive(true);
 
-            // 게임 상태를 게임 오버 상태로 전환한다.
-            gState = GameState.GameOver;
+                // 게임 상태를 게임 오버 상태로 전환한다.
+                gState = GameState.GameOver;
+            }
         }
 
         // 만약 보스의 hp가 0 이하로 떨어지면
