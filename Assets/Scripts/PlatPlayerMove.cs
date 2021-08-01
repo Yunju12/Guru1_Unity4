@@ -18,6 +18,7 @@ public class PlatPlayerMove : MonoBehaviour
     public AudioClip audioItem;
     public AudioClip audioDie;
     public AudioClip audioFinish;
+    public AudioClip audioPotion;
 
     // 최대속도 변수
     public float maxSpeed;
@@ -111,12 +112,12 @@ public class PlatPlayerMove : MonoBehaviour
         }
 
         // 포션 사용
-        if (Input.GetKeyDown(KeyCode.A))
+      /*  if (Input.GetKeyDown(KeyCode.A))
         {
             Debug.Log("포션 사용");
             PotionUse();
         }
-
+      */
     }
 
     // 물리효과 적용위해 일정하게 호출하는 FixedUpdate 사용
@@ -172,6 +173,7 @@ public class PlatPlayerMove : MonoBehaviour
         }
     }
 
+    // 아이템 + 포션 + 맵 클리어
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Item")
@@ -198,6 +200,18 @@ public class PlatPlayerMove : MonoBehaviour
             // 효과음
             PlaySound("ITEM");
             audioSource.Play();
+        }
+
+        else if (collision.gameObject.tag == "Potion")
+        {
+            Debug.Log("포션 획득");
+            PotionUse();
+            // 효과음
+            PlaySound("POTION");
+            audioSource.Play();
+
+            // 포션 사라짐
+            collision.gameObject.SetActive(false);
         }
 
         else if (collision.gameObject.tag == "Finish")
@@ -288,6 +302,9 @@ public class PlatPlayerMove : MonoBehaviour
                 break;
             case "DIE":
                 audioSource.clip = audioDie;
+                break;
+            case "POTION":
+                audioSource.clip = audioPotion;
                 break;
             case "FINISH":
                 audioSource.clip = audioFinish;
