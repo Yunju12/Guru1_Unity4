@@ -173,17 +173,19 @@ public class GameManager_Slime : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if (isDelay == true || PlayerMove.playerHp == 10)
+            if (EggHp.potionCount > 0)
             {
-                Debug.Log("아직 포션을 사용할 수 없습니다.");
-                return;
-            }
-            else
-            {
-                // isDelay를 true로 전환 및 체력 회복
-                isDelay = true;
-                Heal();
-                //egg.("potion" + potionCount).SetActive(false);   
+                if (isDelay == true || PlayerMove.playerHp == 10)
+                {
+                    return;
+                }
+                else
+                {
+                    // isDelay를 true로 전환 및 체력 회복
+                    isDelay = true;
+                    EggHp.potionCount--;
+                    Heal();
+                }
             }
         }
     }
