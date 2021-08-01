@@ -63,10 +63,16 @@ public class GameManager_UI : MonoBehaviour
     }
 
     //게임 시작 전 공지
-    public void GoNotice()
+    public void GoNotice1()
     {
         //씬 전환
-        SceneManager.LoadScene("Notice");
+        SceneManager.LoadScene("Notice1");
+    }
+
+    public void GoNotice2()
+    {
+        //씬 전환
+        SceneManager.LoadScene("Notice2");
     }
 
     //전체 게임 시작
