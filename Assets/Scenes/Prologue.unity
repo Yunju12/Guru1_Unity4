@@ -2118,6 +2118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10afc04e8cb93fd4c9b9ef686496c9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restartPanel: {fileID: 0}
   mScreen: {fileID: 0}
   mVideoPlayer: {fileID: 0}
 --- !u!328 &1119108085
@@ -3778,7 +3779,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2005340477}
         m_TargetAssemblyTypeName: Video, Assembly-CSharp
-        m_MethodName: StopVideo
+        m_MethodName: GameStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4022,6 +4023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10afc04e8cb93fd4c9b9ef686496c9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restartPanel: {fileID: 0}
   mScreen: {fileID: 1860708135}
   mVideoPlayer: {fileID: 823082871}
 --- !u!114 &2005340478
