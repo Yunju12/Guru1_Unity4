@@ -154,7 +154,7 @@ public class PlatGameManager : MonoBehaviour
 
     public void Shoot()
     {
-        Vector3 speed = new Vector3(500, 300, 0);
+        Vector3 speed = new Vector3(300, 300, 0);
         bomb.GetComponent<Rigidbody2D>().AddForce(speed);
     }
 
