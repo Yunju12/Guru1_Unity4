@@ -47,7 +47,7 @@ public class Video : MonoBehaviour
     {
         if (mVideoPlayer != null && mVideoPlayer.isPrepared)
         {
-            SceneManager.LoadScene("UI_Start");
+            SceneManager.LoadScene("Start");
         }
     }
 }

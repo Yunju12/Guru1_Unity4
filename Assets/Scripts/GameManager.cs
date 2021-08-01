@@ -158,6 +158,7 @@ public class GameManager : MonoBehaviour
             //audio.PlayOneShot(gameClear);
 
             totalPoint += bossPoint;
+            Board_PlayerMove.totalScore += totalPoint;
 
             //클리어 옵션 메뉴 창을 활성화한다
             ClearUI.SetActive(true);

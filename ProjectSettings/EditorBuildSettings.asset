@@ -6,14 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/BoardGame.unity
-    guid: 8287a4a3d188be74b89b15c067b5af7d
-  - enabled: 1
-    path: Assets/Scenes/UI_Stage.unity
-    guid: 280dc9e0811af4445a3876d8233c3a48
-  - enabled: 1
     path: Assets/Scenes/Prologue.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 009c0ec5e235ddb4abaa25082fc7dd48
+  - enabled: 1
+    path: Assets/Scenes/Notice1.unity
+    guid: a1d43aee64842d8439f82ba833db5329
+  - enabled: 1
+    path: Assets/Scenes/Notice2.unity
+    guid: 57e461f2e4eed9e4c825a1f630bf00c2
+  - enabled: 1
+    path: Assets/Scenes/BoardGame.unity
+    guid: 8287a4a3d188be74b89b15c067b5af7d
   - enabled: 1
     path: Assets/Scenes/S1-Plat.unity
     guid: db352888cbff5af4881fd44471a62e47
@@ -33,12 +39,12 @@ EditorBuildSettings:
     path: Assets/Scenes/S3-Shooting.unity
     guid: 2fc2246dd657928439b488f50114241e
   - enabled: 1
-    path: Assets/Scenes/UI_Ending.unity
+    path: Assets/Scenes/BadEnding_1.unity
+    guid: 142289d19726ba94caca5bb4d85d4c08
+  - enabled: 1
+    path: Assets/Scenes/BadEnding_2.unity
     guid: 744d6eced672bc44ba56dd30b01f98bd
   - enabled: 1
-    path: Assets/Scenes/UI_Start.unity
-    guid: 009c0ec5e235ddb4abaa25082fc7dd48
-  - enabled: 1
-    path: Assets/Scenes/Notice.unity
-    guid: 57e461f2e4eed9e4c825a1f630bf00c2
+    path: Assets/Scenes/HappyEnding.unity
+    guid: b5cf15573bfe51f40a93e08bfead6d77
   m_configObjects: {}

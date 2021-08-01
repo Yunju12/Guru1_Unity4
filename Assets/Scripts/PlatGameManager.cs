@@ -203,7 +203,7 @@ public class PlatGameManager : MonoBehaviour
 
         // Hp 0일 경우
         else if(Hp == 0)
-        {            
+        {
             // Player Die 호출
             PlatPlayer.OnDie();
 

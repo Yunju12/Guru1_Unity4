@@ -9,43 +9,6 @@ public class GameManager_UI : MonoBehaviour
     //옵션 메뉴 UI 오브젝트
     public GameObject optionUI;
 
-    //목숨(계란)
-    //public static int eggHp = 5;
-
-    /*private void Awake()
-    {
-        if(gmU == null)
-        {
-            gmU = this;
-        }
-    }*/
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //플레이어 오브젝트를 검색
-        //player = GameObject.Find("Player");
-
-        //playerM = Player.GetComponent<PlayerMove>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //만일 플레이어의 hp가 0 이하로 떨어진다면
-        /*if(PlayerM.hp <= 0)
-        {
-            //게임 오버 문구를 출력한다
-            stateLabel.text = "Lose";
-
-            //게임 오버 문구의 색상은 붉은색으로 설정한다
-            stateLabel.color = new Color32(255, 0, 0, 255);
-
-            //게임 상태를 게임 오버 상태로 전환한다
-            gState = GameState.Lose;
-        }*/
-    }
-
     //옵션 메뉴 켜기
     public void OpenOptionWindow()
     {
@@ -100,10 +63,16 @@ public class GameManager_UI : MonoBehaviour
     }
 
     //게임 시작 전 공지
-    public void GoNotice()
+    public void GoNotice1()
     {
         //씬 전환
-        SceneManager.LoadScene("Notice");
+        SceneManager.LoadScene("Notice1");
+    }
+
+    public void GoNotice2()
+    {
+        //씬 전환
+        SceneManager.LoadScene("Notice2");
     }
 
     //전체 게임 시작
