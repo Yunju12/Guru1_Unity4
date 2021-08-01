@@ -150,6 +150,7 @@ public class GameManager_Slime : MonoBehaviour
         else if (BossMonster_Slime.bossHp <= 0)
         {
             totalPoint += bossPoint;
+            Board_PlayerMove.totalScore += totalPoint;
 
             //audio.Stop();
             //audio.PlayOneShot(gameClear);
