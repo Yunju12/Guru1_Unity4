@@ -13,6 +13,7 @@ TagManager:
   - Ground
   - GameManager
   - Potion
+  - Bomb
   layers:
   - Default
   - TransparentFX

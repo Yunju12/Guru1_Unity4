@@ -29,6 +29,12 @@ public class PlatGameManager : MonoBehaviour
     //스테이지 1,2 배열
     public GameObject[] Stages;
 
+    // 폭탄 오브젝트
+    public GameObject bomb;
+
+    // 폭탄 사용 bool 변수
+    bool usingBomb;
+
     // UI : 현재 맵, 득점 포인트 출력
     public Text UIPoint;
     public Text UIMAP;
@@ -76,7 +82,9 @@ public class PlatGameManager : MonoBehaviour
     {
         // 체력 변수 초기화
         Hp = maxHp;
-               
+
+        bomb.GetComponent<Rigidbody2D>().isKinematic = true;
+
         // 게임 시작 코루틴 함수를 실행한다.
         StartCoroutine(GameStart());
     }
@@ -118,8 +126,37 @@ public class PlatGameManager : MonoBehaviour
         hpSlider.value = (float)Hp / (float)maxHp;
 
         // 토탈 포인트 화면 표시
-        UIPoint.text = (totalPoint + stagePoint).ToString();     
-    }   
+        UIPoint.text = (totalPoint + stagePoint).ToString();
+
+        // S 버튼을 누르면 폭탄 사용
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            if (EggHp.bombCount == 0)
+            {
+                return;
+            }
+            else
+            {
+                bomb.SetActive(true);
+                usingBomb = true;
+            }
+        }
+
+        if (usingBomb == true)
+        {
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                bomb.GetComponent<Rigidbody2D>().isKinematic = false;
+                Shoot();
+            }
+        }
+    }
+
+    public void Shoot()
+    {
+        Vector3 speed = new Vector3(500, 300, 0);
+        bomb.GetComponent<Rigidbody2D>().AddForce(speed);
+    }
 
     // 새 스테이지
     public void NextStage()
