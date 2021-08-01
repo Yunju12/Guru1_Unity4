@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlatGameManager : MonoBehaviour
 {
@@ -204,19 +205,27 @@ public class PlatGameManager : MonoBehaviour
         // Hp 0일 경우
         else if(Hp == 0)
         {
-            // Player Die 호출
-            PlatPlayer.OnDie();
+            if(EggHp.eggHp <= 0)
+            {
+                //씬 전환
+                SceneManager.LoadScene("BadEnding_2");
+            }
+            else
+            {
+                // Player Die 호출
+                PlatPlayer.OnDie();
 
-            // 결과 로그 출력
-            Debug.Log("죽었습니다!");
+                // 결과 로그 출력
+                Debug.Log("죽었습니다!");
 
-            //게임 오버 옵션 메뉴 창을 활성화한다
-            GameOverUI.SetActive(true);
+                //게임 오버 옵션 메뉴 창을 활성화한다
+                GameOverUI.SetActive(true);
 
-            // 게임 상태를 게임 오버 상태로 전환한다.
-            gState = GameState.GameOver;
-            audioSource.clip = gameOver;
-            audioSource.Play();
+                // 게임 상태를 게임 오버 상태로 전환한다.
+                gState = GameState.GameOver;
+                audioSource.clip = gameOver;
+                audioSource.Play();
+            }
         }
 
     }
