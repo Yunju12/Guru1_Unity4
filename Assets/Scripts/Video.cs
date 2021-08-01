@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class Video : MonoBehaviour
 {
+    public GameObject restartPanel;
+    public GameObject skipButton;
+
     public RawImage mScreen = null;
     public VideoPlayer mVideoPlayer = null;
 
@@ -34,22 +37,34 @@ public class Video : MonoBehaviour
         mScreen.texture = mVideoPlayer.texture;
     }
 
-    public void PlayVideo()
-    {
-        if (mVideoPlayer != null && mVideoPlayer.isPrepared)
-        {
+    //public void PlayVideo()
+    //{
+        //if (mVideoPlayer != null && mVideoPlayer.isPrepared)
+        //{
             // 비디오 재생
-            mVideoPlayer.Play();
-        }
-    }
+            //mVideoPlayer.Play();
+        //}
+    //}
 
-    public void StopVideo()
+    //첫 게임 시작
+    public void GameStart()
     {
         if (mVideoPlayer != null && mVideoPlayer.isPrepared)
         {
             EggHp.eggHp = 5;
             Board_PlayerMove.posx = 0;
             SceneManager.LoadScene("Start");
+        }
+    }
+
+    //전체 게임 재시작
+    public void GameReStart()
+    {
+        if (mVideoPlayer != null && mVideoPlayer.isPrepared)
+        {
+            mVideoPlayer.Stop();
+            skipButton.SetActive(false);
+            restartPanel.SetActive(true);
         }
     }
 }
