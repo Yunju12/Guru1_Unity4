@@ -5,6 +5,7 @@ using UnityEngine;
 public class BombManager : MonoBehaviour
 {
     Animator anim;
+    public GameObject explosion;
     //Rigidbody2D rigid;
 
     void Start()
@@ -23,8 +24,8 @@ public class BombManager : MonoBehaviour
         if (collision.CompareTag("Floor"))
         {
             Destroy(gameObject);
-
-
+            GameObject exp = Instantiate(explosion);
+            exp.transform.position = transform.position;
         }
 
     }
