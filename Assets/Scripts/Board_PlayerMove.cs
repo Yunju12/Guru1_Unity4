@@ -359,8 +359,17 @@ public class Board_PlayerMove : MonoBehaviour
     }
     public void H()
     {
-        //¾À ÀüÈ¯
-        SceneManager.LoadScene("UI_Ending");
+        if(totalScore >= 5000)
+        {
+            //¾À ÀüÈ¯
+            SceneManager.LoadScene("HappyEnding");
+
+        }
+        else if(totalScore < 5000)
+        {
+            //¾À ÀüÈ¯
+            SceneManager.LoadScene("BadEnding_1");
+        }
     }
 
     public void RandomBox()

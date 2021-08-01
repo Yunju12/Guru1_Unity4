@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EggHp_P : MonoBehaviour
 {
@@ -226,6 +227,11 @@ public class EggHp_P : MonoBehaviour
             egg10.SetActive(false);
             egg11.SetActive(false);
             egg12.SetActive(false);
+        }
+        else if(EggHp.eggHp < 0)
+        {
+            //¾À ÀüÈ¯
+            SceneManager.LoadScene("BadEnding_2");
         }
 
         //ÆøÅº UI

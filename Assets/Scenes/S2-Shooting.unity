@@ -4406,6 +4406,9 @@ MonoBehaviour:
   maxHp: 10
   hpSlider: {fileID: 919638920}
   itemTime: 5
+  isDelay: 0
+  delayTime: 3
+  currentTime: 0
   clip: {fileID: 8300000, guid: cc1915ad8df03c548a87744baf25a3b6, type: 3}
   hurt: {fileID: 8300000, guid: 881e3f52c86c94f26a60718d35627cd8, type: 3}
 --- !u!50 &1023151731
