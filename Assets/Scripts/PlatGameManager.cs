@@ -43,7 +43,7 @@ public class PlatGameManager : MonoBehaviour
     public Text UIMAP;
 
     // 게임 상태 상수
-    public enum GameState
+     public enum GameState
     {
         Ready,
         Run,
@@ -52,7 +52,7 @@ public class PlatGameManager : MonoBehaviour
     }
 
     // 게임 상태 변수
-    public GameState gState;
+    public static GameState gState;
 
     // 애니메이션 변수
     Animator anim;
@@ -84,9 +84,7 @@ public class PlatGameManager : MonoBehaviour
     void Start()
     {
         // 체력 변수 초기화
-        Hp = maxHp;
-
-        
+        Hp = maxHp;        
 
         // 게임 시작 코루틴 함수를 실행한다.
         StartCoroutine(GameStart());
@@ -124,7 +122,13 @@ public class PlatGameManager : MonoBehaviour
 
 
     void Update()
-    {  
+    {
+        // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단
+        if (gState != GameState.Run)
+        {
+            return;
+        }
+
         // 슬라이더 체력 비율 적용
         hpSlider.value = (float)Hp / (float)maxHp;
 
@@ -145,6 +149,15 @@ public class PlatGameManager : MonoBehaviour
             }
         }
     }
+    /*
+    public void movingStop()
+    {
+        // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단
+        if (gState != GameState.Run)
+        {
+            return;
+        }
+    }*/
 
     // 새 스테이지
     public void NextStage()

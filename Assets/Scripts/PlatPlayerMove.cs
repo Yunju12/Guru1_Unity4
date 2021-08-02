@@ -69,6 +69,7 @@ public class PlatPlayerMove : MonoBehaviour
 
     void Update()
     {
+       
         // 점프
         if (Input.GetButtonDown("Jump") && (jumpCount > 0))
         {
@@ -264,6 +265,7 @@ public class PlatPlayerMove : MonoBehaviour
 
     public void OnDie()
     {
+        /*
         spriteRenderer.color = new Color(1, 1, 1, 0.4f);
 
         spriteRenderer.flipY = true;
@@ -271,6 +273,9 @@ public class PlatPlayerMove : MonoBehaviour
         capsuleCollider.enabled = false;
 
         rigid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+        */
+
+        anim.SetTrigger("onDie"); // 데미지 애니메이션 출력
 
         // 효과음
         PlaySound("DIE");
