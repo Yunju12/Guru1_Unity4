@@ -132,11 +132,7 @@ public class PlatGameManager : MonoBehaviour
         // S 버튼을 누르면 폭탄 사용
         if (Input.GetKeyDown(KeyCode.S))
         {
-            if (EggHp.bombCount == 0)
-            {
-                return;
-            }
-            else
+            if (EggHp.bombCount > 0)
             {
                 bomb.SetActive(true);
                 usingBomb = true;
@@ -157,6 +153,7 @@ public class PlatGameManager : MonoBehaviour
     {
         Vector3 speed = new Vector3(300, 300, 0);
         bomb.GetComponent<Rigidbody2D>().AddForce(speed);
+        usingBomb = false;
     }
 
     // 새 스테이지
