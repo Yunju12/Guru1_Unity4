@@ -850,7 +850,8 @@ MonoBehaviour:
   Stages:
   - {fileID: 1373465658}
   - {fileID: 1539678676}
-  bomb: {fileID: 1854364770}
+  bomb: {fileID: 4439190589733822467, guid: 17de6a1e87ddf2b439f60acfb633049b, type: 3}
+  player: {fileID: 579710706}
   UIPoint: {fileID: 1120244873}
   UIMAP: {fileID: 720622150}
   gState: 1
@@ -14783,9 +14784,9 @@ GameObject:
   - component: {fileID: 1854364774}
   - component: {fileID: 1854364773}
   - component: {fileID: 1854364772}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bomb
-  m_TagString: Untagged
+  m_TagString: b
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14799,7 +14800,7 @@ Transform:
   m_GameObject: {fileID: 1854364770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.041, y: 0.961, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 579710708}
   m_RootOrder: 3

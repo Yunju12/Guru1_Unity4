@@ -468,7 +468,8 @@ MonoBehaviour:
   Stages:
   - {fileID: 1373465658}
   - {fileID: 1886606145}
-  bomb: {fileID: 92002019}
+  bomb: {fileID: 4439190589733822467, guid: 17de6a1e87ddf2b439f60acfb633049b, type: 3}
+  player: {fileID: 579710706}
   UIPoint: {fileID: 10673800}
   UIMAP: {fileID: 1170602771}
   gState: 1
@@ -614,7 +615,7 @@ GameObject:
   - component: {fileID: 92002023}
   - component: {fileID: 92002022}
   - component: {fileID: 92002021}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
