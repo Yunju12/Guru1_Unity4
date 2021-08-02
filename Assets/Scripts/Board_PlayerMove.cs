@@ -379,16 +379,19 @@ public class Board_PlayerMove : MonoBehaviour
         if(rBox == 1)
         {
             EggHp.eggHp++;
+            print(EggHp.eggHp);
             randomEgg.SetActive(true);
         }
         else if(rBox == 2)
         {
             EggHp.potionCount++;
+            print(EggHp.potionCount);
             randomPotion.SetActive(true);
         }
         else if(rBox == 3)
         {
             EggHp.bombCount++;
+            print(EggHp.bombCount);
             randomBomb.SetActive(true);
         }
     }
