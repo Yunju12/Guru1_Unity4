@@ -472,7 +472,6 @@ MonoBehaviour:
   player: {fileID: 579710706}
   UIPoint: {fileID: 10673800}
   UIMAP: {fileID: 1170602771}
-  gState: 1
   ready: {fileID: 8300000, guid: e50c0adc02e40db49ab548d254a3ae97, type: 3}
   start: {fileID: 8300000, guid: 0e10aa7adde03c7488e2964bb32f762c, type: 3}
   gameClear: {fileID: 8300000, guid: b1b9c1f0ea1fcae439ed1a4d44ff05fd, type: 3}
@@ -14575,7 +14574,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.23, y: -0.27}
+  m_Offset: {x: 1.19, y: -0.27}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -14586,7 +14585,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.45}
+  m_Size: {x: 2.99, y: 0.45}
   m_EdgeRadius: 0
 --- !u!212 &1626204338
 SpriteRenderer:
@@ -16734,7 +16733,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.23, y: -0.27}
+  m_Offset: {x: 1.18, y: -0.22}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -16745,7 +16744,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.45}
+  m_Size: {x: 3, y: 0.48}
   m_EdgeRadius: 0
 --- !u!212 &1779310722
 SpriteRenderer:
