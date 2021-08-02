@@ -236,8 +236,9 @@ public class PlatPlayerMove : MonoBehaviour
         rigid.AddForce(Vector2.up * 2, ForceMode2D.Impulse);
 
         // Enemy Á×À½
-        PlatEnemyMove platEnemyMove = PlatEnemy.GetComponent<PlatEnemyMove>();
-        platEnemyMove.OnDamaged();
+        //PlatEnemyMove platEnemyMove = PlatEnemy.GetComponent<PlatEnemyMove>();
+        //platEnemyMove.OnDamaged();
+        PlatEnemy.GetComponent<PlatEnemyMove>().OnDamaged();
 
         // È¿°úÀ½
         PlaySound("ATTACK");
