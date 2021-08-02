@@ -11,7 +11,8 @@ public class Board_PlayerMove : MonoBehaviour
     public Text score;
 
     //주사위 변수
-    public GameObject dice;
+    public GameObject diceB;
+    public GameObject diceB2;
 
     public GameObject dice1;
     public GameObject dice2;
@@ -89,6 +90,9 @@ public class Board_PlayerMove : MonoBehaviour
 
         //전체 점수 표시
         score.text = totalScore.ToString();
+
+        diceB.SetActive(false);
+        diceB2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -103,8 +107,15 @@ public class Board_PlayerMove : MonoBehaviour
     }
 
     //주사위 굴리기
-    public void DiceRandom(GameObject player)
+    public void DiceRandom()
     {
+        StartCoroutine(Dice());
+    }
+
+    IEnumerator Dice()
+    {
+        yield return new WaitForSeconds(0.1f);
+
         //씬 이동 버튼 끄기
         buttonS1P.SetActive(false);
         buttonS1S.SetActive(false);
@@ -129,7 +140,6 @@ public class Board_PlayerMove : MonoBehaviour
         NPC_B.SetActive(false);
         NPC_E2.SetActive(false);
 
-
         //ran = Random.Range(1, 7);
         //print(ran);
 
@@ -139,15 +149,15 @@ public class Board_PlayerMove : MonoBehaviour
         {
             dice1.SetActive(true);
             posx += 2.23;
-            if(posx >= 55.75)
+            if (posx >= 55.75)
             {
                 StartCoroutine(MoveTo(player, toPosH));
-              
+
             }
             else
             {
                 StartCoroutine(MoveTo(player, toPosX));
-     
+
             }
 
         }
@@ -158,13 +168,13 @@ public class Board_PlayerMove : MonoBehaviour
             if (posx >= 55.75)
             {
                 StartCoroutine(MoveTo(player, toPosH));
-      
+
             }
             else
             {
                 StartCoroutine(MoveTo(player, toPosX));
-    
-            }          
+
+            }
         }
         else if (ran == 3)
         {
@@ -173,12 +183,12 @@ public class Board_PlayerMove : MonoBehaviour
             if (posx >= 55.75)
             {
                 StartCoroutine(MoveTo(player, toPosH));
-  
+
             }
             else
             {
                 StartCoroutine(MoveTo(player, toPosX));
-              
+
             }
         }
         else if (ran == 4)
@@ -188,7 +198,7 @@ public class Board_PlayerMove : MonoBehaviour
             if (posx >= 55.75)
             {
                 StartCoroutine(MoveTo(player, toPosH));
-   
+
             }
             else
             {
@@ -226,7 +236,13 @@ public class Board_PlayerMove : MonoBehaviour
 
             }
         }
-        dice.SetActive(true);
+        diceB.SetActive(true);
+        diceB2.SetActive(true);
+
+        yield return new WaitForSeconds(1.0f);
+
+        diceB.SetActive(false);
+        diceB2.SetActive(false);
     }
 
     IEnumerator MoveTo(GameObject player, Vector3 toPos)
