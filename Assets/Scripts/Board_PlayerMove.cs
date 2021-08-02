@@ -103,7 +103,7 @@ public class Board_PlayerMove : MonoBehaviour
     }
 
     //¡÷ªÁ¿ß ±º∏Æ±‚
-    public void DiceRandom()
+    public void DiceRandom(GameObject player)
     {
         //æ¿ ¿Ãµø πˆ∆∞ ≤Ù±‚
         buttonS1P.SetActive(false);
@@ -151,7 +151,6 @@ public class Board_PlayerMove : MonoBehaviour
             }
 
         }
-
         else if (ran == 2)
         {
             dice2.SetActive(true);
@@ -165,9 +164,7 @@ public class Board_PlayerMove : MonoBehaviour
             {
                 StartCoroutine(MoveTo(player, toPosX));
     
-            }
-
-           
+            }          
         }
         else if (ran == 3)
         {
@@ -183,7 +180,6 @@ public class Board_PlayerMove : MonoBehaviour
                 StartCoroutine(MoveTo(player, toPosX));
               
             }
-
         }
         else if (ran == 4)
         {
@@ -199,7 +195,6 @@ public class Board_PlayerMove : MonoBehaviour
                 StartCoroutine(MoveTo(player, toPosX));
 
             }
-
         }
         else if (ran == 5)
         {
@@ -215,7 +210,6 @@ public class Board_PlayerMove : MonoBehaviour
                 StartCoroutine(MoveTo(player, toPosX));
 
             }
-
         }
         else if (ran == 6)
         {
@@ -231,14 +225,13 @@ public class Board_PlayerMove : MonoBehaviour
                 StartCoroutine(MoveTo(player, toPosX));
 
             }
-
         }
-
         dice.SetActive(true);
     }
 
     IEnumerator MoveTo(GameObject player, Vector3 toPos)
     {
+        print(1);
         float count = 0;
         Vector3 wasPos = player.transform.position;
         while (true)
