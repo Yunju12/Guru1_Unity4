@@ -18,7 +18,7 @@ public class PlatExplosion : MonoBehaviour
     void Update()
     { 
         // 생성된 때로부터 1초가 경과되면 사라진다.
-        if (currentTime >= 1)
+        if (currentTime >= 0.9f)
         {
             Destroy(gameObject);
         }
