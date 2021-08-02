@@ -679,7 +679,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -9591,17 +9591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   egg1: {fileID: 287069334}
-  egg2: {fileID: 1169244852}
-  egg3: {fileID: 367310143}
-  egg4: {fileID: 1657922976}
-  egg5: {fileID: 830182957}
-  egg6: {fileID: 1097727380}
-  egg7: {fileID: 754155891}
-  egg8: {fileID: 1624685165}
-  egg9: {fileID: 1967101735}
-  egg10: {fileID: 1100070207}
-  egg11: {fileID: 1377374006}
-  egg12: {fileID: 811149749}
+  eggText: {fileID: 0}
   bomb1: {fileID: 1155773755}
   bomb2: {fileID: 278892047}
 --- !u!1 &941380605

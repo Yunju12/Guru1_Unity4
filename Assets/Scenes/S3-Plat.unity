@@ -880,7 +880,7 @@ MonoBehaviour:
   Stages:
   - {fileID: 1373465658}
   - {fileID: 1401968425}
-  bomb: {fileID: 0}
+  bomb: {fileID: 235291513}
   UIPoint: {fileID: 1272972212}
   UIMAP: {fileID: 1072562388}
   gState: 1
@@ -2198,7 +2198,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

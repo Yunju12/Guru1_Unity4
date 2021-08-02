@@ -2626,17 +2626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   egg1: {fileID: 1565577126}
-  egg2: {fileID: 205068331}
-  egg3: {fileID: 485924877}
-  egg4: {fileID: 1034483957}
-  egg5: {fileID: 1585107235}
-  egg6: {fileID: 214452642}
-  egg7: {fileID: 972774914}
-  egg8: {fileID: 446823759}
-  egg9: {fileID: 180966250}
-  egg10: {fileID: 722995986}
-  egg11: {fileID: 529126096}
-  egg12: {fileID: 809561762}
+  eggText: {fileID: 0}
   bomb1: {fileID: 53321290}
   bomb2: {fileID: 1320238526}
 --- !u!1 &264214478
@@ -14858,7 +14848,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
