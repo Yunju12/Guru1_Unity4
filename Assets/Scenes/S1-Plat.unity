@@ -850,7 +850,7 @@ MonoBehaviour:
   Stages:
   - {fileID: 1373465658}
   - {fileID: 1539678676}
-  bomb: {fileID: 0}
+  bomb: {fileID: 1854364770}
   UIPoint: {fileID: 1120244873}
   UIMAP: {fileID: 720622150}
   gState: 1
@@ -14799,7 +14799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1854364771
 Transform:
   m_ObjectHideFlags: 0
@@ -14826,6 +14826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464364ec6130aef4b823c06b6d1127cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 1319352716567903466, guid: fede58496e294cf4186c0fbb74bc395e, type: 3}
 --- !u!50 &1854364773
 Rigidbody2D:
   serializedVersion: 4
