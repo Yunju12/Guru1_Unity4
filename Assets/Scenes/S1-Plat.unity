@@ -850,7 +850,7 @@ MonoBehaviour:
   Stages:
   - {fileID: 1373465658}
   - {fileID: 1539678676}
-  bomb: {fileID: 0}
+  bomb: {fileID: 1854364770}
   UIPoint: {fileID: 1120244873}
   UIMAP: {fileID: 720622150}
   gState: 1
@@ -2626,17 +2626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   egg1: {fileID: 1565577126}
-  egg2: {fileID: 205068331}
-  egg3: {fileID: 485924877}
-  egg4: {fileID: 1034483957}
-  egg5: {fileID: 1585107235}
-  egg6: {fileID: 214452642}
-  egg7: {fileID: 972774914}
-  egg8: {fileID: 446823759}
-  egg9: {fileID: 180966250}
-  egg10: {fileID: 722995986}
-  egg11: {fileID: 529126096}
-  egg12: {fileID: 809561762}
+  eggText: {fileID: 0}
   bomb1: {fileID: 53321290}
   bomb2: {fileID: 1320238526}
 --- !u!1 &264214478
@@ -14799,7 +14789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1854364771
 Transform:
   m_ObjectHideFlags: 0
@@ -14826,6 +14816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464364ec6130aef4b823c06b6d1127cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 1319352716567903466, guid: fede58496e294cf4186c0fbb74bc395e, type: 3}
 --- !u!50 &1854364773
 Rigidbody2D:
   serializedVersion: 4
@@ -14857,7 +14848,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
