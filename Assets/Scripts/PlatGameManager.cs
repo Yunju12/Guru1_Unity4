@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlatGameManager : MonoBehaviour
 {
@@ -33,8 +32,11 @@ public class PlatGameManager : MonoBehaviour
     // 폭탄 오브젝트
     public GameObject bomb;
 
+    // 플레이어 변수
+    public GameObject player;
+
     // 폭탄 사용 bool 변수
-    bool usingBomb;
+    //bool usingBomb;
 
     // UI : 현재 맵, 득점 포인트 출력
     public Text UIPoint;
@@ -84,7 +86,7 @@ public class PlatGameManager : MonoBehaviour
         // 체력 변수 초기화
         Hp = maxHp;
 
-        bomb.GetComponent<Rigidbody2D>().isKinematic = true;
+        
 
         // 게임 시작 코루틴 함수를 실행한다.
         StartCoroutine(GameStart());
@@ -129,31 +131,19 @@ public class PlatGameManager : MonoBehaviour
         // 토탈 포인트 화면 표시
         UIPoint.text = (totalPoint + stagePoint).ToString();
 
-        // S 버튼을 누르면 폭탄 사용
+        // S 버튼을 누르면 폭탄 생성 및 사용
         if (Input.GetKeyDown(KeyCode.S))
         {
             if (EggHp.bombCount > 0)
             {
-                bomb.SetActive(true);
-                usingBomb = true;
+                GameObject b = Instantiate(bomb);
+                b.transform.position = player.transform.position + new Vector3(0, 0.8f, 0);
+                EggHp.bombCount--;
+
+                Vector3 speed = new Vector3(200, 200, 0);
+                b.GetComponent<Rigidbody2D>().AddForce(speed);
             }
         }
-
-        if (usingBomb == true)
-        {
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                bomb.GetComponent<Rigidbody2D>().isKinematic = false;
-                Shoot();
-            }
-        }
-    }
-
-    public void Shoot()
-    {
-        Vector3 speed = new Vector3(300, 300, 0);
-        bomb.GetComponent<Rigidbody2D>().AddForce(speed);
-        usingBomb = false;
     }
 
     // 새 스테이지

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -850,7 +850,8 @@ MonoBehaviour:
   Stages:
   - {fileID: 1373465658}
   - {fileID: 1539678676}
-  bomb: {fileID: 1854364770}
+  bomb: {fileID: 4439190589733822467, guid: 17de6a1e87ddf2b439f60acfb633049b, type: 3}
+  player: {fileID: 579710706}
   UIPoint: {fileID: 1120244873}
   UIMAP: {fileID: 720622150}
   gState: 1
@@ -6542,7 +6543,7 @@ RectTransform:
   m_GameObject: {fileID: 996043264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.9112298, z: 1}
   m_Children:
   - {fileID: 918809695}
   m_Father: {fileID: 1371395986}
@@ -6550,7 +6551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50.713318, y: -50.7133}
+  m_AnchoredPosition: {x: -50.71338, y: -50.713135}
   m_SizeDelta: {x: 78.5497, y: 81.4035}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &996043266
@@ -6622,7 +6623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.77687055, b: 0.21658951, a: 1}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13358,9 +13359,9 @@ GameObject:
   - component: {fileID: 1854364774}
   - component: {fileID: 1854364773}
   - component: {fileID: 1854364772}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bomb
-  m_TagString: Untagged
+  m_TagString: b
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13374,7 +13375,7 @@ Transform:
   m_GameObject: {fileID: 1854364770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.041, y: 0.961, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 579710708}
   m_RootOrder: 3
