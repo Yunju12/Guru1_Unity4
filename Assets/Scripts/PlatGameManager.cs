@@ -144,8 +144,17 @@ public class PlatGameManager : MonoBehaviour
                 b.transform.position = player.transform.position + new Vector3(0, 0.8f, 0);
                 EggHp.bombCount--;
 
-                Vector3 speed = new Vector3(200, 200, 0);
-                b.GetComponent<Rigidbody2D>().AddForce(speed);
+                if (player.GetComponent<SpriteRenderer>().flipX == false)
+                {
+                    Vector3 speed = new Vector3(200, 200, 0);
+                    b.GetComponent<Rigidbody2D>().AddForce(speed);
+                }
+                else
+                {
+                    Vector3 speed = new Vector3(-200, 200, 0);
+                    b.GetComponent<Rigidbody2D>().AddForce(speed);
+                }
+                
             }
         }
     }
