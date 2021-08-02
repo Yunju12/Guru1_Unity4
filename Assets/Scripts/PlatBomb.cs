@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombManager : MonoBehaviour
+public class PlatBomb : MonoBehaviour
 {
     public GameObject explosion;
 
@@ -20,10 +20,9 @@ public class BombManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
-            Destroy(gameObject);
             GameObject exp = Instantiate(explosion);
             exp.transform.position = transform.position;
-            Debug.Log("explosion"); 
+            Destroy(gameObject);
         }
     }
 }
