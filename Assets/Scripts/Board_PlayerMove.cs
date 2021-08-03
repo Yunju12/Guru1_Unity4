@@ -247,7 +247,6 @@ public class Board_PlayerMove : MonoBehaviour
 
     IEnumerator MoveTo(GameObject player, Vector3 toPos)
     {
-        print(1);
         float count = 0;
         Vector3 wasPos = player.transform.position;
         while (true)
@@ -259,7 +258,12 @@ public class Board_PlayerMove : MonoBehaviour
             {
                 player.transform.position = toPos;
 
-                if (posx - 4.46 <= 0.001f && posx - 4.46 >= -0.001f)
+                if (posx - 2.23 <= 0.001f && posx - 2.23 >= -0.001f)
+                {
+                    EggHp.bombCount++;
+                    randomBomb.SetActive(true);
+                }
+                else if (posx - 4.46 <= 0.001f && posx - 4.46 >= -0.001f)
                 {
                     buttonS1P.SetActive(true);
                 }
@@ -286,6 +290,11 @@ public class Board_PlayerMove : MonoBehaviour
                     EggHp.eggHp++;
                     NPC_E.SetActive(true);
                 }
+                else if (posx - 22.3 <= 0.001f && posx - 22.3 >= -0.001f)
+                {
+                    EggHp.bombCount++;
+                    randomBomb.SetActive(true);
+                }
                 else if (posx - 24.53 <= 0.001f && posx - 24.53 >= -0.001f)
                 {
                     RandomBox();
@@ -298,6 +307,11 @@ public class Board_PlayerMove : MonoBehaviour
                 {
                     EggHp.eggHp += 2;
                     NPC_E2.SetActive(true);
+                }
+                else if (posx - 35.68 <= 0.001f && posx - 35.68 >= -0.001f)
+                {
+                    EggHp.bombCount++;
+                    randomBomb.SetActive(true);
                 }
                 else if (posx - 37.91 <= 0.001f && posx - 37.91 >= -0.001f)
                 {
@@ -388,19 +402,16 @@ public class Board_PlayerMove : MonoBehaviour
         if(rBox == 1)
         {
             EggHp.eggHp++;
-            print(EggHp.eggHp);
             randomEgg.SetActive(true);
         }
         else if(rBox == 2)
         {
             EggHp.potionCount++;
-            print(EggHp.potionCount);
             randomPotion.SetActive(true);
         }
         else if(rBox == 3)
         {
             EggHp.bombCount++;
-            print(EggHp.bombCount);
             randomBomb.SetActive(true);
         }
     }
