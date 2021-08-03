@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerMove_Slime : MonoBehaviour
 {
+    public GameObject floor1;
+    public GameObject floor2;
+    public GameObject floor3;
+
     // 이동을 위한 변수
     Rigidbody2D rigid;
 
@@ -146,13 +150,17 @@ public class PlayerMove_Slime : MonoBehaviour
         // 만약 스페이스바를 누르고 있다면, 발판을 통과해서 올라갈 수 있게 한다.
         if (Input.GetButton("Jump"))
         {
-            GetComponent<CircleCollider2D>().isTrigger = true;
+            floor1.GetComponent<BoxCollider2D>().isTrigger = true;
+            floor2.GetComponent<BoxCollider2D>().isTrigger = true;
+            floor3.GetComponent<BoxCollider2D>().isTrigger = true;
         }
 
         // 만약 플레이어의 속도가 0 보다 작다면(아래로 떨어지는 중이라면), 발판을 통과할 수 없게 한다.
         if (rigid.velocity.y < 0)
         {
-            GetComponent<CircleCollider2D>().isTrigger = false;
+            floor1.GetComponent<BoxCollider2D>().isTrigger = false;
+            floor2.GetComponent<BoxCollider2D>().isTrigger = false;
+            floor3.GetComponent<BoxCollider2D>().isTrigger = false;
         }
     }
 

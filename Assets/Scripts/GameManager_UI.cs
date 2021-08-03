@@ -105,4 +105,40 @@ public class GameManager_UI : MonoBehaviour
         //¾À ÀüÈ¯
         SceneManager.LoadScene("Prologue");
     }
+
+    public void SlP()
+    {
+        //¾À ÀüÈ¯
+        SceneManager.LoadScene("S1-Plat");
+    }
+
+    public void SlS()
+    {
+        //¾À ÀüÈ¯
+        SceneManager.LoadScene("S1-Shooting");
+    }
+
+    public void S2P()
+    {
+        //¾À ÀüÈ¯
+        SceneManager.LoadScene("S2-Plat");
+    }
+
+    public void S2S()
+    {
+        //¾À ÀüÈ¯
+        SceneManager.LoadScene("S2-Shooting");
+    }
+
+    public void S3P()
+    {
+        //¾À ÀüÈ¯
+        SceneManager.LoadScene("S3-Plat");
+    }
+
+    public void S3S()
+    {
+        //¾À ÀüÈ¯
+        SceneManager.LoadScene("S3-Shooting");
+    }
 }
