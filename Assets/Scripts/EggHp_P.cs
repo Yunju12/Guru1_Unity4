@@ -12,7 +12,7 @@ public class EggHp_P : MonoBehaviour
 
     //ÆøÅº
     public GameObject bomb1;
-    public GameObject bomb2;
+    public Text bombText;
 
     // Start is called before the first frame update
     void Start()
@@ -36,20 +36,7 @@ public class EggHp_P : MonoBehaviour
         }
 
         //ÆøÅº UI
-        if (EggHp.bombCount == 0)
-        {
-            bomb1.SetActive(false);
-            bomb2.SetActive(false);
-        }
-        else if (EggHp.bombCount == 1)
-        {
-            bomb1.SetActive(true);
-            bomb2.SetActive(false);
-        }
-        else if (EggHp.bombCount == 2)
-        {
-            bomb1.SetActive(true);
-            bomb2.SetActive(true);
-        }
+        bomb1.SetActive(true);
+        bombText.text = "X" + EggHp.bombCount;
     }
 }
