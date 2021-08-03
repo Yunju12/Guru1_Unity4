@@ -21,6 +21,24 @@ EditorBuildSettings:
     path: Assets/Scenes/BoardGame.unity
     guid: 8287a4a3d188be74b89b15c067b5af7d
   - enabled: 1
+    path: Assets/Scenes/S1-NPC1 Game 1.unity
+    guid: 495776e20d782014990510d0c8835e9f
+  - enabled: 1
+    path: Assets/Scenes/S1-NPC1 Game 2.unity
+    guid: 1183874129bfa3444a9ed9061f82b703
+  - enabled: 1
+    path: Assets/Scenes/S2-NPC2 Game 1.unity
+    guid: ff2e511ead5883a44a69274db3e625ea
+  - enabled: 1
+    path: Assets/Scenes/S2-NPC2 Game 2.unity
+    guid: c5570dfd22bb1214f8f77953cf3f2b79
+  - enabled: 1
+    path: Assets/Scenes/S3-NPC3 Game 1.unity
+    guid: 55bc5791c21d6184f8c012d0175656b9
+  - enabled: 1
+    path: Assets/Scenes/S3-NPC3 Game 2.unity
+    guid: 46a433a37fc1bc04ca592c892be37385
+  - enabled: 1
     path: Assets/Scenes/S1-Plat.unity
     guid: db352888cbff5af4881fd44471a62e47
   - enabled: 1
