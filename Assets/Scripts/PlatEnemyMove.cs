@@ -10,7 +10,6 @@ public class PlatEnemyMove : MonoBehaviour
     // 애니메이션 변수
     Animator anim;
 
- 
     SpriteRenderer spriteRenderer;
 
     // 물리 충돌 모양
@@ -32,7 +31,6 @@ public class PlatEnemyMove : MonoBehaviour
     {
         // 기본 움직임
         rigid.velocity = new Vector2(nextMove, rigid.velocity.y);
-
 
         // Floor 확인
         Vector2 frontVec = new Vector2(rigid.position.x + nextMove*0.3f, rigid.position.y);
@@ -66,7 +64,6 @@ public class PlatEnemyMove : MonoBehaviour
 
     void Turn()
     {
-
         nextMove *= -1;
         spriteRenderer.flipX = nextMove == 1;
 
