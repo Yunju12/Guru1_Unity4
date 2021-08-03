@@ -9,6 +9,10 @@ public class GameManager_UI : MonoBehaviour
     //옵션 메뉴 UI 오브젝트
     public GameObject optionUI;
 
+    public GameObject startPanel;
+    public GameObject notice1;
+    public GameObject notice2;
+
     //옵션 메뉴 켜기
     public void OpenOptionWindow()
     {
@@ -65,14 +69,16 @@ public class GameManager_UI : MonoBehaviour
     //게임 시작 전 공지
     public void GoNotice1()
     {
-        //씬 전환
-        SceneManager.LoadScene("Notice1");
+        startPanel.SetActive(false);
+        notice1.SetActive(true);
+        notice2.SetActive(false);
     }
 
     public void GoNotice2()
     {
-        //씬 전환
-        SceneManager.LoadScene("Notice2");
+        startPanel.SetActive(false);
+        notice1.SetActive(false);
+        notice2.SetActive(true);
     }
 
     //전체 게임 시작

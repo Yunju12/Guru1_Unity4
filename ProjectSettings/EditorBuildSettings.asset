@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Start.unity
     guid: 009c0ec5e235ddb4abaa25082fc7dd48
   - enabled: 1
-    path: Assets/Scenes/Notice1.unity
+    path: Assets/Scenes/S1-NPC1/Notice1.unity
     guid: a1d43aee64842d8439f82ba833db5329
   - enabled: 1
-    path: Assets/Scenes/Notice2.unity
+    path: Assets/Scenes/S1-NPC1/Notice2.unity
     guid: 57e461f2e4eed9e4c825a1f630bf00c2
   - enabled: 1
     path: Assets/Scenes/BoardGame.unity
