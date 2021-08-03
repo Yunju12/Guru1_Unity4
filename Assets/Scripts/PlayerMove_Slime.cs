@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerMove_Slime : MonoBehaviour
 {
+    public GameObject floor1;
+    public GameObject floor2;
+    public GameObject floor3;
+
     // 이동을 위한 변수
     Rigidbody2D rigid;
 
@@ -141,11 +145,15 @@ public class PlayerMove_Slime : MonoBehaviour
 
         if (Input.GetButton("Jump"))
         {
-            GetComponent<CircleCollider2D>().isTrigger = true;
+            floor1.GetComponent<BoxCollider2D>().isTrigger = true;
+            floor2.GetComponent<BoxCollider2D>().isTrigger = true;
+            floor3.GetComponent<BoxCollider2D>().isTrigger = true;
         }
         else
         {
-            GetComponent<CircleCollider2D>().isTrigger = false;
+            floor1.GetComponent<BoxCollider2D>().isTrigger = false;
+            floor2.GetComponent<BoxCollider2D>().isTrigger = false;
+            floor3.GetComponent<BoxCollider2D>().isTrigger = false;
         }
     }
 
