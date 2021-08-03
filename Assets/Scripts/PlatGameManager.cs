@@ -212,7 +212,7 @@ public class PlatGameManager : MonoBehaviour
             Hp--;
 
         // Hp 0일 경우
-        else if(Hp == 0)
+        if(Hp == 0)
         {
             if(EggHp.eggHp <= 0)
             {
@@ -236,7 +236,6 @@ public class PlatGameManager : MonoBehaviour
                 audioSource.Play();
             }
         }
-
     }
 
     // 낙하시 Hp -1됨
@@ -245,7 +244,7 @@ public class PlatGameManager : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             // Hp가 1이상일 경우
-            if (Hp > 1)
+            if (Hp >= 1)
             {
                 // 낙하시 player 위치 변경
                 PlatPlayerReposition();

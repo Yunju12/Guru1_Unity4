@@ -69,7 +69,12 @@ public class PlatPlayerMove : MonoBehaviour
 
     void Update()
     {
-       
+        // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단한다.
+        if (PlatGameManager.gState != PlatGameManager.GameState.Run)
+        {
+            return;
+        }
+
         // 점프
         if (Input.GetButtonDown("Jump") && (jumpCount > 0))
         {
@@ -124,6 +129,12 @@ public class PlatPlayerMove : MonoBehaviour
     // 물리효과 적용위해 일정하게 호출하는 FixedUpdate 사용
     void FixedUpdate()
     {
+        // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단한다.
+        if (PlatGameManager.gState != PlatGameManager.GameState.Run)
+        {
+            return;
+        }
+
         // Floor 착지
         if (rigid.velocity.y < 0)
         {
@@ -157,6 +168,12 @@ public class PlatPlayerMove : MonoBehaviour
     // 적과 충돌
     void OnCollisionEnter2D(Collision2D collision)
     {
+        // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단한다.
+        if (PlatGameManager.gState != PlatGameManager.GameState.Run)
+        {
+            return;
+        }
+
         if (collision.gameObject.tag == "Enemy")
         {
             // 공격 : 몬스터 위 + 낙하중 = 밟음
