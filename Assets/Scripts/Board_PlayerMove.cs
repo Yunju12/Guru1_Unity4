@@ -261,7 +261,7 @@ public class Board_PlayerMove : MonoBehaviour
                 if (posx - 2.23 <= 0.001f && posx - 2.23 >= -0.001f)
                 {
                     EggHp.bombCount++;
-                    randomBomb.SetActive(true);
+                    NPC_B.SetActive(true);
                 }
                 else if (posx - 4.46 <= 0.001f && posx - 4.46 >= -0.001f)
                 {
@@ -293,7 +293,7 @@ public class Board_PlayerMove : MonoBehaviour
                 else if (posx - 22.3 <= 0.001f && posx - 22.3 >= -0.001f)
                 {
                     EggHp.bombCount++;
-                    randomBomb.SetActive(true);
+                    NPC_B.SetActive(true);
                 }
                 else if (posx - 24.53 <= 0.001f && posx - 24.53 >= -0.001f)
                 {
@@ -311,7 +311,7 @@ public class Board_PlayerMove : MonoBehaviour
                 else if (posx - 35.68 <= 0.001f && posx - 35.68 >= -0.001f)
                 {
                     EggHp.bombCount++;
-                    randomBomb.SetActive(true);
+                    NPC_B.SetActive(true);
                 }
                 else if (posx - 37.91 <= 0.001f && posx - 37.91 >= -0.001f)
                 {
