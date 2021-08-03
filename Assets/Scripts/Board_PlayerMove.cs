@@ -348,38 +348,39 @@ public class Board_PlayerMove : MonoBehaviour
     public void SlP()
     {
         //¾À ÀüÈ¯
-        SceneManager.LoadScene("S1-Plat");
+        SceneManager.LoadScene("S1-NPC1 Game 1");
     }
 
     public void SlS()
     {
         //¾À ÀüÈ¯
-        SceneManager.LoadScene("S1-Shooting");
+        SceneManager.LoadScene("S1-NPC1 Game 2");
     }
 
     public void S2P()
     {
         //¾À ÀüÈ¯
-        SceneManager.LoadScene("S2-Plat");
+        SceneManager.LoadScene("S2-NPC2 Game 1");
     }
 
     public void S2S()
     {
         //¾À ÀüÈ¯
-        SceneManager.LoadScene("S2-Shooting");
+        SceneManager.LoadScene("S2-NPC2 Game 2");
     }
 
     public void S3P()
     {
         //¾À ÀüÈ¯
-        SceneManager.LoadScene("S3-Plat");
+        SceneManager.LoadScene("S3-NPC3 Game 1");
     }
 
     public void S3S()
     {
         //¾À ÀüÈ¯
-        SceneManager.LoadScene("S3-Shooting");
+        SceneManager.LoadScene("S3-NPC3 Game 2");
     }
+
     public void H()
     {
         if(totalScore >= 5000)
