@@ -2625,7 +2625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8cd2f0fc38a284ab482a11c8ff3d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 40
+  maxHp: 50
   hpSlider: {fileID: 987631027}
   HPBar: {fileID: 1747621572}
   BallManager1: {fileID: 376554689}
