@@ -1421,6 +1421,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionUI: {fileID: 0}
+  startPanel: {fileID: 0}
+  notice1: {fileID: 0}
+  notice2: {fileID: 0}
 --- !u!4 &1979491512
 Transform:
   m_ObjectHideFlags: 0
@@ -1549,7 +1552,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ffa6f2069812fcb4bb40a152a0047995, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0
