@@ -54,6 +54,7 @@ public class Video : MonoBehaviour
             EggHp.eggHp = 5;
             EggHp.potionCount = 0;
             EggHp.bombCount = 0;
+            Board_PlayerMove.totalScore = 0;
 
             Board_PlayerMove.posx = 0;
             SceneManager.LoadScene("Start");
