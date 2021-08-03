@@ -60,8 +60,13 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
 
+    // 포션 딜레이 bool 변수
     public bool isDelay;
+
+    // 딜레이 시간 변수
     public float delayTime = 3.0f;
+
+    // 현재 시간 변수
     public float currentTime;
 
     //게임 결과 UI
@@ -152,6 +157,8 @@ public class GameManager : MonoBehaviour
 
                 player.GetComponent<PlayerMove>().Die();
 
+                Enemy.enemyDeath = 0;
+
                 //게임 오버 옵션 메뉴 창을 활성화한다
                 GameOverUI.SetActive(true);
 
@@ -169,6 +176,8 @@ public class GameManager : MonoBehaviour
             totalPoint += bossPoint;
             Board_PlayerMove.totalScore += totalPoint;
 
+            Enemy.enemyDeath = 0;
+
             //클리어 옵션 메뉴 창을 활성화한다
             ClearUI.SetActive(true);
 
@@ -176,41 +185,55 @@ public class GameManager : MonoBehaviour
             gState = GameState.GameClear;
         }
 
+        // 만약 포션 딜레이 bool 변수가 참이면,
         if (isDelay)
         {
+            // 현재 시간 변수의 값이 1초가 흐를 때마다 1 만큼 증가한다.
             currentTime += Time.deltaTime;
+
+            // 만약 현재 시간 변수가 딜레이 시간 변수와 같거나 그보다 크다면,
             if (currentTime >= delayTime)
             {
+                // 현재 시간 변수의 값을 0 으로 하고 포션 딜레이 bool 변수의 값을 거짓으로 한다.
                 currentTime = 0;
                 isDelay = false;
             }
         }
 
+        // 만약 A 키를 누르면,
         if (Input.GetKeyDown(KeyCode.A))
         {
+            // 포션 아이템을 갖고 있을 경우,
             if (EggHp.potionCount > 0)
             {
-                if (isDelay == true || PlayerMove.playerHp == 10)
+                // 포션 딜레이 bool 변수가 거짓이거나 플레이어의 체력이 10 이하 라면,
+                if (isDelay == false && PlayerMove.playerHp < 10)
                 {
-                    return;
-                }
-                else
-                {
-                    // isDelay를 true로 전환 및 체력 회복
+                    // isDelay의 값을 참으로 전환하고, 포션 아이템을 하나 소모하고, 체력을 회복한다.
                     isDelay = true;
                     EggHp.potionCount--;
                     Heal();
+                }
+                // 그렇지 않다면(포션 딜레이 함수가 참이거나 플레이어의 체력이 10 이라면),
+                else
+                {
+                    // 값을 반환한다.
+                    return;
                 }
             }
         }
     }
 
+    // 체력 회복 함수
     void Heal()
     {
+        // 플레이어의 체력을 5만큼 회복한다.
         PlayerMove.playerHp += 5;
 
+        // 만약 플레이어의 체력이 maxHp 를 초과하면,
         if (PlayerMove.playerHp > player.GetComponent<PlayerMove>().maxHp)
         {
+            // 플레이어의 체력을 maxHp 만큼으로 바꾼다.
             PlayerMove.playerHp = player.GetComponent<PlayerMove>().maxHp;
         }
     }

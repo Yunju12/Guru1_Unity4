@@ -16,15 +16,13 @@ public class EggHp : MonoBehaviour
     public static int potionCount = 0;
 
     public GameObject potion1;
-    public GameObject potion2;
-    public GameObject potion3;
-    public GameObject potion4;
+    public Text potionText;
 
     //ÆøÅº
     public static int bombCount = 2;
 
     public GameObject bomb1;
-    public GameObject bomb2;
+    public Text bombText;
 
     // Start is called before the first frame update
     void Start()
@@ -48,57 +46,11 @@ public class EggHp : MonoBehaviour
         }
 
         //Æ÷¼Ç UI
-        if (potionCount == 0)
-        {
-            potion1.SetActive(false);
-            potion2.SetActive(false);
-            potion3.SetActive(false);
-            potion4.SetActive(false);
-        }
-        if (potionCount == 1)
-        {
-            potion1.SetActive(true);
-            potion2.SetActive(false);
-            potion3.SetActive(false);
-            potion4.SetActive(false);
-        }
-        else if (potionCount == 2)
-        {
-            potion1.SetActive(true);
-            potion2.SetActive(true);
-            potion3.SetActive(false);
-            potion4.SetActive(false);
-        }
-        else if (potionCount == 3)
-        {
-            potion1.SetActive(true);
-            potion2.SetActive(true);
-            potion3.SetActive(true);
-            potion4.SetActive(false);
-        }
-        else if (potionCount == 4)
-        {
-            potion1.SetActive(true);
-            potion2.SetActive(true);
-            potion3.SetActive(true);
-            potion4.SetActive(true);
-        }
+        potion1.SetActive(true);
+        potionText.text = "X" + potionCount;
 
         //ÆøÅº UI
-        if (bombCount == 0)
-        {
-            bomb1.SetActive(false);
-            bomb2.SetActive(false);
-        }
-        else if (bombCount == 1)
-        {
-            bomb1.SetActive(true);
-            bomb2.SetActive(false);
-        }
-        else if (bombCount == 2)
-        {
-            bomb1.SetActive(true);
-            bomb2.SetActive(true);
-        }
+        bomb1.SetActive(true);
+        bombText.text = "X" + bombCount;
     }
 }

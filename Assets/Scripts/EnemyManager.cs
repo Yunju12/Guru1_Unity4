@@ -42,22 +42,11 @@ public class EnemyManager : MonoBehaviour
         // 2. 만약 경과 시간이 생성 시간을 초과하면
         if (currentTime > createTime)
         {
-            //int randomValue = Random.Range(0, 10);
-            
-            //if (randomValue < 2)
-            //{
-                //GameObject potion = Instantiate(potionFactory);
+            // 3. 적을 적 공장에서 생성한다.
+            GameObject enemy = Instantiate(enemyFactory);
 
-                //potion.transform.position = transform.position;
-            //}
-           // else
-            //{
-                // 3. 적을 적 공장에서 생성한다.
-                GameObject enemy = Instantiate(enemyFactory);
-
-                // 4. 생성된 적을 배치한다.
-                enemy.transform.position = transform.position;
-            //}
+            // 4. 생성된 적을 배치한다.
+            enemy.transform.position = transform.position;
 
             // 5. 경과시간을 초기화하고 다시 랜덤으로 정한다.
             currentTime = 0;
