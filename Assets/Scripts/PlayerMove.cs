@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
-    public GameObject floor1;
-    public GameObject floor2;
-    public GameObject floor3;
-
     // 이동을 위한 변수
     Rigidbody2D rigid;
 
@@ -132,36 +128,39 @@ public class PlayerMove : MonoBehaviour
         // * 점프
         // 만일 점프 키를 누른다면,
         // (단, 점프 횟수가 최대 점프 횟수를 넘어가지 않았어야 한다.)
-        // 수직 속도로 점프력을 적용하고 jumpCount가 1만큼 올라간다.
         if (Input.GetButtonDown("Jump") && jumpCount < maxJump)
         {
+            // 점프 오디오 클립을 한번 실행한다.
             audio_pm.PlayOneShot(clip);
+
+            // 수직 속도로 점프력을 적용하고 jumpCount가 1만큼 올라간다.
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             jumpCount++;
 
-            // 애니메이션
+            // Jump 애니메이션을 실행한다.
             ani.SetTrigger("ToJump");
         }
+        // 만약 좌우 방향키를 누른다면, Move 애니메이션을 실행한다.
         else if (Input.GetButtonDown("Horizontal"))
         {
             ani.SetTrigger("JumpToMove");
         }
+        // 둘 다 아니라면, Idle 애니메이션을 실행한다.
         else
         {
             ani.SetTrigger("JumpToIdle");
         }
 
+        // 만약 스페이스바를 누르고 있다면, 발판을 통과해서 올라갈 수 있게 한다.
         if (Input.GetButton("Jump"))
         {
-            floor1.GetComponent<BoxCollider2D>().isTrigger = true;
-            floor2.GetComponent<BoxCollider2D>().isTrigger = true;
-            floor3.GetComponent<BoxCollider2D>().isTrigger = true;
+            GetComponent<CircleCollider2D>().isTrigger = true; 
         }
-        else
+
+        // 만약 플레이어의 속도가 0 보다 작다면(아래로 떨어지는 중이라면), 발판을 통과할 수 없게 한다.
+        if (rigid.velocity.y < 0)
         {
-            floor1.GetComponent<BoxCollider2D>().isTrigger = false;
-            floor2.GetComponent<BoxCollider2D>().isTrigger = false;
-            floor3.GetComponent<BoxCollider2D>().isTrigger = false;
+            GetComponent<CircleCollider2D>().isTrigger = false;
         }
     }
 
@@ -177,24 +176,28 @@ public class PlayerMove : MonoBehaviour
     }
 
     // * 플레이어 피격 함수
-    // 플레이어가 적의 공격을 받았을 때 체력이 줄어들도록 한다.
-    // 플레이어의 체력이 0이하가 되면 체력 변수의 값을 0으로 고정한다.
+    // 플레이어가 적의 공격을 받았을 때
     public void OnDamage(int value)
     {
-
+        // hurt 오디오 클립을 한번 실행한다.
         audio_pm.PlayOneShot(hurt);
 
+        // 체력이 줄어들게 한다.
         playerHp -= value;
         
+        // Hurt 애니메이션을 실행하고 기본 애니메이션으로 돌아간다.
         ani.SetTrigger("ToHurt");
         ani.SetTrigger("Exit");
 
+        // 만약 체력이 0 과 같거나 그보다 작다면, 체력의 값을 0 으로 고정한다.
         if (playerHp <= 0)
         {
             playerHp = 0;
         }
     }
 
+    // * 플레이어 사망 함수
+    // 플레이어가 죽으면 Die 애니메이션을 실행한다.
     public void Die()
     {
         ani.SetTrigger("ToDie");
