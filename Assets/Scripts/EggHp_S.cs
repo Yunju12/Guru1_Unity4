@@ -12,9 +12,7 @@ public class EggHp_S : MonoBehaviour
 
     //포션
     public GameObject potion1;
-    public GameObject potion2;
-    public GameObject potion3;
-    public GameObject potion4;
+    public Text potionText;
 
     // Start is called before the first frame update
     void Start()
@@ -38,40 +36,7 @@ public class EggHp_S : MonoBehaviour
         }
 
         //포션 UI
-        if (EggHp.potionCount == 0)
-        {
-            potion1.SetActive(false);
-            potion2.SetActive(false);
-            potion3.SetActive(false);
-            potion4.SetActive(false);
-        }
-        if (EggHp.potionCount == 1)
-        {
-            potion1.SetActive(true);
-            potion2.SetActive(false);
-            potion3.SetActive(false);
-            potion4.SetActive(false);
-        }
-        else if (EggHp.potionCount == 2)
-        {
-            potion1.SetActive(true);
-            potion2.SetActive(true);
-            potion3.SetActive(false);
-            potion4.SetActive(false);
-        }
-        else if (EggHp.potionCount == 3)
-        {
-            potion1.SetActive(true);
-            potion2.SetActive(true);
-            potion3.SetActive(true);
-            potion4.SetActive(false);
-        }
-        else if (EggHp.potionCount == 4)
-        {
-            potion1.SetActive(true);
-            potion2.SetActive(true);
-            potion3.SetActive(true);
-            potion4.SetActive(true);
-        }
+        potion1.SetActive(true);
+        potionText.text = "X" + EggHp.potionCount;
     }
 }
