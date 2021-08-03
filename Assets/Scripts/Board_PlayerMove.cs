@@ -140,10 +140,10 @@ public class Board_PlayerMove : MonoBehaviour
         NPC_B.SetActive(false);
         NPC_E2.SetActive(false);
 
-        //ran = Random.Range(1, 7);
+        ran = Random.Range(1, 7);
         //print(ran);
 
-        ran = 1;
+        //ran = 1;
 
         if (ran == 1)
         {
