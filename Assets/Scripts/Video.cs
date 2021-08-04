@@ -35,6 +35,12 @@ public class Video : MonoBehaviour
 
         // VideoPlayer의 출력 texture를 RawImage의 texture로 설정한다
         mScreen.texture = mVideoPlayer.texture;
+
+        while (mVideoPlayer.isPlaying == false)
+        {
+            yield return null;
+            GameStart();
+        }
     }
 
     //public void PlayVideo()
