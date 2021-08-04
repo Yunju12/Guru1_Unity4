@@ -147,6 +147,8 @@ public class GameManager_Slime : MonoBehaviour
 
                 player.GetComponent<PlayerMove_Slime>().Die();
 
+                Enemy.enemyDeath = 0;
+
                 //게임 오버 옵션 메뉴 창을 활성화한다
                 GameOverUI.SetActive(true);
 
@@ -161,8 +163,7 @@ public class GameManager_Slime : MonoBehaviour
             totalPoint += bossPoint;
             Board_PlayerMove.totalScore += totalPoint;
 
-            //audio.Stop();
-            //audio.PlayOneShot(gameClear);
+            Enemy.enemyDeath = 0;
 
             //클리어 옵션 메뉴 창을 활성화한다
             ClearUI.SetActive(true);

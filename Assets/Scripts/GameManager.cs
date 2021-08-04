@@ -170,9 +170,6 @@ public class GameManager : MonoBehaviour
         // 만약 보스의 hp가 0 이하로 떨어지면
         else if (BossMonster.bossHp <= 0)
         {
-            //audio.Stop();
-            //audio.PlayOneShot(gameClear);
-
             totalPoint += bossPoint;
             Board_PlayerMove.totalScore += totalPoint;
 
