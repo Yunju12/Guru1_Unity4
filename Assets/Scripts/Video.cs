@@ -36,7 +36,7 @@ public class Video : MonoBehaviour
         // VideoPlayer의 출력 texture를 RawImage의 texture로 설정한다
         mScreen.texture = mVideoPlayer.texture;
 
-        while (mVideoPlayer.isPlaying == false)
+        if (mVideoPlayer.isPlaying == false)
         {
             yield return null;
             GameStart();
@@ -45,11 +45,11 @@ public class Video : MonoBehaviour
 
     //public void PlayVideo()
     //{
-        //if (mVideoPlayer != null && mVideoPlayer.isPrepared)
-        //{
-            // 비디오 재생
-            //mVideoPlayer.Play();
-        //}
+    //if (mVideoPlayer != null && mVideoPlayer.isPrepared)
+    //{
+    // 비디오 재생
+    //mVideoPlayer.Play();
+    //}
     //}
 
     //첫 게임 시작

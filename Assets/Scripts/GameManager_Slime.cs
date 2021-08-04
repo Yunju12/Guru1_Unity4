@@ -133,7 +133,7 @@ public class GameManager_Slime : MonoBehaviour
         }
 
         // 만약 플레이어의 hp가 0 이하로 떨어지면
-        if (PlayerMove_Slime.playerHp <= 0)
+        if (PlayerMove_Slime.playerHp_s <= 0)
         {
             if (EggHp.eggHp <= 0)
             {
@@ -186,7 +186,7 @@ public class GameManager_Slime : MonoBehaviour
         {
             if (EggHp.potionCount > 0)
             {
-                if (isDelay == true || PlayerMove.playerHp == 10)
+                if (isDelay == true || PlayerMove_Slime.playerHp_s == 10)
                 {
                     return;
                 }
@@ -203,11 +203,11 @@ public class GameManager_Slime : MonoBehaviour
 
     void Heal()
     {
-        PlayerMove.playerHp += 5;
+        PlayerMove_Slime.playerHp_s += 5;
 
-        if (PlayerMove.playerHp > player.GetComponent<PlayerMove>().maxHp)
+        if (PlayerMove_Slime.playerHp_s > player.GetComponent<PlayerMove_Slime>().maxHp)
         {
-            PlayerMove.playerHp = player.GetComponent<PlayerMove>().maxHp;
+            PlayerMove_Slime.playerHp_s = player.GetComponent<PlayerMove_Slime>().maxHp;
         }
     }
 }

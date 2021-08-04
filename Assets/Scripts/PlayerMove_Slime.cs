@@ -25,7 +25,7 @@ public class PlayerMove_Slime : MonoBehaviour
     public float moveSpeed = 7.0f;
 
     // 체력 변수
-    public static int playerHp;
+    public static int playerHp_s;
 
     // 최대 체력 변수
     public int maxHp = 10;
@@ -59,7 +59,7 @@ public class PlayerMove_Slime : MonoBehaviour
     void Start()
     {
         // 체력 변수 초기화
-        playerHp = maxHp;
+        playerHp_s = maxHp;
 
         // 플레이어 애니메이션 컴포넌트를 받아온다.
         rigid = GetComponent<Rigidbody2D>();
@@ -76,14 +76,14 @@ public class PlayerMove_Slime : MonoBehaviour
         hpSlider.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 0.8f, 0));
 
         // 게임 상태가 게임 오버 상태가 되면 Die 애니메이션을 실행한다.
-        if (playerHp <= 0)
+        if (playerHp_s <= 0)
         {
             ani.SetTrigger("ToDie");
         }
 
         // * HP 바
         // 슬라이더의 value를 체력 비율로 적용한다.
-        hpSlider.value = (float)playerHp / (float)maxHp;
+        hpSlider.value = (float)playerHp_s / (float)maxHp;
 
         // 게임 상태가 게임 중 상태가 아니면 업데이트 함수를 중단한다.
         if (GameManager_Slime.gm.gState != GameManager_Slime.GameState.Run)
@@ -183,16 +183,16 @@ public class PlayerMove_Slime : MonoBehaviour
         audio_pm.PlayOneShot(hurt);
 
         // 체력이 줄어들게 한다.
-        playerHp -= value;
+        playerHp_s -= value;
 
         // Hurt 애니메이션을 실행하고 기본 애니메이션으로 돌아간다.
         ani.SetTrigger("ToHurt");
         ani.SetTrigger("Exit");
 
         // 만약 체력이 0 과 같거나 그보다 작다면, 체력의 값을 0 으로 고정한다.
-        if (playerHp <= 0)
+        if (playerHp_s <= 0)
         {
-            playerHp = 0;
+            playerHp_s = 0;
         }
     }
 
