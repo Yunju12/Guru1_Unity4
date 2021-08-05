@@ -13,7 +13,7 @@ public class EggHp : MonoBehaviour
     public Text eggText;
 
     //Æ÷¼Ç
-    public static int potionCount = 2;
+    public static int potionCount = 0;
 
     public GameObject potion1;
     public Text potionText;

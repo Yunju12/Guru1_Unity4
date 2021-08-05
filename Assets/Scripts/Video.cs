@@ -13,12 +13,32 @@ public class Video : MonoBehaviour
     public RawImage mScreen = null;
     public VideoPlayer mVideoPlayer = null;
 
+    int a = 0;
+
     void Start()
     {
-        if (mScreen != null && mVideoPlayer != null)
+        // 비디오 준비 코루틴 호출
+        StartCoroutine(PrepareVideo());
+    }
+
+    private void Update()
+    {
+        //StartCoroutine(PrepareVideo());
+
+        if (mVideoPlayer.isPlaying || !mVideoPlayer.isPrepared || a == 0)
         {
-            // 비디오 준비 코루틴 호출
-            StartCoroutine(PrepareVideo());
+            return;
+        }
+        else
+        {
+            if (SceneManager.GetActiveScene().name == "Prologue")
+            {
+                GameStart();
+            }
+            else
+            {
+                GameReStart();
+            }
         }
     }
 
@@ -35,22 +55,17 @@ public class Video : MonoBehaviour
 
         // VideoPlayer의 출력 texture를 RawImage의 texture로 설정한다
         mScreen.texture = mVideoPlayer.texture;
-
-        if (mVideoPlayer.isPlaying == false)
-        {
-            yield return null;
-            GameStart();
-        }
+        a = 1;
     }
 
-    //public void PlayVideo()
-    //{
-    //if (mVideoPlayer != null && mVideoPlayer.isPrepared)
-    //{
-    // 비디오 재생
-    //mVideoPlayer.Play();
-    //}
-    //}
+    public void PlayVideo()
+    {
+        if (mVideoPlayer != null && mVideoPlayer.isPrepared)
+        {
+            // 비디오 재생
+            mVideoPlayer.Play();
+        }
+    }
 
     //첫 게임 시작
     public void GameStart()
